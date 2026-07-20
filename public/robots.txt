@@ -1,0 +1,16 @@
+# Robots.txt for Free Aspect Ratio Calculator
+# https://freeaspectratiocalculator.com
+
+User-agent: *
+Allow: /
+
+# Directives for Googlebot and major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://freeaspectratiocalculator.com/sitemap.xml
+Host: https://freeaspectratiocalculator.com

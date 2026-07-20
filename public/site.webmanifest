@@ -1,0 +1,23 @@
+{
+  "name": "Free Aspect Ratio Calculator",
+  "short_name": "Aspect Ratio",
+  "description": "Calculate aspect ratios instantly with real-time visual canvas resizer, social media presets, image drop inspector, and CSS code generator.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0b0e",
+  "theme_color": "#0a0b0e",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

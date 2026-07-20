@@ -1,0 +1,9 @@
+# Security Policy for Free Aspect Ratio Calculator
+# https://freeaspectratiocalculator.com/.well-known/security.txt
+
+Contact: mailto:security@freeaspectratiocalculator.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Policy: https://freeaspectratiocalculator.com/
+Canonical: https://freeaspectratiocalculator.com/.well-known/security.txt
+Encryption: https://freeaspectratiocalculator.com/
