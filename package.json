@@ -9,13 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "@astrojs/react": "^4.2.0",
-    "@astrojs/tailwind": "^6.0.0",
-    "@vercel/analytics": "^2.0.1",
-    "astro": "^5.4.0",
->>>>>>> 3d82185dd02e081cb664d11122b7b27a65edf4bd
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",

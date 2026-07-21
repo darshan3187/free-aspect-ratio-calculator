@@ -1,15 +1,18 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import CalculatorHeader from './CalculatorHeader';
-import QuickStartGuide from './QuickStartGuide';
 import CalculatorHub from './CalculatorHub';
-import VisualCanvas from './VisualCanvas';
-import ImageInspector from './ImageInspector';
 import PresetsGrid from './PresetsGrid';
-import ScaleTable from './ScaleTable';
-import CodeExporter from './CodeExporter';
 import { calculateTargetDimension } from '@/utils/aspectRatioMath';
+
+// Dynamic lazy imports for non-critical components to maximize initial mobile loading score (Lighthouse 85+)
+const QuickStartGuide = dynamic(() => import('./QuickStartGuide'), { ssr: false });
+const VisualCanvas = dynamic(() => import('./VisualCanvas'), { ssr: false });
+const ImageInspector = dynamic(() => import('./ImageInspector'), { ssr: false });
+const ScaleTable = dynamic(() => import('./ScaleTable'), { ssr: false });
+const CodeExporter = dynamic(() => import('./CodeExporter'), { ssr: false });
 
 export default function RatioCraftApp() {
   const [w1, setW1] = useState('1920');
@@ -59,140 +62,103 @@ export default function RatioCraftApp() {
     } else if (lastChanged === 'h2' && result.w2 !== undefined && result.w2 !== w2) {
       setW2(result.w2.toString());
       setRoundingOccurred(result.roundingOccurred);
-    } else if (lastChanged === 'w1' || lastChanged === 'h1') {
-      const reResult = calculateTargetDimension({
-        w1, h1, w2, h2: '',
-        lastChanged: 'w2',
-        roundValues
-      });
-      if (reResult.h2 !== undefined) {
-        setH2(reResult.h2.toString());
-        setRoundingOccurred(reResult.roundingOccurred);
-      }
+    } else if (lastChanged === 'w1' && result.h2 !== undefined && result.h2 !== h2) {
+      setH2(result.h2.toString());
+      setRoundingOccurred(result.roundingOccurred);
+    } else if (lastChanged === 'h1' && result.w2 !== undefined && result.w2 !== w2) {
+      setW2(result.w2.toString());
+      setRoundingOccurred(result.roundingOccurred);
     }
   }, [w1, h1, w2, h2, lockRatio, roundValues, lastChanged]);
 
-  const handleSelectPreset = (newW, newH) => {
-    setW1(newW.toString());
-    setH1(newH.toString());
+  const handlePresetSelect = (presetW, presetH) => {
+    setW1(presetW.toString());
+    setH1(presetH.toString());
     setLastChanged('w1');
   };
 
-  const handleApplySample = (sampleW1, sampleH1, sampleW2) => {
-    setW1(sampleW1.toString());
-    setH1(sampleH1.toString());
-    setW2(sampleW2.toString());
-    setLastChanged('w2');
-  };
-
-  const handleDragResize = (newW2, newH2) => {
-    setW2(newW2.toString());
-    setH2(newH2.toString());
-    setLastChanged('w2');
-  };
-
-  const handleImageLoaded = (imgW, imgH) => {
-    setW1(imgW.toString());
-    setH1(imgH.toString());
+  const handleImageDimensionsLoaded = (width, height, fileUrl) => {
+    setW1(width.toString());
+    setH1(height.toString());
+    setUploadedImage(fileUrl);
     setLastChanged('w1');
-    setFocalY(0); // Auto-focus near top (face area) when new portrait image loaded
   };
 
-  const handleReset = () => {
+  const handleClearImage = () => {
+    setUploadedImage(null);
+  };
+
+  const handleSampleApply = () => {
     setW1('1920');
     setH1('1080');
-    setW2('400');
-    setH2('225');
-    setLockRatio(true);
+    setW2('1080');
     setLastChanged('w2');
-    setUploadedImage(null);
-    setFocalX(50);
-    setFocalY(50);
-    setFitMode('cover');
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] studio-grid-pattern text-neutral-100 py-3 sm:py-6 lg:py-8 relative overflow-hidden">
-      {/* Vercel DESIGN.md Hero Mesh Backdrop */}
-      <div className="hero-mesh-bg"></div>
+    <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6">
+      {/* Header Bar */}
+      <CalculatorHeader
+        showGuide={showQuickGuide}
+        onToggleGuide={() => setShowQuickGuide(!showQuickGuide)}
+      />
 
-      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <CalculatorHeader
-          showGuide={showQuickGuide}
-          onToggleGuide={() => setShowQuickGuide(!showQuickGuide)}
+      {/* Interactive Quick Start Help Banner */}
+      {showQuickGuide && (
+        <QuickStartGuide
+          onDismiss={() => setShowQuickGuide(false)}
+          onApplySample={handleSampleApply}
         />
+      )}
 
-        {/* Quick Start Guide for New Users */}
-        {showQuickGuide && (
-          <QuickStartGuide
-            onDismiss={() => setShowQuickGuide(false)}
-            onSelectPreset={handleSelectPreset}
-            onApplySample={handleApplySample}
+      {/* Main Studio Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 mb-8">
+        {/* Left Column: Primary Control Hub */}
+        <div className="lg:col-span-6 xl:col-span-5 space-y-5">
+          <CalculatorHub
+            w1={w1} setW1={setW1}
+            h1={h1} setH1={setH1}
+            w2={w2} setW2={setW2}
+            h2={h2} setH2={setH2}
+            lockRatio={lockRatio} setLockRatio={setLockRatio}
+            roundValues={roundValues} setRoundValues={setRoundValues}
+            lastChanged={lastChanged} setLastChanged={setLastChanged}
+            roundingOccurred={roundingOccurred}
+            uploadedImage={uploadedImage}
+            onSelectPreset={handlePresetSelect}
           />
-        )}
 
-        {/* 2-Column Main Workspace Grid (Desktop & Tablet) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
-          {/* Left Column: Calculator Hub & Controls */}
-          <div className="lg:col-span-6">
-            <CalculatorHub
-              w1={w1} setW1={setW1}
-              h1={h1} setH1={setH1}
-              w2={w2} setW2={setW2}
-              h2={h2} setH2={setH2}
-              lockRatio={lockRatio} setLockRatio={setLockRatio}
-              roundValues={roundValues} setRoundValues={setRoundValues}
-              lastChanged={lastChanged} setLastChanged={setLastChanged}
-              onReset={handleReset}
-              roundingOccurred={roundingOccurred}
-            />
-          </div>
-
-          {/* Right Column: Visual Canvas & Framing */}
-          <div className="lg:col-span-6">
-            <VisualCanvas
-              w1={w1} h1={h1}
-              w2={w2} h2={h2}
-              uploadedImage={uploadedImage}
-              onDragResize={handleDragResize}
-              focalX={focalX} setFocalX={setFocalX}
-              focalY={focalY} setFocalY={setFocalY}
-              fitMode={fitMode} setFitMode={setFitMode}
-            />
-          </div>
+          {/* Local Drag and Drop Image Upload Inspector */}
+          <ImageInspector
+            uploadedImage={uploadedImage}
+            setUploadedImage={setUploadedImage}
+            onImageLoaded={handleImageDimensionsLoaded}
+            onClearImage={handleClearImage}
+          />
         </div>
 
-        {/* Row 2: Image Inspector & Presets */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
-          <div className="lg:col-span-5">
-            <ImageInspector
-              uploadedImage={uploadedImage}
-              setUploadedImage={setUploadedImage}
-              onImageLoaded={handleImageLoaded}
-            />
-          </div>
-          <div className="lg:col-span-7">
-            <PresetsGrid onSelectPreset={handleSelectPreset} />
-          </div>
-        </div>
+        {/* Right Column: Visual Canvas & Studio Tools */}
+        <div className="lg:col-span-6 xl:col-span-7 space-y-5">
+          <VisualCanvas
+            w1={w1} h1={h1}
+            w2={w2} h2={h2}
+            uploadedImage={uploadedImage}
+            focalX={focalX} setFocalX={setFocalX}
+            focalY={focalY} setFocalY={setFocalY}
+            fitMode={fitMode} setFitMode={setFitMode}
+          />
 
-        {/* Row 3: Code Generator & Resolution Table */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
-          <div className="lg:col-span-6">
-            <CodeExporter
-              w1={w1} h1={h1}
-              w2={w2} h2={h2}
-              focalX={focalX}
-              focalY={focalY}
-              fitMode={fitMode}
-            />
-          </div>
-          <div className="lg:col-span-6">
-            <ScaleTable w1={w1} h1={h1} />
-          </div>
-        </div>
+          <PresetsGrid onSelectPreset={handlePresetSelect} />
 
+          <ScaleTable w1={w1} h1={h1} />
+
+          <CodeExporter
+            w1={w1} h1={h1}
+            w2={w2} h2={h2}
+            focalX={focalX} focalY={focalY}
+            fitMode={fitMode}
+          />
+        </div>
       </div>
     </div>
   );
