@@ -82,6 +82,9 @@ export const metadata: Metadata = {
       "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches.",
     images: ["/og-image.png"],
   },
+  verification: {
+    google: "IFEo_oGRlJ6YFwXZi7UfcC2USeVgLbPlNWKjuDhJaVk",
+  },
 };
 
 export const viewport: Viewport = {
