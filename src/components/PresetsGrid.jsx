@@ -1,8 +1,11 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Bookmark, Instagram, Monitor, Camera, Sparkles, Film } from 'lucide-react';
+import { Bookmark, Instagram, Monitor, Camera, Sparkles, Film, Search, X } from 'lucide-react';
 
 export default function PresetsGrid({ onSelectPreset }) {
   const [activeCategory, setActiveCategory] = useState('social');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const categories = [
     { id: 'social', label: 'Social Media', icon: Instagram },
@@ -56,17 +59,64 @@ export default function PresetsGrid({ onSelectPreset }) {
     ]
   };
 
+  // If search query active, search across ALL categories; otherwise filter by active tab
+  const getFilteredPresets = () => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return presets[activeCategory] || [];
+
+    const results = [];
+    Object.values(presets).forEach(catList => {
+      catList.forEach(item => {
+        if (
+          item.name.toLowerCase().includes(q) ||
+          item.ratio.toLowerCase().includes(q) ||
+          item.tag.toLowerCase().includes(q) ||
+          `${item.w}x${item.h}`.includes(q)
+        ) {
+          results.push(item);
+        }
+      });
+    });
+    return results;
+  };
+
+  const filteredPresets = getFilteredPresets();
+
   return (
     <div className="studio-card p-4 sm:p-6 mb-6">
-      {/* Title & Category Tabs */}
+      {/* Title & Search Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-3.5 mb-4 border-b border-white/[0.08]">
         <div className="flex items-center gap-2">
           <Bookmark className="w-4 h-4 text-neutral-300 flex-shrink-0" />
           <h2 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider font-sans">Aspect Ratio Presets</h2>
         </div>
 
-        {/* Tab Controls with horizontal scroll on mobile */}
-        <div className="w-full sm:w-auto overflow-x-auto no-scrollbar pb-0.5">
+        {/* Search Input for Quick Finding */}
+        <div className="relative w-full sm:w-60">
+          <Search className="w-3.5 h-3.5 text-neutral-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search preset (e.g. 16:9, IG, 4K)..."
+            aria-label="Search aspect ratio presets"
+            className="w-full bg-[#000000] border border-white/10 focus:border-white/30 rounded-full pl-8 pr-7 py-1 text-xs text-white placeholder-neutral-500 transition-all font-mono"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              aria-label="Clear search"
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white p-0.5 cursor-pointer"
+            >
+              <X className="w-3 h-3" />
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Category Tabs (shown when no search query) */}
+      {!searchQuery && (
+        <div className="w-full overflow-x-auto no-scrollbar pb-3 mb-3">
           <div className="flex items-center gap-1 p-1 bg-[#000000] rounded-full border border-white/[0.08] min-w-max">
             {categories.map((cat) => {
               const IconComp = cat.icon;
@@ -89,33 +139,45 @@ export default function PresetsGrid({ onSelectPreset }) {
             })}
           </div>
         </div>
-      </div>
+      )}
 
       {/* Presets Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-        {presets[activeCategory].map((item, idx) => (
+      {filteredPresets.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+          {filteredPresets.map((item, idx) => (
+            <button
+              key={idx}
+              onClick={() => onSelectPreset(item.w, item.h)}
+              aria-label={`Apply ${item.name} preset ${item.w} by ${item.h}`}
+              className="p-3 sm:p-3.5 rounded-xl bg-[#000000] hover:bg-[#171717] border border-white/[0.08] hover:border-white/20 text-left transition-all flex flex-col justify-between group active:scale-[0.98] cursor-pointer shadow-sm"
+            >
+              <div className="flex items-start justify-between gap-2 mb-1.5">
+                <span className="text-xs font-semibold text-white group-hover:text-neutral-200 transition-colors leading-snug font-sans">
+                  {item.name}
+                </span>
+                <span className="px-2 py-0.5 rounded-full bg-[#171717] text-neutral-300 border border-white/10 font-mono text-[10px] font-bold whitespace-nowrap flex-shrink-0">
+                  {item.ratio}
+                </span>
+              </div>
+              
+              <div className="flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+                <span>{item.w} × {item.h} px</span>
+                <span className="text-[10px] text-[#888888] truncate max-w-[110px]">{item.tag}</span>
+              </div>
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-6 bg-[#000000] rounded-xl border border-white/[0.08]">
+          <p className="text-xs text-neutral-400 mb-2">No presets found matching "{searchQuery}"</p>
           <button
-            key={idx}
-            onClick={() => onSelectPreset(item.w, item.h)}
-            aria-label={`Apply ${item.name} preset ${item.w} by ${item.h}`}
-            className="p-3 sm:p-3.5 rounded-xl bg-[#000000] hover:bg-[#171717] border border-white/[0.08] hover:border-white/20 text-left transition-all flex flex-col justify-between group active:scale-[0.98] cursor-pointer shadow-sm"
+            onClick={() => setSearchQuery('')}
+            className="px-3 py-1 rounded-full text-xs font-mono bg-[#171717] text-white border border-white/10 cursor-pointer"
           >
-            <div className="flex items-start justify-between gap-2 mb-1.5">
-              <span className="text-xs font-semibold text-white group-hover:text-neutral-200 transition-colors leading-snug font-sans">
-                {item.name}
-              </span>
-              <span className="px-2 py-0.5 rounded-full bg-[#171717] text-neutral-300 border border-white/10 font-mono text-[10px] font-bold whitespace-nowrap flex-shrink-0">
-                {item.ratio}
-              </span>
-            </div>
-            
-            <div className="flex items-center justify-between text-[11px] text-neutral-400 font-mono">
-              <span>{item.w} × {item.h} px</span>
-              <span className="text-[10px] text-[#888888] truncate max-w-[110px]">{item.tag}</span>
-            </div>
+            Clear Search
           </button>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

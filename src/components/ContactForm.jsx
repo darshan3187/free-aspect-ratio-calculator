@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Mail, Check, Send } from 'lucide-react';
+import { Check, Send } from 'lucide-react';
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);

@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
-import { Eye, Grid, Maximize2, Move, Focus, ArrowUp, ArrowDown, Columns, X } from 'lucide-react';
-import { simplifyRatio } from '../utils/aspectRatioMath';
+import { Eye, Grid, Columns, Move, Maximize2, X } from 'lucide-react';
+import { simplifyRatio } from '@/utils/aspectRatioMath';
 
 export default function VisualCanvas({
   w1, h1, w2, h2,
@@ -151,30 +153,28 @@ export default function VisualCanvas({
   ];
 
   return (
-    <div className="studio-card p-4 sm:p-6 mb-6">
-      {/* Title Bar & Grid Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-2.5 pb-3.5 mb-4 border-b border-white/[0.08]">
+    <div className="studio-card p-4 sm:p-5 mb-6">
+      {/* Title Bar & Canvas Controls */}
+      <div className="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-white/[0.08]">
         <div className="flex items-center gap-2">
           <Eye className="w-4 h-4 text-neutral-300 flex-shrink-0" />
-          <h2 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider font-sans">Visual Canvas</h2>
+          <h2 className="text-sm font-semibold text-white font-sans">Visual Canvas</h2>
         </div>
 
-        <div className="flex items-center gap-2">
-          {/* Compare Ratios Mode */}
+        <div className="flex items-center gap-1.5">
           <button
             onClick={() => setShowCompareModal(true)}
             aria-label="Compare ratios side by side"
-            className="px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-mono font-medium bg-[#171717] hover:bg-neutral-800 text-neutral-200 border border-white/10 transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
+            className="px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-[#171717] hover:bg-neutral-800 text-neutral-300 border border-white/10 transition-all flex items-center gap-1 cursor-pointer"
           >
             <Columns className="w-3 h-3 text-neutral-400" />
-            <span>Compare Ratios</span>
+            <span>Compare</span>
           </button>
 
           <button
             onClick={() => setFitMode(fitMode === 'cover' ? 'contain' : 'cover')}
             aria-label="Toggle fit mode"
-            className="px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-mono font-medium bg-[#171717] hover:bg-neutral-800 text-neutral-300 border border-white/10 transition-all active:scale-95 cursor-pointer"
-            title="Toggle between Crop (Cover) and Letterbox (Contain)"
+            className="px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-[#171717] hover:bg-neutral-800 text-neutral-300 border border-white/10 transition-all cursor-pointer"
           >
             {fitMode === 'cover' ? 'Crop' : 'Fit'}
           </button>
@@ -182,7 +182,7 @@ export default function VisualCanvas({
           <button
             onClick={() => setShowGrid(!showGrid)}
             aria-label="Toggle composition grid"
-            className={`px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-mono font-medium flex items-center gap-1 transition-all active:scale-95 cursor-pointer border ${
+            className={`px-2.5 py-1 rounded-full text-xs font-mono font-medium flex items-center gap-1 transition-all cursor-pointer border ${
               showGrid
                 ? 'bg-white text-black border-white font-semibold'
                 : 'bg-[#171717] text-neutral-400 border-white/10'
@@ -194,63 +194,35 @@ export default function VisualCanvas({
         </div>
       </div>
 
-      {/* Subject / Face Alignment Quick Presets */}
-      <div className="mb-4 p-2.5 sm:p-3 rounded-xl bg-[#000000] border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-        <div className="flex items-center gap-1.5 text-xs text-neutral-300 font-medium">
-          <Focus className="w-3.5 h-3.5 text-neutral-400 flex-shrink-0" />
-          <span>Face / Subject Focus:</span>
-        </div>
+      {/* Focus Alignment Controls */}
+      <div className="mb-4 p-2 rounded-xl bg-[#000000] border border-white/[0.08] flex items-center justify-between gap-2">
+        <span className="text-xs text-neutral-400 font-mono pl-1">Focus:</span>
 
-        {/* Quick Position Chips & Y-Slider */}
-        <div className="flex flex-wrap items-center gap-2 justify-between sm:justify-end w-full sm:w-auto">
-          <div className="flex items-center gap-1">
-            <button
-              onClick={() => setFocalY(0)}
-              aria-label="Set focal point to Top"
-              className={`px-2.5 py-1 rounded-full text-[11px] font-mono font-medium flex items-center gap-1 transition-all active:scale-95 cursor-pointer border ${
-                focalY <= 15 ? 'bg-white text-black border-white font-semibold' : 'bg-[#171717] text-neutral-400 border-white/10'
-              }`}
-              title="Focus on Top (Face/Head)"
-            >
-              <ArrowUp className="w-3 h-3" />
-              <span>Top</span>
-            </button>
-
-            <button
-              onClick={() => setFocalY(50)}
-              aria-label="Set focal point to Center"
-              className={`px-2.5 py-1 rounded-full text-[11px] font-mono font-medium transition-all active:scale-95 cursor-pointer border ${
-                focalY > 15 && focalY < 85 ? 'bg-white text-black border-white font-semibold' : 'bg-[#171717] text-neutral-400 border-white/10'
-              }`}
-            >
-              Center
-            </button>
-
-            <button
-              onClick={() => setFocalY(100)}
-              aria-label="Set focal point to Bottom"
-              className={`px-2.5 py-1 rounded-full text-[11px] font-mono font-medium flex items-center gap-1 transition-all active:scale-95 cursor-pointer border ${
-                focalY >= 85 ? 'bg-white text-black border-white font-semibold' : 'bg-[#171717] text-neutral-400 border-white/10'
-              }`}
-            >
-              <ArrowDown className="w-3 h-3" />
-              <span>Bottom</span>
-            </button>
-          </div>
-
-          <div className="flex items-center gap-1.5 text-[11px] font-mono text-neutral-400">
-            <span>Y:</span>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={focalY}
-              onChange={(e) => setFocalY(Number(e.target.value))}
-              aria-label="Vertical focal point percentage"
-              className="w-20 sm:w-24 accent-white cursor-pointer"
-            />
-            <span className="w-7 text-white font-bold text-right">{focalY}%</span>
-          </div>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setFocalY(0)}
+            className={`px-2.5 py-1 rounded-full text-xs font-mono font-medium transition-all cursor-pointer border ${
+              focalY <= 15 ? 'bg-white text-black border-white font-semibold' : 'bg-[#171717] text-neutral-400 border-white/10'
+            }`}
+          >
+            Top
+          </button>
+          <button
+            onClick={() => setFocalY(50)}
+            className={`px-2.5 py-1 rounded-full text-xs font-mono font-medium transition-all cursor-pointer border ${
+              focalY > 15 && focalY < 85 ? 'bg-white text-black border-white font-semibold' : 'bg-[#171717] text-neutral-400 border-white/10'
+            }`}
+          >
+            Center
+          </button>
+          <button
+            onClick={() => setFocalY(100)}
+            className={`px-2.5 py-1 rounded-full text-xs font-mono font-medium transition-all cursor-pointer border ${
+              focalY >= 85 ? 'bg-white text-black border-white font-semibold' : 'bg-[#171717] text-neutral-400 border-white/10'
+            }`}
+          >
+            Bottom
+          </button>
         </div>
       </div>
 

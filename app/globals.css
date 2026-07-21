@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-app: #000000;
+  --bg-surface: #0a0a0a;
+  --bg-surface-elevated: #171717;
+  --border-hairline: rgba(255, 255, 255, 0.1);
+  --border-hairline-strong: rgba(255, 255, 255, 0.2);
+  --border-active: #0070f3;
+  --text-primary: #ffffff;
+  --text-body: #a1a1a1;
+  --text-muted: #888888;
+  --accent-primary: #ffffff;
+  --accent-link: #0070f3;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-body);
+  font-family: var(--font-geist-sans), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-mono {
+  font-family: var(--font-geist-mono), 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace !important;
+}
+
+.tracking-display-xl {
+  letter-spacing: -0.05em;
+}
+.tracking-display-lg {
+  letter-spacing: -0.04em;
+}
+.tracking-display-md {
+  letter-spacing: -0.03em;
+}
+
+.hero-mesh-bg {
+  position: absolute;
+  top: -160px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1000px;
+  height: 400px;
+  background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.07) 0%, rgba(0, 112, 243, 0.05) 40%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.studio-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6), inset 0 0 0 1px var(--border-hairline);
+}
+
+.studio-card-interactive {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.studio-card-interactive:hover {
+  background-color: var(--bg-surface-elevated);
+  border-color: var(--border-hairline-strong);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.studio-input {
+  background: #000000;
+  border: 1px solid var(--border-hairline);
+  color: #ffffff;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.studio-input:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 0 1px #0070f3;
+  background: #0a0a0a;
+}
+
+.studio-input::placeholder {
+  color: #666666;
+}
+
+.studio-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.studio-badge {
+  background: #171717;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  color: #ededed;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid #0070f3 !important;
+  outline-offset: 2px !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+@media screen and (max-width: 640px) {
+  input[type="number"], input[type="text"], input[type="email"], textarea {
+    font-size: 16px !important;
+  }
+}

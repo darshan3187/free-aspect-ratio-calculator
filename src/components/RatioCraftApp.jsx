@@ -1,18 +1,17 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import CalculatorHeader from './CalculatorHeader';
+import QuickStartGuide from './QuickStartGuide';
 import CalculatorHub from './CalculatorHub';
 import VisualCanvas from './VisualCanvas';
 import ImageInspector from './ImageInspector';
 import PresetsGrid from './PresetsGrid';
 import ScaleTable from './ScaleTable';
 import CodeExporter from './CodeExporter';
-import FooterSection from './FooterSection';
-import FaqSection from './FaqSection';
-import SeoArticleSection from './SeoArticleSection';
-import { calculateTargetDimension } from '../utils/aspectRatioMath';
+import { calculateTargetDimension } from '@/utils/aspectRatioMath';
 
 export default function RatioCraftApp() {
-
   const [w1, setW1] = useState('1920');
   const [h1, setH1] = useState('1080');
   const [w2, setW2] = useState('400');
@@ -22,11 +21,28 @@ export default function RatioCraftApp() {
   const [lastChanged, setLastChanged] = useState('w2');
   const [uploadedImage, setUploadedImage] = useState(null);
   const [roundingOccurred, setRoundingOccurred] = useState(false);
+  const [showQuickGuide, setShowQuickGuide] = useState(true);
 
   // Subject / Face Framing States
   const [focalX, setFocalX] = useState(50);
   const [focalY, setFocalY] = useState(50);
   const [fitMode, setFitMode] = useState('cover');
+
+  // Parse URL Parameters on Mount for Instant Shared Calculations
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const paramW1 = params.get('w1');
+      const paramH1 = params.get('h1');
+      const paramW2 = params.get('w2');
+      const paramH2 = params.get('h2');
+
+      if (paramW1 && !isNaN(Number(paramW1))) setW1(paramW1);
+      if (paramH1 && !isNaN(Number(paramH1))) setH1(paramH1);
+      if (paramW2 && !isNaN(Number(paramW2))) setW2(paramW2);
+      if (paramH2 && !isNaN(Number(paramH2))) setH2(paramH2);
+    }
+  }, []);
 
   useEffect(() => {
     if (!lockRatio) return;
@@ -62,6 +78,13 @@ export default function RatioCraftApp() {
     setLastChanged('w1');
   };
 
+  const handleApplySample = (sampleW1, sampleH1, sampleW2) => {
+    setW1(sampleW1.toString());
+    setH1(sampleH1.toString());
+    setW2(sampleW2.toString());
+    setLastChanged('w2');
+  };
+
   const handleDragResize = (newW2, newH2) => {
     setW2(newW2.toString());
     setH2(newH2.toString());
@@ -95,9 +118,19 @@ export default function RatioCraftApp() {
 
       <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <CalculatorHeader />
+        <CalculatorHeader
+          showGuide={showQuickGuide}
+          onToggleGuide={() => setShowQuickGuide(!showQuickGuide)}
+        />
 
-
+        {/* Quick Start Guide for New Users */}
+        {showQuickGuide && (
+          <QuickStartGuide
+            onDismiss={() => setShowQuickGuide(false)}
+            onSelectPreset={handleSelectPreset}
+            onApplySample={handleApplySample}
+          />
+        )}
 
         {/* 2-Column Main Workspace Grid (Desktop & Tablet) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
@@ -160,18 +193,7 @@ export default function RatioCraftApp() {
           </div>
         </div>
 
-        {/* 600-Word On-Page SEO Article Documentation */}
-        <SeoArticleSection />
-
-        {/* FAQ Section */}
-        <FaqSection />
-
-
-        {/* SEO Footer with Privacy Policy, Terms, Contact Us */}
-        <FooterSection onSelectPreset={handleSelectPreset} />
       </div>
     </div>
   );
 }
-
-
