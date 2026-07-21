@@ -39,7 +39,7 @@ export default function VisualCanvas({
       }
     };
     measureWidth();
-    window.addEventListener('resize', measureWidth);
+    window.addEventListener('resize', measureWidth, { passive: true });
     return () => window.removeEventListener('resize', measureWidth);
   }, []);
 
