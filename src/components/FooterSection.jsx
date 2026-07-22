@@ -11,7 +11,7 @@ export default function FooterSection({ onSelectPreset = null }) {
         <div className="sm:col-span-2 md:col-span-5 space-y-3">
           <div className="flex items-center gap-2.5">
             <div className="w-7 h-7 rounded-lg overflow-hidden border border-white/10 flex-shrink-0 bg-[#000000]">
-              <Image src="/logo.png" alt="Free Aspect Ratio Calculator Logo" width={28} height={28} className="w-full h-full object-cover" />
+              <Image src="/logo.webp" alt="Free Aspect Ratio Calculator Logo" width={28} height={28} className="w-full h-full object-cover" />
             </div>
             <span className="text-sm sm:text-base font-bold text-white tracking-tight leading-snug font-sans">Aspect Ratio Calculator.</span>
           </div>

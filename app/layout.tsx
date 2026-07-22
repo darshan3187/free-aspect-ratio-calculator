@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import "./globals.css";
 
@@ -54,8 +54,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/logo.webp",
   },
   manifest: "/site.webmanifest",
   openGraph: {
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
       "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches. 100% client-side browser privacy.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Aspect Ratio Calculator",
@@ -80,7 +83,7 @@ export const metadata: Metadata = {
     title: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
     description:
       "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
   verification: {
     google: "IFEo_oGRlJ6YFwXZi7UfcC2USeVgLbPlNWKjuDhJaVk",
@@ -102,6 +105,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-7MVDEVKNT2`}

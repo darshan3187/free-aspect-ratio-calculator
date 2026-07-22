@@ -14,7 +14,7 @@ export default function CalculatorHeader({ showGuide = false, onToggleGuide = nu
         {/* Brand & Title */}
         <div className="flex items-center gap-2.5 sm:gap-3">
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-white/10 flex-shrink-0 bg-[#000000] shadow-md">
-            <Image src="/logo.png" alt="Aspect Ratio Logo" width={36} height={36} className="w-full h-full object-cover" />
+            <Image src="/logo.webp" alt="Aspect Ratio Logo" width={36} height={36} className="w-full h-full object-cover" priority />
           </div>
           <div>
             <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-white font-sans leading-tight">
