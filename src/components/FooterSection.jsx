@@ -97,6 +97,36 @@ export default function FooterSection({ onSelectPreset = null }) {
           </h3>
           <ul className="space-y-2.5 text-xs font-sans">
             <li>
+              <Link href="/guides" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1.5 transition-colors">
+                <span>Content Hub & Guides</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/16-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 16:9 Aspect Ratio Calculator</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/4-3-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 4:3 Aspect Ratio Calculator</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/21-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 21:9 Ultrawide Calculator</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/compare/16-9-vs-4-3" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 16:9 vs 4:3 Comparison</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/compare/1080p-vs-1440p" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 1080p vs 1440p Comparison</span>
+              </Link>
+            </li>
+            <li>
               <Link
                 href="/about-us"
                 className="text-white hover:text-neutral-300 underline font-medium flex items-center gap-1.5 transition-colors"
