@@ -1,5 +1,5 @@
 # Robots.txt for Free Aspect Ratio Calculator
-# https://freeaspectratiocalculator.com
+# https://free-aspect-ratio-calculator.vercel.app
 
 User-agent: *
 Allow: /
@@ -12,5 +12,5 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap Location
-Sitemap: https://freeaspectratiocalculator.com/sitemap.xml
-Host: https://freeaspectratiocalculator.com
+Sitemap: https://free-aspect-ratio-calculator.vercel.app/sitemap.xml
+Host: https://free-aspect-ratio-calculator.vercel.app

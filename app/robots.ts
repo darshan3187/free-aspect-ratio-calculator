@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://freeaspectratiocalculator.com/sitemap.xml',
+    sitemap: 'https://free-aspect-ratio-calculator.vercel.app/sitemap.xml',
   };
 }
