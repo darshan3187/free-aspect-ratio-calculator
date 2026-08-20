@@ -1,14 +1,24 @@
 import React from "react";
+import type { Metadata } from "next";
 import RatioCraftApp from "@/components/RatioCraftApp";
 import SeoArticleSection from "@/components/SeoArticleSection";
 import FaqSection from "@/components/FaqSection";
 import FooterSection from "@/components/FooterSection";
 
+export const metadata: Metadata = {
+  title: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
+  description:
+    "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches. Features real-time visual canvas, social media presets, and 100% browser privacy.",
+  alternates: {
+    canonical: "https://free-aspect-ratio-calculator.vercel.app",
+  },
+};
+
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   name: "Aspect Ratio Calculator",
-  url: "https://freeaspectratiocalculator.com/",
+  url: "https://free-aspect-ratio-calculator.vercel.app",
   description:
     "Free online aspect ratio calculator to calculate 16:9, 4:3, and custom image & screen proportions in pixels and inches. 100% client-side browser privacy.",
   applicationCategory: "DesignApplication",
@@ -101,7 +111,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://freeaspectratiocalculator.com/",
+      item: "https://free-aspect-ratio-calculator.vercel.app/",
     },
   ],
 };

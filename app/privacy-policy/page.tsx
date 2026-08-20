@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Our 100% Client-Side Privacy Policy. We do not store, collect, or transmit any images or personal data to remote servers.",
   alternates: {
-    canonical: "https://freeaspectratiocalculator.com/privacy-policy",
+    canonical: "https://free-aspect-ratio-calculator.vercel.app/privacy-policy",
   },
 };
 
@@ -21,13 +21,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://freeaspectratiocalculator.com",
+      item: "https://free-aspect-ratio-calculator.vercel.app",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Privacy Policy",
-      item: "https://freeaspectratiocalculator.com/privacy-policy",
+      item: "https://free-aspect-ratio-calculator.vercel.app/privacy-policy",
     },
   ],
 };

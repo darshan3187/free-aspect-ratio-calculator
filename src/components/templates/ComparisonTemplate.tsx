@@ -13,9 +13,9 @@ interface ComparisonTemplateProps {
 export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
   const faqSchema = generateFAQSchema(data.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: 'https://freeaspectratiocalculator.com' },
-    { name: 'Compare', item: 'https://freeaspectratiocalculator.com/compare' },
-    { name: data.title, item: `https://freeaspectratiocalculator.com/compare/${data.slug}` },
+    { name: 'Home', item: 'https://free-aspect-ratio-calculator.vercel.app' },
+    { name: 'Compare', item: 'https://free-aspect-ratio-calculator.vercel.app/compare' },
+    { name: data.title, item: `https://free-aspect-ratio-calculator.vercel.app/compare/${data.slug}` },
   ]);
 
   return (

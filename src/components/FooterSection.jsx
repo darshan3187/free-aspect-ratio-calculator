@@ -38,7 +38,7 @@ export default function FooterSection({ onSelectPreset = null }) {
                   <span>• 16:9 Aspect Ratio Calculator (1080p, 4K)</span>
                 </button>
               ) : (
-                <Link href="/?w1=1920&h1=1080" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
+                <Link href="/16-9-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
                   <span>• 16:9 Aspect Ratio Calculator (1080p, 4K)</span>
                 </Link>
               )}
@@ -46,11 +46,11 @@ export default function FooterSection({ onSelectPreset = null }) {
             <li>
               {onSelectPreset ? (
                 <button onClick={() => onSelectPreset(1080, 1350)} className="hover:text-white transition-colors text-left flex items-start gap-1.5 active:scale-98 cursor-pointer">
-                  <span>• 4:5 Instagram Portrait Resizer (1080 × 1350)</span>
+                  <span>• 5:4 Photo & 4:5 Instagram Portrait (1080 × 1350)</span>
                 </button>
               ) : (
-                <Link href="/?w1=1080&h1=1350" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
-                  <span>• 4:5 Instagram Portrait Resizer (1080 × 1350)</span>
+                <Link href="/5-4-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
+                  <span>• 5:4 Photo & 4:5 Instagram Portrait (1080 × 1350)</span>
                 </Link>
               )}
             </li>
@@ -60,7 +60,7 @@ export default function FooterSection({ onSelectPreset = null }) {
                   <span>• 9:16 TikTok & Reels Vertical Video Scaler</span>
                 </button>
               ) : (
-                <Link href="/?w1=1080&h1=1920" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
+                <Link href="/9-16-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
                   <span>• 9:16 TikTok & Reels Vertical Video Scaler</span>
                 </Link>
               )}
@@ -71,7 +71,7 @@ export default function FooterSection({ onSelectPreset = null }) {
                   <span>• 21:9 Ultrawide Monitor Dimension Utility</span>
                 </button>
               ) : (
-                <Link href="/?w1=3440&h1=1440" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
+                <Link href="/21-9-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
                   <span>• 21:9 Ultrawide Monitor Dimension Utility</span>
                 </Link>
               )}
@@ -82,7 +82,7 @@ export default function FooterSection({ onSelectPreset = null }) {
                   <span>• 1:1 Square Social Media Banner Generator</span>
                 </button>
               ) : (
-                <Link href="/?w1=1080&h1=1080" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
+                <Link href="/1-1-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
                   <span>• 1:1 Square Social Media Banner Generator</span>
                 </Link>
               )}

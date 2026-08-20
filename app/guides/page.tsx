@@ -6,6 +6,9 @@ import { ARTICLES_DATA } from '@/data/articles';
 export const metadata: Metadata = {
   title: 'Aspect Ratio, Screen Resolution & Design Guides Hub (50+ Resources)',
   description: 'Complete knowledge hub for aspect ratios, screen resolutions, social media image sizes, video production, photography framing, UI design, and printing standards.',
+  alternates: {
+    canonical: 'https://free-aspect-ratio-calculator.vercel.app/guides',
+  },
 };
 
 export default function GuidesHubPage() {

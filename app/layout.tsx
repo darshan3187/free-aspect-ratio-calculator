@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://freeaspectratiocalculator.com"),
+  metadataBase: new URL("https://free-aspect-ratio-calculator.vercel.app"),
   title: {
     default: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
     template: "%s | Aspect Ratio Calculator",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://freeaspectratiocalculator.com",
+    url: "https://free-aspect-ratio-calculator.vercel.app",
     siteName: "Aspect Ratio Calculator",
     title: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
     description:

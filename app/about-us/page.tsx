@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Learn about our mission to build the fastest, 100% private, zero-server aspect ratio calculator utility for designers, video editors, and frontend developers.",
   alternates: {
-    canonical: "https://freeaspectratiocalculator.com/about-us",
+    canonical: "https://free-aspect-ratio-calculator.vercel.app/about-us",
   },
 };
 
@@ -20,13 +20,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://freeaspectratiocalculator.com",
+      item: "https://free-aspect-ratio-calculator.vercel.app",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "About Us",
-      item: "https://freeaspectratiocalculator.com/about-us",
+      item: "https://free-aspect-ratio-calculator.vercel.app/about-us",
     },
   ],
 };
@@ -35,7 +35,7 @@ const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Aspect Ratio Calculator",
-  url: "https://freeaspectratiocalculator.com/about-us",
+  url: "https://free-aspect-ratio-calculator.vercel.app/about-us",
   description:
     "Learn about our mission to build the fastest, 100% private, zero-server aspect ratio calculator utility.",
 };
