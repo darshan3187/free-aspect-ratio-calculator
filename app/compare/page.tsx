@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Aspect Ratio & Screen Resolution Comparison Guides Hub',
   description: 'Side-by-side visual aspect ratio & resolution comparisons (16:9 vs 4:3, 16:9 vs 21:9, 1080p vs 1440p, 1440p vs 4K, and Instagram post formats).',
   alternates: {
-    canonical: 'https://free-aspect-ratio-calculator.vercel.app/compare',
+    canonical: 'https://freeaspectratiocalculator.online/compare',
   },
 };
 
@@ -22,13 +22,13 @@ export default function CompareHubPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://free-aspect-ratio-calculator.vercel.app',
+        item: 'https://freeaspectratiocalculator.online',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Compare',
-        item: 'https://free-aspect-ratio-calculator.vercel.app/compare',
+        item: 'https://freeaspectratiocalculator.online/compare',
       },
     ],
   };

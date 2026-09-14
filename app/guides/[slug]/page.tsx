@@ -29,13 +29,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: article.metaDescription,
     keywords: [article.primaryKeyword, ...article.secondaryKeywords],
     alternates: {
-      canonical: `https://free-aspect-ratio-calculator.vercel.app/guides/${slug}`,
+      canonical: `https://freeaspectratiocalculator.online/guides/${slug}`,
     },
     openGraph: {
       title: article.metaTitle,
       description: article.metaDescription,
       type: 'article',
-      url: `https://free-aspect-ratio-calculator.vercel.app/guides/${slug}`,
+      url: `https://freeaspectratiocalculator.online/guides/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -56,14 +56,14 @@ export default async function ArticlePage({ params }: PageProps) {
   const articleSchema = generateArticleSchema({
     title: article.title,
     description: article.metaDescription,
-    url: `https://free-aspect-ratio-calculator.vercel.app/guides/${article.slug}`,
+    url: `https://freeaspectratiocalculator.online/guides/${article.slug}`,
   });
 
   const faqSchema = generateFAQSchema(article.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: 'https://free-aspect-ratio-calculator.vercel.app' },
-    { name: 'Guides', item: 'https://free-aspect-ratio-calculator.vercel.app/guides' },
-    { name: article.title, item: `https://free-aspect-ratio-calculator.vercel.app/guides/${article.slug}` },
+    { name: 'Home', item: 'https://freeaspectratiocalculator.online' },
+    { name: 'Guides', item: 'https://freeaspectratiocalculator.online/guides' },
+    { name: article.title, item: `https://freeaspectratiocalculator.online/guides/${article.slug}` },
   ]);
 
   return (

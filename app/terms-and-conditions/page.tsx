@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Terms of service and commercial license terms for using the Free Aspect Ratio Calculator web application.",
   alternates: {
-    canonical: "https://free-aspect-ratio-calculator.vercel.app/terms-and-conditions",
+    canonical: "https://freeaspectratiocalculator.online/terms-and-conditions",
   },
 };
 
@@ -20,13 +20,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://free-aspect-ratio-calculator.vercel.app",
+      item: "https://freeaspectratiocalculator.online",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Terms & Conditions",
-      item: "https://free-aspect-ratio-calculator.vercel.app/terms-and-conditions",
+      item: "https://freeaspectratiocalculator.online/terms-and-conditions",
     },
   ],
 };

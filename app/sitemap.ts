@@ -4,7 +4,7 @@ import { COMPARISONS_DATA } from '@/data/comparisons';
 import { ARTICLES_DATA } from '@/data/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://free-aspect-ratio-calculator.vercel.app';
+  const baseUrl = 'https://freeaspectratiocalculator.online';
   const currentDate = new Date().toISOString();
 
   // Core pages

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Get in touch with the Aspect Ratio Calculator studio team for feedback, feature requests, or bug reports.",
   alternates: {
-    canonical: "https://free-aspect-ratio-calculator.vercel.app/contact-us",
+    canonical: "https://freeaspectratiocalculator.online/contact-us",
   },
 };
 
@@ -21,13 +21,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://free-aspect-ratio-calculator.vercel.app",
+      item: "https://freeaspectratiocalculator.online",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Contact Us",
-      item: "https://free-aspect-ratio-calculator.vercel.app/contact-us",
+      item: "https://freeaspectratiocalculator.online/contact-us",
     },
   ],
 };
@@ -36,7 +36,7 @@ const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact Aspect Ratio Calculator",
-  url: "https://free-aspect-ratio-calculator.vercel.app/contact-us",
+  url: "https://freeaspectratiocalculator.online/contact-us",
   description:
     "Get in touch with the Aspect Ratio Calculator studio team for feedback, feature requests, or bug reports.",
 };

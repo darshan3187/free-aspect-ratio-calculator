@@ -28,13 +28,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: data.meta.description,
     keywords: data.meta.keywords,
     alternates: {
-      canonical: `https://free-aspect-ratio-calculator.vercel.app/compare/${slug}`,
+      canonical: `https://freeaspectratiocalculator.online/compare/${slug}`,
     },
     openGraph: {
       title: data.meta.title,
       description: data.meta.description,
       type: 'article',
-      url: `https://free-aspect-ratio-calculator.vercel.app/compare/${slug}`,
+      url: `https://freeaspectratiocalculator.online/compare/${slug}`,
     },
   };
 }

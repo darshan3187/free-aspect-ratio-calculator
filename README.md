@@ -8,7 +8,7 @@
 
 An online aspect ratio calculator built with Next.js 15, React 19, TypeScript, and Tailwind CSS. It helps designers, developers, and creators quickly calculate and scale dimensions in pixels and inches while preserving exact proportions.
 
-**Live Web Application:** [free-aspect-ratio-calculator.vercel.app](https://free-aspect-ratio-calculator.vercel.app)
+**Live Web Application:** [freeaspectratiocalculator.online](https://freeaspectratiocalculator.online/)
 
 ---
 
