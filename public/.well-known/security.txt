@@ -1,9 +1,9 @@
 # Security Policy for Free Aspect Ratio Calculator
-# https://free-aspect-ratio-calculator.vercel.app/.well-known/security.txt
+# https://freeaspectratiocalculator.online/.well-known/security.txt
 
 Contact: darshanrajgor73@gmail.com
 Expires: 2027-12-31T23:59:59.000Z
 Preferred-Languages: en
-Policy: https://free-aspect-ratio-calculator.vercel.app/
-Canonical: https://free-aspect-ratio-calculator.vercel.app/.well-known/security.txt
-Encryption: https://free-aspect-ratio-calculator.vercel.app/
+Policy: https://freeaspectratiocalculator.online/
+Canonical: https://freeaspectratiocalculator.online/.well-known/security.txt
+Encryption: https://freeaspectratiocalculator.online/

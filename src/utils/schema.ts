@@ -55,14 +55,14 @@ export function generateArticleSchema(article: {
     author: {
       '@type': 'Organization',
       name: 'Free Aspect Ratio Calculator',
-      url: 'https://freeaspectratio.com'
+      url: 'https://freeaspectratiocalculator.online'
     },
     publisher: {
       '@type': 'Organization',
       name: 'Free Aspect Ratio Calculator',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://freeaspectratio.com/icon.png'
+        url: 'https://freeaspectratiocalculator.online/logo.png'
       }
     },
     datePublished: article.datePublished || '2026-01-01T00:00:00Z',

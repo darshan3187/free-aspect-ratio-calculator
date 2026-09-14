@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches. Features real-time visual canvas, social media presets, and 100% browser privacy.",
   alternates: {
-    canonical: "https://free-aspect-ratio-calculator.vercel.app",
+    canonical: "https://freeaspectratiocalculator.online",
   },
 };
 
@@ -18,7 +18,7 @@ const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   name: "Aspect Ratio Calculator",
-  url: "https://free-aspect-ratio-calculator.vercel.app",
+  url: "https://freeaspectratiocalculator.online",
   description:
     "Free online aspect ratio calculator to calculate 16:9, 4:3, and custom image & screen proportions in pixels and inches. 100% client-side browser privacy.",
   applicationCategory: "DesignApplication",
@@ -111,7 +111,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://free-aspect-ratio-calculator.vercel.app/",
+      item: "https://freeaspectratiocalculator.online/",
     },
   ],
 };

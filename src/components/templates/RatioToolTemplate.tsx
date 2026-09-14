@@ -28,15 +28,15 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
 
   const appSchema = generateWebApplicationSchema({
     name: `${data.name} Calculator`,
-    url: `https://free-aspect-ratio-calculator.vercel.app/${data.slug}`,
+    url: `https://freeaspectratiocalculator.online/${data.slug}`,
     description: data.meta.description,
     applicationCategory: 'MultimediaApplication',
   });
 
   const faqSchema = generateFAQSchema(data.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: 'https://free-aspect-ratio-calculator.vercel.app' },
-    { name: data.name, item: `https://free-aspect-ratio-calculator.vercel.app/${data.slug}` },
+    { name: 'Home', item: 'https://freeaspectratiocalculator.online' },
+    { name: data.name, item: `https://freeaspectratiocalculator.online/${data.slug}` },
   ]);
 
   const otherCalculators = Object.values(RATIOS_DATA).filter((r) => r.slug !== data.slug);
