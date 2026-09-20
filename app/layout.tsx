@@ -62,7 +62,10 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   verification: {
-    google: "5ZGcKHNie8FASxVR1yaYjjiUsX1JbJbACqggYbHTY6I",
+    google: [
+      "5ZGcKHNie8FASxVR1yaYjjiUsX1JbJbACqggYbHTY6I",
+      "IFEo_oGRlJ6YFwXZi7UfcC2USeVgLbPlNWKjuDhJaVk",
+    ],
   },
   openGraph: {
     type: "website",
@@ -88,9 +91,6 @@ export const metadata: Metadata = {
       "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches.",
     images: ["/og-image.webp"],
   },
-  verification: {
-    google: "IFEo_oGRlJ6YFwXZi7UfcC2USeVgLbPlNWKjuDhJaVk",
-  },
 };
 
 export const viewport: Viewport = {
@@ -112,7 +112,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-7MVDEVKNT2`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-0ZLZZ544Z5`}
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -120,7 +120,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-7MVDEVKNT2');
+            gtag('config', 'G-0ZLZZ544Z5');
           `}
         </Script>
       </head>
