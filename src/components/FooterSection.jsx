@@ -123,8 +123,28 @@ export default function FooterSection({ onSelectPreset = null }) {
               </Link>
             </li>
             <li>
+              <Link href="/16-10-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 16:10 MacBook Calculator</span>
+              </Link>
+            </li>
+            <li>
               <Link href="/21-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
                 <span>• 21:9 Ultrawide Calculator</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/2-39-1-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 2.39:1 Cinema Scope Calculator</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/32-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 32:9 Super Ultrawide Calculator</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/golden-ratio-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• Golden Ratio (1.618:1) Calculator</span>
               </Link>
             </li>
             <li>

@@ -397,6 +397,198 @@ export const RATIOS_DATA: Record<string, RatioData> = {
       description: 'Free 4:5 aspect ratio calculator. Calculate pixel and inch dimensions for Instagram vertical posts (1080x1350), 8x10 photo prints, and mobile portrait photography.',
       keywords: ['4:5 aspect ratio calculator', '4 5 ratio', 'instagram portrait calculator', '1080x1350 aspect ratio', '8x10 photo aspect ratio', '4:5 ratio in pixels']
     }
+  },
+  '16-10-aspect-ratio-calculator': {
+    slug: '16-10-aspect-ratio-calculator',
+    name: '16:10 Aspect Ratio',
+    ratioWidth: 16,
+    ratioHeight: 10,
+    decimalValue: 1.6,
+    tagline: 'The premier productivity display standard for Apple MacBooks, modern laptops, and WUXGA/WQXGA monitors.',
+    overview: 'The 16:10 aspect ratio (also expressed as 8:5 or 1.6:1) is the computer display standard favored for productivity, programming, and content creation. By providing 11.1% more vertical space than conventional 16:9 widescreen, it displays additional lines of code, documents, and timeline controls without continuous scrolling.',
+    formulaDescription: 'To calculate 16:10 aspect ratio dimensions, multiply height by 1.6 to determine width, or multiply width by 0.625 (or divide by 1.6) to solve height. E.g. for 1920x1200, the Greatest Common Divisor (GCD) is 240 (1920/240 = 8, 1200/240 = 5, or 16:10).',
+    gcdValue: 240,
+    commonResolutions: [
+      { name: 'WXGA Standard', width: 1280, height: 800, category: 'Standard HD' },
+      { name: 'WSXGA+ Office', width: 1680, height: 1050, category: 'Standard HD' },
+      { name: 'WUXGA Full HD+', width: 1920, height: 1200, category: 'Full HD' },
+      { name: 'Retina 13" (WQXGA)', width: 2560, height: 1600, category: 'QHD / 2K' },
+      { name: 'Liquid Retina 14"', width: 3024, height: 1964, category: 'QHD / 2K' },
+      { name: 'WQUXGA 4K+', width: 3840, height: 2400, category: '4K UHD' }
+    ],
+    useCases: [
+      { industry: 'Laptops', title: 'Apple MacBook Pro & Air', description: 'Native display standard across Apple portable computers and modern premium ultrabooks.', recommended: true },
+      { industry: 'Productivity', title: 'Coding & Document Editing', description: 'Renders 6 to 9 additional lines of visible code or document text compared to 1080p.', recommended: true },
+      { industry: 'Creative Work', title: 'Video Editing & Digital Art', description: 'Leaves comfortable interface room for playback controls beneath a 16:9 video preview.', recommended: true }
+    ],
+    pros: [
+      'Provides 11.1% more vertical screen space than standard 16:9 displays',
+      'Native format for MacBook Pro, MacBook Air, Dell XPS, and ThinkPad lineups',
+      'Minimizes empty bezel chin on modern portable laptop chassis',
+      'Excellent balance for dual side-by-side document comparison'
+    ],
+    cons: [
+      'Produces thin horizontal black letterbox bars when watching 16:9 streaming video',
+      'Less common than 16:9 in budget television manufacturing'
+    ],
+    faqs: [
+      {
+        question: 'What is the 16:10 aspect ratio in pixels?',
+        answer: 'Common 16:10 resolutions include 1920x1200 (WUXGA), 2560x1600 (WQXGA), and 3840x2400 (WQUXGA).'
+      },
+      {
+        question: 'How do you calculate 16:10 dimensions?',
+        answer: 'To find Width from Height: Width = Height × 1.6. To find Height from Width: Height = Width ÷ 1.6.'
+      },
+      {
+        question: 'Why do modern laptops use 16:10 instead of 16:9?',
+        answer: '16:10 provides extra vertical height for viewing documents, spreadsheets, and code without sacrificing horizontal space.'
+      }
+    ],
+    meta: {
+      title: '16:10 Aspect Ratio Calculator — MacBook & WUXGA Dimensions (1920x1200, 2560x1600)',
+      description: 'Free 16:10 aspect ratio calculator. Calculate pixel dimensions for MacBook Retina displays, WUXGA monitors (1920x1200), and Dell XPS 16:10 laptop screens.',
+      keywords: ['16:10 aspect ratio calculator', '16 10 ratio', '1920x1200 aspect ratio', 'macbook aspect ratio', '2560x1600 resolution calculator']
+    }
+  },
+  '2-39-1-aspect-ratio-calculator': {
+    slug: '2-39-1-aspect-ratio-calculator',
+    name: '2.39:1 Cinema Scope',
+    ratioWidth: 239,
+    ratioHeight: 100,
+    decimalValue: 2.39,
+    tagline: 'The theatrical widescreen standard for Hollywood blockbuster films, anamorphic lenses, and cinematic video.',
+    overview: 'The 2.39:1 aspect ratio (often designated as 2.40:1, Scope, or historically 2.35:1) is the global theatrical standard for widescreen cinema. Filmed using anamorphic camera lenses or cropped spherical sensors, 2.39:1 creates an expansive panoramic composition that enhances cinematic grandeur.',
+    formulaDescription: 'To calculate 2.39:1 cinema dimensions, multiply height by 2.39 to determine width, or divide width by 2.39 to find active picture height. E.g., on a 3840x2160 UHD canvas, active 2.39:1 picture height is 3840 / 2.39 ≈ 1606 px (leaving 277px top and bottom letterbox bars).',
+    gcdValue: 1,
+    commonResolutions: [
+      { name: '1080p Cinema Scope', width: 1920, height: 804, category: 'Full HD' },
+      { name: 'DCI 2K Scope Theatrical', width: 2048, height: 858, category: 'Full HD' },
+      { name: '4K UHD Cinema Scope', width: 3840, height: 1606, category: '4K UHD' },
+      { name: 'DCI 4K Scope Theatrical', width: 4096, height: 1716, category: '4K UHD' },
+      { name: '8K UHD Cinema Scope', width: 7680, height: 3212, category: '8K UHD' }
+    ],
+    useCases: [
+      { industry: 'Cinema', title: 'Theatrical Feature Films', description: 'The worldwide projection standard for high-budget Hollywood and independent cinema.', recommended: true },
+      { industry: 'Video Editing', title: 'Letterbox Matte & Export Dimensions', description: 'Used by colorists and video editors in Premiere and DaVinci to export clean widescreen video.', recommended: true },
+      { industry: 'Hardware', title: '21:9 Ultrawide Monitor Playback', description: 'Matches 21:9 monitors almost perfectly with negligible black bars.', recommended: true }
+    ],
+    pros: [
+      'Delivers an authentic Hollywood cinematic aesthetic',
+      'Provides maximum horizontal peripheral field of view for landscapes and action scenes',
+      'Fills 21:9 ultrawide monitor screens naturally without black bars'
+    ],
+    cons: [
+      'Creates black letterbox bars on standard 16:9 televisions and laptops',
+      'Requires vertical cropping when converting to mobile vertical formats'
+    ],
+    faqs: [
+      {
+        question: 'What is 2.39:1 aspect ratio in pixels for 1080p?',
+        answer: 'For a 1080p (1920px wide) video canvas, 2.39:1 has an active height of 804 pixels (1920 × 804 px).'
+      },
+      {
+        question: 'What is the difference between 2.35:1 and 2.39:1?',
+        answer: '2.35:1 was the early SMPTE standard (1957–1970). In 1970, SMPTE revised the standard to 2.39:1 (often rounded to 2.40:1) to reduce visible frame splices during projection.'
+      }
+    ],
+    meta: {
+      title: '2.39:1 Cinema Aspect Ratio Calculator — Anamorphic Scope (1920x804, 3840x1606)',
+      description: 'Free 2.39:1 / 2.40:1 cinema aspect ratio calculator. Calculate active film dimensions, letterbox matte sizes, and anamorphic video resolutions for 1080p, 4K UHD, and DCI.',
+      keywords: ['2.39:1 aspect ratio calculator', '2 39 1 ratio', 'cinematic aspect ratio calculator', 'anamorphic scope dimensions', '1920x804 resolution']
+    }
+  },
+  '32-9-aspect-ratio-calculator': {
+    slug: '32-9-aspect-ratio-calculator',
+    name: '32:9 Super Ultrawide',
+    ratioWidth: 32,
+    ratioHeight: 9,
+    decimalValue: 3.5555555555555554,
+    tagline: 'The double-widescreen standard for dual-QHD curved gaming monitors, racing simulators, and panoramic workstations.',
+    overview: 'The 32:9 super ultrawide aspect ratio equals exactly two standard 16:9 displays positioned seamlessly side-by-side with zero center bezel. Famous in premium curved displays like the Samsung Odyssey Neo G9, 32:9 provides unmatched peripheral immersion for simulation gaming and multi-window productivity.',
+    formulaDescription: 'To calculate 32:9 dimensions, multiply height by 3.5556 to determine width, or multiply width by 0.28125 to solve height. E.g. for a 1440px height display, width is 1440 × 3.5556 = 5120 px. The Greatest Common Divisor (GCD) for 5120x1440 is 160 (5120/160 = 32, 1440/160 = 9).',
+    gcdValue: 160,
+    commonResolutions: [
+      { name: 'Dual 1080p (DFHD)', width: 3840, height: 1080, category: 'Full HD' },
+      { name: 'Dual 1440p (DQHD 49")', width: 5120, height: 1440, category: 'QHD / 2K' },
+      { name: 'Dual 4K (DUHD 57")', width: 7680, height: 2160, category: '8K UHD' }
+    ],
+    useCases: [
+      { industry: 'Gaming', title: 'Racing & Flight Simulators', description: 'Expands peripheral cockpit vision in Microsoft Flight Simulator, iRacing, Assetto Corsa, and F1.', recommended: true },
+      { industry: 'Productivity', title: 'Financial Trading & Monitoring', description: 'Replaces dual-monitor setups with a seamless curved dashboard display.', recommended: true },
+      { industry: 'Creative Work', title: 'Long Horizontal Timelines', description: 'Provides expansive horizontal timeline visibility for complex audio DAWs and video editors.', recommended: true }
+    ],
+    pros: [
+      'Equivalent to two 16:9 monitors without any distracting center plastic bezel',
+      'Extraordinary peripheral immersion for simulation and open-world PC gaming',
+      'Permits 3 to 4 full application windows positioned side-by-side simultaneously'
+    ],
+    cons: [
+      'Causes large black pillarbox bars when playing standard 16:9 video content',
+      'Requires substantial GPU horsepower to render games at 5120x1440 or 7680x2160'
+    ],
+    faqs: [
+      {
+        question: 'What is 5120x1440 in aspect ratio terms?',
+        answer: '5120x1440 is a 32:9 Super Ultrawide aspect ratio, representing two 2560x1440 (1440p) screens combined.'
+      },
+      {
+        question: 'How do you calculate 32:9 aspect ratio dimensions?',
+        answer: 'Width = Height × (32 ÷ 9) ≈ Height × 3.5556. Height = Width × (9 ÷ 32) = Width × 0.28125.'
+      }
+    ],
+    meta: {
+      title: '32:9 Super Ultrawide Aspect Ratio Calculator — 5120x1440 & DQHD Dimensions',
+      description: 'Free 32:9 super ultrawide calculator. Calculate pixel dimensions for 49-inch and 57-inch curved gaming monitors, dual-QHD (5120x1440), and dual-4K setups.',
+      keywords: ['32:9 aspect ratio calculator', '32 9 ratio', '5120x1440 aspect ratio', 'super ultrawide calculator', 'odyssey g9 resolution']
+    }
+  },
+  'golden-ratio-aspect-ratio-calculator': {
+    slug: 'golden-ratio-aspect-ratio-calculator',
+    name: 'Golden Ratio (1.618:1)',
+    ratioWidth: 1618,
+    ratioHeight: 1000,
+    decimalValue: 1.61803398875,
+    tagline: 'The divine proportion (Phi φ) for harmonious visual compositions, UI card layouts, and architectural framing.',
+    overview: 'The Golden Ratio (approximately 1.618034:1, denoted by the Greek letter Phi φ) is a mathematical proportion celebrated since antiquity for creating organic, visually balanced compositions. Modern digital designers utilize the Golden Ratio for responsive card layouts, typography scale hierarchies, and grid columns.',
+    formulaDescription: 'To calculate Golden Ratio dimensions, multiply the smaller dimension by 1.618034 to calculate the larger dimension, or divide by 1.618034 to solve the smaller side. E.g. 500 px height × 1.618034 ≈ 809 px width.',
+    gcdValue: 1,
+    commonResolutions: [
+      { name: 'Golden Card Compact', width: 485, height: 300, category: 'Standard HD' },
+      { name: 'Golden Card Medium', width: 809, height: 500, category: 'Standard HD' },
+      { name: 'Golden Canvas HD', width: 1618, height: 1000, category: 'Full HD' },
+      { name: 'Golden Canvas 2K', width: 2427, height: 1500, category: 'QHD / 2K' },
+      { name: 'Golden Canvas 4K', width: 3236, height: 2000, category: '4K UHD' }
+    ],
+    useCases: [
+      { industry: 'UI/UX Design', title: 'Layout Column Proportions', description: 'Splits content into an organic 61.8% main area and 38.2% sidebar layout.', recommended: true },
+      { industry: 'Graphic Design', title: 'Logo Construction & Grids', description: 'Used by designers to balance concentric circles, geometry, and negative space.', recommended: true },
+      { industry: 'Photography', title: 'Dynamic Symmetry Framing', description: 'Alternative to the rule of thirds that leads viewer gaze along a logarithmic spiral.', recommended: true }
+    ],
+    pros: [
+      'Creates naturally pleasing and harmonious visual proportions',
+      'Timeless geometric aesthetic rooted in classical art and mathematics',
+      'Versatile blueprint for modular design scales and typography sizes'
+    ],
+    cons: [
+      'Does not match standard consumer hardware display panels (closest is 16:10 at 1.6:1)'
+    ],
+    faqs: [
+      {
+        question: 'What is the Golden Ratio formula for image dimensions?',
+        answer: 'Longer Side = Shorter Side × 1.618034. Shorter Side = Longer Side ÷ 1.618034.'
+      },
+      {
+        question: 'Which standard aspect ratio is closest to the Golden Ratio?',
+        answer: '16:10 (1.60:1) is the closest standard computer monitor aspect ratio to the Golden Ratio (1.618:1).'
+      }
+    ],
+    meta: {
+      title: 'Golden Ratio Aspect Ratio Calculator (1.618:1 Phi φ) — UI & Design Dimensions',
+      description: 'Free Golden Ratio aspect ratio calculator. Calculate dimensions using the divine proportion (1.618034:1) for UI card layouts, graphic design, and photography composition.',
+      keywords: ['golden ratio aspect ratio calculator', 'golden ratio calculator', 'phi aspect ratio', '1.618 image dimensions', 'golden rectangle calculator']
+    }
   }
 };
+
 

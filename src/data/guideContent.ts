@@ -321,5 +321,383 @@ export const DETAILED_GUIDES: Record<string, DetailedGuideContent> = {
         }
       }
     ]
+  },
+
+  'social-media-image-dimensions-cheat-sheet': {
+    intro: [
+      'In modern social media publishing, using the correct image dimensions and aspect ratios is the difference between sharp, thumb-stopping creative and blurry, auto-cropped engagement killers.',
+      'This master cheat sheet aggregates the exact pixel dimensions, aspect ratios, file weight limits, and UI safe zones across all major platforms updated for 2026.'
+    ],
+    keyTakeaways: [
+      'Static Feeds: 4:5 Portrait (1080×1350) and 1:1 Square (1080×1080) capture maximum visual real estate.',
+      'Vertical Video: 9:16 (1080×1920) is universal for TikTok, Reels, Shorts, and Snapchat.',
+      'Desktop & Landscape: 16:9 (1920×1080 or 1200×675) remains the standard for YouTube, LinkedIn desktop, and X.',
+      'Safe Zones: Always keep logos and typography inside the central 80% boundary to avoid profile icons and caption overlays.'
+    ],
+    sections: [
+      {
+        heading: 'Master Social Media Dimensions Matrix (2026)',
+        paragraphs: [
+          'Reference this comprehensive cheat sheet when preparing cross-platform digital marketing assets:'
+        ],
+        table: {
+          headers: ['Platform', 'Content Type', 'Aspect Ratio', 'Recommended Resolution', 'Safe Zone Notes'],
+          rows: [
+            ['Instagram', 'Portrait Feed Post', '4:5 (0.80)', '1080 × 1350 px', 'Full feed display; 1:1 center thumbnail'],
+            ['Instagram', 'Square Feed Post', '1:1 (1.00)', '1080 × 1080 px', 'Classic symmetrical format'],
+            ['Instagram / TikTok', 'Reels & Stories', '9:16 (0.56)', '1080 × 1920 px', 'Keep text away from bottom 220px & top 150px'],
+            ['YouTube', 'Standard Video', '16:9 (1.78)', '1920 × 1080 / 3840 × 2160', 'Zero letterboxing on HDTVs & desktop'],
+            ['YouTube', 'Shorts', '9:16 (0.56)', '1080 × 1920 px', 'Keep captions centered to avoid channel overlay'],
+            ['YouTube', 'Channel Banner', '16:9 responsive', '2560 × 1440 px', 'Central safe area: 1232 × 338 px on mobile/desktop'],
+            ['X (Twitter)', 'Single Image Post', '16:9 or 1:1', '1200 × 675 px / 1080 × 1080', 'Supports 16:9 without feed cropping'],
+            ['X (Twitter)', 'Header Banner', '3:1 (3.00)', '1500 × 500 px', 'Avoid bottom-left 400×200px (avatar overlay)'],
+            ['LinkedIn', 'Feed Post / Article', '1.91:1 / 1:1 / 4:5', '1200 × 627 px / 1080 × 1350', '4:5 occupies maximum mobile app screen space'],
+            ['Pinterest', 'Standard Pin', '2:3 (0.67)', '1000 × 1500 px', 'Official standard; taller pins risk search truncation']
+          ]
+        }
+      },
+      {
+        heading: 'Understanding Platform Compression & Color Profiles',
+        paragraphs: [
+          'Social media CDNs automatically compress uploaded media to preserve mobile data bandwidth. To prevent severe compression artifacts, always export digital graphics in the sRGB color profile (not Adobe RGB or ProPhoto RGB) and save WebP or JPEG files under 8MB.'
+        ]
+      }
+    ]
+  },
+
+  'pinterest-pin-dimensions-aspect-ratio': {
+    intro: [
+      'Pinterest operates as a visual search engine where pin dimensions directly impact click-through rates, feed visibility, and algorithm distribution.',
+      'Unlike TikTok or Instagram Stories which favor 9:16 full-screen video, Pinterest officially mandates a 2:3 vertical aspect ratio for optimal organic search distribution.'
+    ],
+    keyTakeaways: [
+      'Standard Pins: 2:3 Aspect Ratio (1000 × 1500 pixels) is the official recommended standard.',
+      'Maximum Display Limit: Pinterest caps vertical pin display height at a 1:2.1 ratio; pins longer than 1:2.1 are truncated with a "Read More" button.',
+      'Square Pins: 1:1 (1000 × 1000 px) are accepted for e-commerce catalog syncs.',
+      'Board Covers: 1:1 (600 × 600 px) provide clean, uniform profile boards.'
+    ],
+    sections: [
+      {
+        heading: 'The 2:3 Aspect Ratio Formula & Dimensions',
+        paragraphs: [
+          'To calculate 2:3 dimensions for custom graphics, multiply your base width by 1.5 to find height:'
+        ],
+        formula: 'Height = Width × 1.5\nWidth = Height ÷ 1.5\nExample: 1000 px Width × 1.5 = 1500 px Height (2:3)'
+      },
+      {
+        heading: 'Pinterest Pin Specifications Table',
+        paragraphs: [
+          'Use the table below to format every asset type within your Pinterest creator account:'
+        ],
+        table: {
+          headers: ['Pin Format', 'Aspect Ratio', 'Optimal Resolution', 'Feed Display Behavior'],
+          rows: [
+            ['Standard Image Pin', '2:3', '1000 × 1500 px', 'Optimal; favored by the recommendation algorithm'],
+            ['High-Res Infographic Pin', '2:3', '1200 × 1800 px', 'Sharpest text rendering on high-DPI displays'],
+            ['Square Product Pin', '1:1', '1000 × 1000 px', 'Shopify & WooCommerce synced product cards'],
+            ['Video Pin (Standard)', '2:3 or 9:16', '1080 × 1620 px / 1080 × 1920', 'Vertical video plays automatically on mobile'],
+            ['Carousel Pin', '1:1 or 2:3', '1000 × 1500 px', 'Multi-card swipeable image showcase']
+          ]
+        }
+      },
+      {
+        heading: 'Why You Should Avoid 9:16 Full-Vertical Pins on Pinterest',
+        paragraphs: [
+          'While 9:16 (1080×1920) is dominant on TikTok and Reels, Pinterest masonry search feeds prioritize 2:3 pins. Ultra-long pins (such as 1:2 or 9:16) often have their lower third cut off on mobile search screens unless tapped, obscuring critical calls-to-action.'
+        ]
+      }
+    ]
+  },
+
+  'twitter-x-image-sizes-aspect-ratio': {
+    intro: [
+      'X (formerly Twitter) employs responsive timeline display cards and intelligent focal-point cropping algorithms for multi-image tweets.',
+      'Understanding exact post ratios, multi-image grid behaviors, and header banner safe zones ensures your imagery renders cleanly on both desktop monitors and iOS/Android timelines.'
+    ],
+    keyTakeaways: [
+      'Single Image Post: 16:9 (1200 × 675 px) or 1:1 (1080 × 1080 px) prevents unexpected edge clipping.',
+      'Two Image Post: Renders as two side-by-side vertical cards (~7:8 ratio each).',
+      'Three Image Post: One large vertical card on the left (7:8), two stacked horizontal cards on the right (16:9).',
+      'Four Image Post: Perfectly balanced 2×2 grid of four square (1:1) cards.',
+      'Header Banner: 1500 × 500 px (3:1 aspect ratio) with bottom-left avatar safe zone clearance.'
+    ],
+    sections: [
+      {
+        heading: 'X (Twitter) Image Specifications Reference',
+        paragraphs: [
+          'Format your media according to these tested resolution guidelines:'
+        ],
+        table: {
+          headers: ['Placement', 'Aspect Ratio', 'Dimensions', 'Format & Limits'],
+          rows: [
+            ['Single Tweet Photo', '16:9', '1200 × 675 px', 'JPEG / PNG / WebP, max 5MB'],
+            ['Single Square Graphic', '1:1', '1080 × 1080 px', 'JPEG / PNG, max 5MB'],
+            ['Profile Header Banner', '3:1', '1500 × 500 px', 'Responsive; bottom-left 400×200px blocked by avatar'],
+            ['Profile Avatar', '1:1', '400 × 400 px', 'Rendered as circle; keep subject centered'],
+            ['Website Link Card', '1.91:1', '1200 × 628 px', 'OpenGraph og:image standard']
+          ]
+        }
+      },
+      {
+        heading: 'X Header Banner Safe Zone Architecture',
+        paragraphs: [
+          'Because the circular profile picture overlaps the bottom-left corner of the header banner on desktop and mobile browsers, place all crucial branding, text, and logos within the central-right area of the 1500×500 canvas.'
+        ]
+      }
+    ]
+  },
+
+  '4k-vs-uhd-difference': {
+    intro: [
+      'In consumer electronics advertising, "4K" and "Ultra HD (UHD)" are frequently treated as interchangeable synonyms. In television marketing, both terms describe displays with approximately 4,000 horizontal pixels.',
+      'However, in professional broadcasting and digital cinema engineering, 4K and UHD are two distinct display standards with different pixel counts, aspect ratios, and intended applications.'
+    ],
+    keyTakeaways: [
+      'Consumer 4K UHD: Measures exactly 3840 × 2160 pixels with a 16:9 widescreen aspect ratio. This is what consumer 4K TVs and computer monitors actually are.',
+      'True Cinema 4K (DCI 4K): Measures 4096 × 2160 pixels with a ~1.90:1 (256:135) aspect ratio. Established by Digital Cinema Initiatives (DCI) for theatrical movie projection.',
+      'The Difference: DCI 4K is exactly 256 horizontal pixels wider than consumer 4K UHD.',
+      'Total Megapixels: DCI 4K contains 8.85 million pixels, while 4K UHD contains 8.29 million pixels.'
+    ],
+    sections: [
+      {
+        heading: '4K DCI vs. Consumer UHD Technical Comparison',
+        paragraphs: [
+          'Compare the architectural specifications between theatrical cinema and home consumer displays:'
+        ],
+        table: {
+          headers: ['Standard', 'Full Name', 'Resolution', 'Aspect Ratio', 'Total Pixels', 'Primary Environment'],
+          rows: [
+            ['4K UHD', 'Ultra High Definition', '3840 × 2160', '16:9 (1.78:1)', '8,294,400', 'Home TVs, Monitors, YouTube, Gaming'],
+            ['DCI 4K (Full)', 'Digital Cinema System', '4096 × 2160', '1.90:1 (256:135)', '8,847,360', 'Theatrical Movie Projection, Film Masters'],
+            ['DCI 4K (Scope)', 'Cinema Scope Matte', '4096 × 1716', '2.39:1', '7,028,736', 'Widescreen Theatrical Release'],
+            ['DCI 4K (Flat)', 'Cinema Flat Standard', '3996 × 2160', '1.85:1', '8,631,360', 'Standard Theatrical Projection']
+          ]
+        }
+      },
+      {
+        heading: 'Why Consumer Televisions Use 3840×2160 Instead of 4096×2160',
+        paragraphs: [
+          'Consumer televisions standardize on 3840×2160 because it represents an exact integer multiplier (2× horizontal, 2× vertical, 4× total) of 1080p Full HD (1920×1080). This preserves the universal 16:9 aspect ratio and enables clean upscaling of existing television broadcasts and video games without letterboxing.'
+        ]
+      }
+    ]
+  },
+
+  'what-is-2k-resolution': {
+    intro: [
+      'In recent years, monitor manufacturers and PC gamers have popularized calling 2560×1440 (1440p) "2K resolution". However, from a technical and telecommunications standpoint, 1440p is not 2K.',
+      'Understanding the official origins of the "2K" standard prevents confusion when configuring PC gaming settings, buying monitors, or delivering video master files.'
+    ],
+    keyTakeaways: [
+      'Official 2K Standard (DCI 2K): Measures 2048 × 1080 pixels (established by Digital Cinema Initiatives). It is virtually identical to 1080p Full HD (1920×1080).',
+      'What 1440p Actually Is: 2560 × 1440 is officially Quad HD (QHD) or 2.5K, offering four times the pixel resolution of 720p HD.',
+      'The Marketing Origin: Display marketers started labeling 1440p as "2K" as a psychological shorthand because it sits between 1080p and 4K.',
+      'Pixel Reality: 1440p contains 3.68 million pixels, which is 77% more pixels than official 2K (2.21 million pixels).'
+    ],
+    sections: [
+      {
+        heading: 'Resolution Standards Comparison Matrix',
+        paragraphs: [
+          'Examine the pixel counts and official industry classifications below:'
+        ],
+        table: {
+          headers: ['Resolution Name', 'Pixel Dimensions', 'Aspect Ratio', 'Total Pixels', 'Official Standard Body'],
+          rows: [
+            ['1080p Full HD', '1920 × 1080', '16:9', '2,073,600', 'ITU-R / SMPTE (Television)'],
+            ['DCI 2K (Native)', '2048 × 1080', '1.90:1', '2,211,840', 'Digital Cinema Initiatives (Cinema)'],
+            ['1440p Quad HD (QHD)', '2560 × 1440', '16:9', '3,686,400', 'VESA (Computer Displays)'],
+            ['DCI 4K (Native)', '4096 × 2160', '1.90:1', '8,847,360', 'Digital Cinema Initiatives (Cinema)'],
+            ['4K Ultra HD (UHD)', '3840 × 2160', '16:9', '8,294,400', 'ITU-R / Consumer Tech Assoc.']
+          ]
+        }
+      }
+    ]
+  },
+
+  'resize-image-without-losing-quality': {
+    intro: [
+      'Resizing digital images without introducing blur, jagged pixelation, or moiré artifacts requires understanding raster grid mechanics and interpolation math.',
+      'While raster images cannot infinitely generate new optical detail out of thin air, applying the correct downsampling algorithms, aspect ratio locks, and resampling methods preserves maximum sharpness.'
+    ],
+    keyTakeaways: [
+      'Aspect Ratio Lock: Always scale width and height simultaneously using proportional formulas to prevent stretching.',
+      'Downsampling (Shrinking): Preserves high visual sharpness if paired with Bicubic Sharper or Lanczos filtering.',
+      'Upscaling (Enlarging): Forces the computer to interpolate missing pixels; standard bilinear algorithms produce blur, while modern AI models synthesize edges.',
+      'Pixel Dimensions vs DPI: For web use, only pixel dimensions matter. Changing DPI metadata does not alter screen image quality.'
+    ],
+    sections: [
+      {
+        heading: 'The Proportional Aspect Ratio Scaling Formula',
+        paragraphs: [
+          'When resizing an image to a new target width while preserving original sharpness, solve for height using cross-multiplication:'
+        ],
+        formula: 'New Height = (Original Height × Target Width) ÷ Original Width\nNew Width = (Original Width × Target Height) ÷ Original Height'
+      },
+      {
+        heading: 'Resampling Algorithms Compared',
+        paragraphs: [
+          'Every graphic software uses an interpolation algorithm to calculate pixel color when resizing:'
+        ],
+        table: {
+          headers: ['Resampling Algorithm', 'Best For', 'Sharpness Characteristic', 'Artifact Risk'],
+          rows: [
+            ['Nearest Neighbor', 'Pixel art, retro games, QR codes', 'Maintains hard edges, zero blur', 'Severe jagged edges on photos'],
+            ['Bilinear', 'Fast preview rendering', 'Smooth transition between pixels', 'Soft, blurry edges'],
+            ['Bicubic Smoother', 'Upscaling / enlarging photos', 'Gradual color gradations', 'Slight loss of micro-contrast'],
+            ['Bicubic Sharper / Lanczos', 'Downscaling / shrinking for web', 'Preserves fine edges and typography', 'Occasional slight halo on extreme contrasts'],
+            ['AI Super-Resolution', '2× – 4× upscaling of legacy photos', 'Synthesizes plausible high-res textures', 'May hallucinate artificial fine details']
+          ]
+        }
+      }
+    ]
+  },
+
+  'megapixels-to-print-size-chart': {
+    intro: [
+      'A digital camera sensor captures an image in pixels, while a physical photo printer outputs ink dots onto paper in Dots Per Inch (DPI).',
+      'The maximum print size you can achieve with crystal clarity depends directly on your sensor megapixel count and the target output DPI (300 DPI for gallery fine art vs 150 DPI for posters).'
+    ],
+    keyTakeaways: [
+      'The Golden Formula: Print Dimension (Inches) = Pixel Dimension ÷ DPI.',
+      'Gallery Quality (300 DPI): The human eye cannot resolve individual dots at normal viewing distance (10–12 inches).',
+      '12 Megapixels (4000×3000): Prints up to 13.3 × 10 inches at 300 DPI.',
+      '24 Megapixels (6000×4000): Prints up to 20 × 13.3 inches at 300 DPI.',
+      '48 Megapixels (8000×6000): Prints up to 26.7 × 20 inches at 300 DPI without upscaling.'
+    ],
+    sections: [
+      {
+        heading: 'The Megapixels to Print Size Formula',
+        paragraphs: [
+          'To calculate how large an image can be printed at any quality level, divide width and height in pixels by the target DPI:'
+        ],
+        formula: 'Max Print Width (Inches) = Pixel Width ÷ Target DPI\nMax Print Height (Inches) = Pixel Height ÷ Target DPI\nExample: 6000 px ÷ 300 DPI = 20.0 Inches Width'
+      },
+      {
+        heading: 'Camera Megapixels to Print Size Reference Chart',
+        paragraphs: [
+          'Find your camera sensor tier to see maximum recommended print sizes across standard quality thresholds:'
+        ],
+        table: {
+          headers: ['Camera Sensor MP', 'Native Resolution', '300 DPI (Gallery Grade)', '240 DPI (Very High Quality)', '150 DPI (Poster / Wall Art)'],
+          rows: [
+            ['12 MP (iPhone / Base)', '4000 × 3000 px', '13.3 × 10.0 in (8×10, 11×14)', '16.7 × 12.5 in', '26.7 × 20.0 in (A2 Poster)'],
+            ['24 MP (Full Frame / APS-C)', '6000 × 4000 px', '20.0 × 13.3 in (12×18)', '25.0 × 16.7 in', '40.0 × 26.7 in (Large Wall Art)'],
+            ['33 MP (Sony A7 IV)', '7008 × 4672 px', '23.4 × 15.6 in (16×24)', '29.2 × 19.5 in', '46.7 × 31.1 in'],
+            ['45 MP (Canon R5 / Nikon Z8)', '8192 × 5464 px', '27.3 × 18.2 in (20×30)', '34.1 × 22.8 in', '54.6 × 36.4 in (Exhibition Canvas)'],
+            ['61 MP (Sony A7R V)', '9504 × 6336 px', '31.7 × 21.1 in (24×36)', '39.6 × 26.4 in', '63.4 × 42.2 in (Gallery Billboard)']
+          ]
+        }
+      }
+    ]
+  },
+
+  'viewing-distance-print-resolution': {
+    intro: [
+      'It is an industry myth that every printed image must be prepared at 300 DPI. While 300 DPI is essential for photos held 12 inches from the eye, highway billboards and trade show displays are printed at 15 to 30 DPI.',
+      'The reason is human visual acuity: as the viewing distance increases, the human eye cannot distinguish individual dots, allowing lower print DPI without any perceived loss of sharpness.'
+    ],
+    keyTakeaways: [
+      'Visual Acuity: Healthy human eyes resolve approximately 1 arcminute (1/60th of a degree) of visual angle.',
+      'The Distance Law: Doubling viewing distance cuts required print DPI in half with zero perceptible loss in sharpness.',
+      'Handheld Prints (12–15 in): Require 300 DPI.',
+      'Wall Art (3–5 ft): Requires 150–180 DPI.',
+      'Billboards (30–100+ ft): Only require 15–30 DPI.'
+    ],
+    sections: [
+      {
+        heading: 'The Viewing Distance vs. DPI Mathematical Formula',
+        paragraphs: [
+          'To determine the minimum required print resolution for any physical viewing distance, apply the optical acuity formula:'
+        ],
+        formula: 'Minimum DPI ≈ 3438 ÷ (Viewing Distance in Inches)\nExample (Reading Distance 12 in): 3438 ÷ 12 ≈ 286 DPI (rounded to 300 DPI)\nExample (Gallery Wall 48 in / 4 ft): 3438 ÷ 48 ≈ 72 DPI'
+      },
+      {
+        heading: 'Viewing Distance and Minimum Print DPI Table',
+        paragraphs: [
+          'Reference this guide to avoid creating unnecessarily massive digital files for large-format printing:'
+        ],
+        table: {
+          headers: ['Viewing Distance', 'Minimum Sharp DPI', 'Typical Application', 'Required Image File Weight'],
+          rows: [
+            ['10 – 12 inches (Handheld)', '300 DPI', 'Photo albums, magazines, business cards', 'Medium (20 – 50 MB)'],
+            ['2 – 3 feet (Arm\'s length)', '150 – 200 DPI', 'Framed desktop portraits, desk calendars', 'Moderate'],
+            ['4 – 6 feet (Living room wall)', '100 – 120 DPI', 'Gallery canvas wraps, family wall portraits', 'Efficient'],
+            ['10 – 15 feet (Retail store)', '50 – 75 DPI', 'In-store retail posters, trade show pop-ups', 'Compact'],
+            ['30 – 100+ feet (Highway)', '15 – 30 DPI', 'Roadside billboards, building facade wraps', 'Ultra-lightweight']
+          ]
+        }
+      }
+    ]
+  },
+
+  'common-screen-resolutions': {
+    intro: [
+      'Display resolutions define the total count of distinct pixels that can be displayed across width and height on digital screens, televisions, and mobile devices.',
+      'This comprehensive reference breaks down every common resolution from legacy standard definition up to 8K Ultra HD, categorized by aspect ratio and pixel count.'
+    ],
+    keyTakeaways: [
+      '1080p Full HD (1920×1080) remains the global baseline display resolution for monitors, laptops, and web video.',
+      '1440p QHD (2560×1440) is the sweet spot for 27-inch PC desktop monitors.',
+      '4K UHD (3840×2160) is the modern standard for 55"+ home televisions and creative production workstations.',
+      'Ultrawide formats (21:9 and 32:9) expand horizontal field of view without changing vertical pixel height.'
+    ],
+    sections: [
+      {
+        heading: 'Master Screen Resolution Hierarchy',
+        paragraphs: [
+          'Complete breakdown of standard computer monitor and television resolutions:'
+        ],
+        table: {
+          headers: ['Resolution Name', 'Acronym', 'Dimensions', 'Aspect Ratio', 'Total Pixels', 'Typical Hardware'],
+          rows: [
+            ['Standard Definition', 'SD / VGA', '640 × 480', '4:3', '307,200', 'Retro consoles, legacy CRT TVs'],
+            ['High Definition', '720p HD', '1280 × 720', '16:9', '921,600', 'Budget laptops, entry streaming'],
+            ['Full HD', '1080p FHD', '1920 × 1080', '16:9', '2,073,600', 'Standard monitors, HDTV, YouTube standard'],
+            ['WUXGA', '1200p Full HD+', '1920 × 1200', '16:10', '2,304,000', 'Productivity monitors, business laptops'],
+            ['Quad HD (2K)', '1440p QHD', '2560 × 1440', '16:9', '3,686,400', '27-inch gaming monitors, creative suites'],
+            ['WQXGA', '1600p QHD+', '2560 × 1600', '16:10', '4,096,000', 'MacBook Air/Pro 13", Dell XPS'],
+            ['Ultrawide QHD', 'WQHD', '3440 × 1440', '21:9', '4,953,600', '34-inch curved ultrawide monitors'],
+            ['Super Ultrawide', 'DQHD', '5120 × 1440', '32:9', '7,372,800', '49-inch dual-QHD curved monitors'],
+            ['4K Ultra HD', '4K UHD', '3840 × 2160', '16:9', '8,294,400', 'Modern 4K TVs, 32" workstation displays'],
+            ['8K Ultra HD', '8K UHD', '7680 × 4320', '16:9', '33,177,600', 'Next-gen flagship TVs, scientific displays']
+          ]
+        }
+      }
+    ]
+  },
+
+  'aspect-ratio-for-printing-photos': {
+    intro: [
+      'One of the most frustrating surprises for photographers and print buyers is having heads, feet, or scenic edges cut off when ordering physical prints.',
+      'This happens because standard camera sensors capture in a 3:2 or 4:3 aspect ratio, while traditional photo frames (like 8×10 or 5×7) require entirely different proportions.'
+    ],
+    keyTakeaways: [
+      '3:2 Native Ratio (Full Frame & APS-C): Prints 4×6, 8×12, 12×18, 16×24, and 24×36 with zero crop.',
+      'The 8×10 Dilemma: 8×10 inches is a 4:5 aspect ratio. Printing a 3:2 camera photo onto an 8×10 frame cuts off 16.7% of the image.',
+      'Micro 4/3 & Smartphones (4:3): Prints 6×8, 9×12, and 18×24 with zero crop.',
+      'Solution: Check your aspect ratio before sending photos to the print lab, or use white matting frames to avoid cropping subjects.'
+    ],
+    sections: [
+      {
+        heading: 'Standard Print Sizes vs. Native Aspect Ratios',
+        paragraphs: [
+          'Compare popular print sizes against native camera sensor proportions to see which sizes crop your image:'
+        ],
+        table: {
+          headers: ['Print Size (Inches)', 'Aspect Ratio', '3:2 Sensor (DSLR/Mirrorless)', '4:3 Sensor (Phone / MFT)', 'Recommended Action'],
+          rows: [
+            ['4 × 6 in', '3:2 (1.50)', 'Exact fit (0% cropped)', 'Crops top/bottom edges', 'Universal standard print'],
+            ['5 × 7 in', '5:7 (~1.40)', 'Slight crop (~7%)', 'Slight crop (~5%)', 'Popular greeting card / frame'],
+            ['8 × 10 in', '4:5 (1.25)', 'Crops sides by 16.7%', 'Crops edges by 6.2%', 'Standard gallery portrait frame'],
+            ['8.5 × 11 in (Letter)', '1:1.29', 'Crops sides by 13.7%', 'Close fit (~3% crop)', 'Standard document / art print'],
+            ['11 × 14 in', '11:14 (1.27)', 'Crops sides by 15.1%', 'Crops edges by 4.8%', 'Wall art display'],
+            ['12 × 18 in', '3:2 (1.50)', 'Exact fit (0% cropped)', 'Crops top/bottom edges', 'Medium wall print'],
+            ['16 × 20 in', '4:5 (1.25)', 'Crops sides by 16.7%', 'Crops edges by 6.2%', 'Large gallery frame'],
+            ['24 × 36 in', '3:2 (1.50)', 'Exact fit (0% cropped)', 'Crops top/bottom edges', 'Full-size exhibition poster']
+          ]
+        }
+      }
+    ]
   }
 };
+

@@ -885,5 +885,150 @@ export const ARTICLES_DATA: ArticleMetadata[] = [
     faqs: [
       { question: 'What aspect ratio is created by turning a standard 16:9 monitor vertically?', answer: '9:16 vertical aspect ratio (ideal for reading documentation, coding, and reviewing social reels).' }
     ]
+  },
+  {
+    slug: 'social-media-image-dimensions-cheat-sheet',
+    title: 'Social Media Image Dimensions Master Cheat Sheet (2026 Updated)',
+    category: 'Social Media Image Sizes',
+    categorySlug: 'social-media',
+    metaTitle: 'Social Media Image Dimensions 2026: All Platforms Master Cheat Sheet',
+    metaDescription: 'Complete 2026 social media image size cheat sheet. Exact dimensions, aspect ratios, and safe zones for Instagram, YouTube, TikTok, X (Twitter), LinkedIn, and Facebook.',
+    searchIntent: 'Informational',
+    primaryKeyword: 'social media image dimensions',
+    secondaryKeywords: ['social media size cheat sheet 2026', 'social media aspect ratio guide', 'instagram youtube tiktok image sizes'],
+    wordCountTarget: 3000,
+    readTimeMinutes: 12,
+    internalLinks: ['/guides/best-aspect-ratio-for-instagram', '/guides/best-aspect-ratio-for-youtube', '/guides/best-aspect-ratio-for-tiktok', '/4-5-aspect-ratio-calculator', '/1-1-aspect-ratio-calculator', '/9-16-aspect-ratio-calculator'],
+    faqs: [
+      { question: 'What is the most universal aspect ratio across social media platforms?', answer: '1:1 Square (1080x1080) for cross-platform static feeds and 9:16 Vertical (1080x1920) for short-form mobile video.' },
+      { question: 'Why do social platforms compress uploaded images?', answer: 'To speed up mobile feed load times and reduce server bandwidth. Uploading exact recommended pixel dimensions prevents aggressive recompression.' }
+    ]
+  },
+  {
+    slug: 'pinterest-pin-dimensions-aspect-ratio',
+    title: 'Pinterest Pin Dimensions & Aspect Ratio Guide (2:3 Standard Specs)',
+    category: 'Social Media Image Sizes',
+    categorySlug: 'social-media',
+    metaTitle: 'Pinterest Pin Dimensions & 2:3 Aspect Ratio Guide (2026 Specs)',
+    metaDescription: 'Optimal Pinterest pin sizes: 1000x1500 pixels (2:3 aspect ratio). Learn why 9:16 pins get cut off, carousel pin specs, and board cover dimensions.',
+    searchIntent: 'Informational',
+    primaryKeyword: 'pinterest pin dimensions',
+    secondaryKeywords: ['pinterest aspect ratio', '2:3 aspect ratio pinterest', '1000x1500 pixels', 'pinterest pin size guide'],
+    wordCountTarget: 1900,
+    readTimeMinutes: 8,
+    internalLinks: ['/3-2-aspect-ratio-calculator', '/guides/social-media-image-dimensions-cheat-sheet', '/guides/best-aspect-ratio-for-instagram'],
+    faqs: [
+      { question: 'What is the official recommended aspect ratio for standard Pinterest pins?', answer: '2:3 aspect ratio (1000 × 1500 pixels is the official recommended standard).' },
+      { question: 'Why does Pinterest truncate 9:16 vertical pins in search feeds?', answer: 'Pinterest search feeds cap vertical pin display height at a 1:2.1 ratio; 9:16 pins may be cropped at the bottom in mobile masonry grids.' }
+    ]
+  },
+  {
+    slug: 'twitter-x-image-sizes-aspect-ratio',
+    title: 'X (Twitter) Image Sizes & Aspect Ratio Guide (Header, Posts, Grids)',
+    category: 'Social Media Image Sizes',
+    categorySlug: 'social-media',
+    metaTitle: 'X (Twitter) Image Sizes 2026: Aspect Ratios, Headers & Grids',
+    metaDescription: 'Master X (formerly Twitter) image dimensions. Learn 16:9 post ratios, 1200x675 px sizing, 1500x500 header banners, and 1:1 multi-image card grids.',
+    searchIntent: 'Informational',
+    primaryKeyword: 'twitter image sizes',
+    secondaryKeywords: ['x post image dimensions', 'twitter header banner size', 'twitter aspect ratio 16:9', 'x image specs 2026'],
+    wordCountTarget: 2100,
+    readTimeMinutes: 9,
+    internalLinks: ['/16-9-aspect-ratio-calculator', '/1-1-aspect-ratio-calculator', '/guides/social-media-image-dimensions-cheat-sheet'],
+    faqs: [
+      { question: 'What is the best aspect ratio for a single image post on X?', answer: '16:9 (1200 × 675 px) for widescreen photos or 1:1 (1080 × 1080 px) for square graphics.' },
+      { question: 'What are the dimensions for an X profile header banner?', answer: '1500 × 500 pixels (3:1 aspect ratio), with bottom-left avatar safe zone clearance.' }
+    ]
+  },
+  {
+    slug: '4k-vs-uhd-difference',
+    title: '4K vs. UHD: Are They Actually the Same Thing? (Clear Differences)',
+    category: 'Screen Resolution Guides',
+    categorySlug: 'resolutions',
+    metaTitle: '4K vs UHD: What Is the Difference? (Consumer vs DCI 4K Specs)',
+    metaDescription: 'Discover the real difference between 4K and UHD. Learn why consumer TVs are UHD (3840x2160, 16:9) while true cinematic 4K is DCI 4K (4096x2160, 1.90:1).',
+    searchIntent: 'Informational',
+    primaryKeyword: '4k vs uhd',
+    secondaryKeywords: ['difference between 4k and uhd', 'dci 4k vs consumer uhd', '3840x2160 vs 4096x2160', 'is 4k the same as uhd'],
+    wordCountTarget: 2000,
+    readTimeMinutes: 8,
+    internalLinks: ['/compare/1440p-vs-4k', '/16-9-aspect-ratio-calculator', '/2-39-1-aspect-ratio-calculator', '/guides/common-screen-resolutions'],
+    faqs: [
+      { question: 'Is consumer 4K really 4K?', answer: 'Technically no. Consumer 4K TVs are Ultra HD (3840×2160). True cinematic 4K (DCI 4K) has 4096 horizontal pixels.' },
+      { question: 'Does the 256-pixel difference between 4K DCI and UHD matter?', answer: 'For home viewing, no—UHD perfectly matches 16:9 widescreen broadcast. In professional cinema, DCI 4K provides extra width for theatrical projection.' }
+    ]
+  },
+  {
+    slug: 'what-is-2k-resolution',
+    title: 'What Is 2K Resolution? (Why It Is NOT 1440p / QHD)',
+    category: 'Screen Resolution Guides',
+    categorySlug: 'resolutions',
+    metaTitle: 'What Is 2K Resolution? Why 1440p Is Not 2K (True Specs Explained)',
+    metaDescription: 'Clear up the 2K confusion. Understand why DCI 2K is 2048x1080 (1080p category), why 2560x1440 is officially QHD (not 2K), and how the myth started.',
+    searchIntent: 'Informational',
+    primaryKeyword: 'what is 2k resolution',
+    secondaryKeywords: ['is 1440p 2k', '2k resolution in pixels', '2k vs 1440p', 'dci 2k resolution'],
+    wordCountTarget: 1950,
+    readTimeMinutes: 8,
+    internalLinks: ['/compare/1080p-vs-1440p', '/16-9-aspect-ratio-calculator', '/guides/common-screen-resolutions'],
+    faqs: [
+      { question: 'Is 2560x1440 resolution considered 2K?', answer: 'Technically no. 2560x1440 is Quad HD (QHD or 2.5K). Official DCI 2K resolution is 2048x1080.' },
+      { question: 'Why do monitor manufacturers advertise 1440p as 2K?', answer: 'It originated as a shorthand marketing term to position 1440p halfway between 1080p and 4K, despite being technically inaccurate.' }
+    ]
+  },
+  {
+    slug: 'resize-image-without-losing-quality',
+    title: 'How to Resize Images Without Losing Quality (Scaling & Resampling Guide)',
+    category: 'Image Optimization',
+    categorySlug: 'image-optimization',
+    metaTitle: 'How to Resize Images Without Losing Quality: Step-by-Step Guide',
+    metaDescription: 'Learn how to resize digital images without blur or pixelation. Master downsampling vs upscaling, Bicubic and Lanczos resampling, and vector rasterization.',
+    searchIntent: 'Informational',
+    primaryKeyword: 'how to resize image without losing quality',
+    secondaryKeywords: ['resize image without pixelation', 'image resampling algorithms', 'downsample image without blur', 'bicubic vs lanczos'],
+    wordCountTarget: 2200,
+    readTimeMinutes: 9,
+    internalLinks: ['/', '/guides/resizing-images-without-stretching', '/guides/pixel-dimensions-vs-aspect-ratio'],
+    faqs: [
+      { question: 'Why does enlarging an image make it look blurry or pixelated?', answer: 'Raster images have a fixed pixel grid. Enlarging requires the software to invent missing pixel data through mathematical interpolation.' },
+      { question: 'Which interpolation algorithm is best for downscaling images?', answer: 'Lanczos or Bicubic Sharper are the gold standards for downscaling, preserving edge crispness without moiré artifacts.' }
+    ]
+  },
+  {
+    slug: 'megapixels-to-print-size-chart',
+    title: 'Megapixels to Print Size Chart: Maximum Photo Prints at 300 DPI',
+    category: 'Printing & Publishing',
+    categorySlug: 'printing',
+    metaTitle: 'Megapixels to Print Size Calculator & Chart (12MP, 24MP, 48MP, 61MP)',
+    metaDescription: 'How big can you print with your camera? See exact maximum print dimensions for 12MP, 24MP, 33MP, 48MP, and 61MP cameras at 300 DPI, 240 DPI, and 150 DPI.',
+    searchIntent: 'Informational',
+    primaryKeyword: 'megapixels to print size',
+    secondaryKeywords: ['how big can you print 24mp', 'megapixels to print chart', '300 dpi print size calculator', 'camera megapixels to inches'],
+    wordCountTarget: 2300,
+    readTimeMinutes: 10,
+    internalLinks: ['/3-2-aspect-ratio-calculator', '/4-5-aspect-ratio-calculator', '/guides/aspect-ratio-for-printing-photos', '/guides/ppi-and-dpi-explained'],
+    faqs: [
+      { question: 'How big can you print a 24 megapixel photo at 300 DPI?', answer: 'A 24MP file (6000 × 4000 px) prints up to 20 × 13.3 inches at gallery-grade 300 DPI without upscaling.' },
+      { question: 'Is 300 DPI strictly required for large wall canvas prints?', answer: 'No. Large prints viewed from 3 to 5 feet away only require 150 to 200 DPI because human visual acuity cannot distinguish individual dots at that distance.' }
+    ]
+  },
+  {
+    slug: 'viewing-distance-print-resolution',
+    title: 'Viewing Distance vs. Print Resolution: The Human Eye Acuity Formula',
+    category: 'Printing & Publishing',
+    categorySlug: 'printing',
+    metaTitle: 'Viewing Distance vs Print DPI: Human Eye Visual Acuity Formula',
+    metaDescription: 'Why billboards only need 15–30 DPI while photo prints need 300 DPI. Learn the human eye angular resolution formula and calculate minimum required print DPI.',
+    searchIntent: 'Informational',
+    primaryKeyword: 'viewing distance print resolution',
+    secondaryKeywords: ['billboard dpi viewing distance', 'human eye angular resolution', 'print dpi formula', 'minimum dpi by distance'],
+    wordCountTarget: 1900,
+    readTimeMinutes: 8,
+    internalLinks: ['/guides/ppi-and-dpi-explained', '/guides/billboard-large-format-aspect-ratios', '/guides/megapixels-to-print-size-chart'],
+    faqs: [
+      { question: 'What is the formula to calculate minimum required DPI based on viewing distance?', answer: 'Minimum DPI ≈ 3438 ÷ (Viewing Distance in Inches). E.g., for a 36-inch viewing distance: 3438 ÷ 36 ≈ 95 DPI.' },
+      { question: 'Why don’t highway billboards look pixelated at 20 DPI?', answer: 'Highway billboards are viewed from 50 to 100+ feet away. At that distance, the human eye cannot resolve dots smaller than 1 to 2 inches across.' }
+    ]
   }
 ];
+
