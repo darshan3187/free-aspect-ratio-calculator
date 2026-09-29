@@ -344,5 +344,59 @@ export const RATIOS_DATA: Record<string, RatioData> = {
       description: 'Free 5:4 aspect ratio calculator. Calculate pixel dimensions for 8x10 photo prints, 1280x1024 monitors, and Instagram 4:5 portrait post sizing.',
       keywords: ['5:4 aspect ratio calculator', '5 4 ratio', '8x10 aspect ratio', '4:5 instagram ratio', '1280x1024 aspect ratio']
     }
+  },
+  '4-5-aspect-ratio-calculator': {
+    slug: '4-5-aspect-ratio-calculator',
+    name: '4:5 Aspect Ratio',
+    ratioWidth: 4,
+    ratioHeight: 5,
+    decimalValue: 0.8,
+    tagline: 'The gold standard portrait ratio for Instagram vertical feed posts and 8x10 photo prints.',
+    overview: 'The 4:5 aspect ratio (0.8:1) is the standard vertical portrait format for social media feeds, most notably Instagram portrait posts (1080×1350 px), and traditional 8×10 and 16×20 inch photo frames. Because it occupies the maximum vertical screen space allowed in mobile feeds without being cropped, 4:5 yields the highest visual engagement among static feed image formats.',
+    formulaDescription: 'To calculate 4:5 aspect ratio dimensions, multiply width by 1.25 to calculate height, or multiply height by 0.8 to calculate width. E.g. 1080 × 1.25 = 1350 px. The Greatest Common Divisor (GCD) for 1080×1350 is 270 (1080/270 = 4, 1350/270 = 5).',
+    gcdValue: 270,
+    commonResolutions: [
+      { name: 'Instagram Portrait Standard', width: 1080, height: 1350, category: 'Social' },
+      { name: 'High-Res Portrait Feed (2K)', width: 1440, height: 1800, category: 'Social' },
+      { name: 'Ultra HD Portrait (4K)', width: 2160, height: 2700, category: '4K UHD' },
+      { name: '8x10 in Photo Print (300 DPI)', width: 2400, height: 3000, category: 'Print' },
+      { name: '16x20 in Gallery Print (300 DPI)', width: 4800, height: 6000, category: 'Print' }
+    ],
+    useCases: [
+      { industry: 'Social Media', title: 'Instagram Vertical Feed Posts', description: 'Occupies maximum vertical feed real-estate (1080×1350 px), giving viewers optimal visual immersion.', recommended: true },
+      { industry: 'Photography', title: '8×10 & 16×20 Portrait Frames', description: 'Industry-standard frame proportion for studio portraiture and wedding albums.', recommended: true },
+      { industry: 'Digital Advertising', title: 'Facebook & Instagram In-Feed Ads', description: 'Optimal portrait ad dimension for higher click-through rates and thumb-stop ratio.', recommended: true },
+      { industry: 'Print Art', title: 'Fine Art Wall Posters', description: 'Standard proportional sizing for vertical wall art and art gallery canvas wraps.', recommended: true }
+    ],
+    pros: [
+      'Occupies maximum visible vertical real estate in mobile feeds (up to 1350px tall)',
+      'Produces higher engagement and click-through rates compared to 1:1 square posts',
+      'Direct 1:1 match for standard 8x10 and 16x20 inch physical frames',
+      'Eliminates automatic cropping when publishing mobile smartphone photography'
+    ],
+    cons: [
+      'Requires cropping wide landscape images (16:9 or 3:2) on the left and right edges',
+      'Leaves pillarbox black bars when displayed on horizontal 16:9 widescreen monitors'
+    ],
+    faqs: [
+      {
+        question: 'What is the 4:5 aspect ratio in pixels for Instagram?',
+        answer: 'The standard recommended resolution for 4:5 Instagram portrait posts is 1080 × 1350 pixels. High-resolution versions include 1440 × 1800 px and 2160 × 2700 px.'
+      },
+      {
+        question: 'How do you calculate 4:5 aspect ratio?',
+        answer: 'To calculate 4:5 dimensions: New Height = Target Width × 1.25. For example, 1080 × 1.25 = 1350 px. To find width from height: New Width = Target Height × 0.8.'
+      },
+      {
+        question: 'Is 4:5 the same as 8x10 inches?',
+        answer: 'Yes! An 8×10 inch portrait print has a width of 8 and height of 10. Dividing both by 2 gives exactly 4:5.'
+      }
+    ],
+    meta: {
+      title: '4:5 Aspect Ratio Calculator — Instagram Portrait (1080x1350) & 8x10 Prints',
+      description: 'Free 4:5 aspect ratio calculator. Calculate pixel and inch dimensions for Instagram vertical posts (1080x1350), 8x10 photo prints, and mobile portrait photography.',
+      keywords: ['4:5 aspect ratio calculator', '4 5 ratio', 'instagram portrait calculator', '1080x1350 aspect ratio', '8x10 photo aspect ratio', '4:5 ratio in pixels']
+    }
   }
 };
+

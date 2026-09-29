@@ -12,6 +12,9 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    // Optional mailto fallback trigger
+    const mailtoUrl = `mailto:contact@freeaspectratiocalculator.online?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${email}\n\nMessage:\n${message}`)}`;
+    window.location.href = mailtoUrl;
   };
 
   if (submitted) {
@@ -20,10 +23,18 @@ export default function ContactForm() {
         <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center mx-auto">
           <Check className="w-5 h-5 font-bold" />
         </div>
-        <h2 className="text-lg font-bold text-white font-sans">Message Sent Successfully!</h2>
+        <h2 className="text-lg font-bold text-white font-sans">Message Draft Prepared!</h2>
         <p className="text-xs text-neutral-300 font-sans max-w-sm mx-auto">
-          Thank you for contacting Aspect Ratio Calculator. Your feedback helps us maintain the best ad-free utility on the web.
+          Thank you for contacting Aspect Ratio Calculator. If your email client did not open automatically, you can write to us directly at:
         </p>
+        <div className="py-1">
+          <a
+            href="mailto:contact@freeaspectratiocalculator.online"
+            className="text-xs font-mono text-white underline hover:text-blue-400"
+          >
+            contact@freeaspectratiocalculator.online
+          </a>
+        </div>
         <button
           onClick={() => { setSubmitted(false); setMessage(''); }}
           className="mt-2 px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-mono text-xs transition-colors cursor-pointer"
@@ -33,6 +44,7 @@ export default function ContactForm() {
       </div>
     );
   }
+
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 text-xs font-sans">

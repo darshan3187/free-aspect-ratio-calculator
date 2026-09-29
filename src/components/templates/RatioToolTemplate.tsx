@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { RatioData, RATIOS_DATA } from '@/data/ratios';
 import { AspectRatioCanvas } from '@/components/visualizer/AspectRatioCanvas';
 import { generateWebApplicationSchema, generateFAQSchema, generateBreadcrumbSchema } from '@/utils/schema';
+import { SITE_URL } from '@/utils/constants';
 
 interface RatioToolTemplateProps {
   data: RatioData;
@@ -28,15 +29,15 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
 
   const appSchema = generateWebApplicationSchema({
     name: `${data.name} Calculator`,
-    url: `https://freeaspectratiocalculator.online/${data.slug}`,
+    url: `${SITE_URL}/${data.slug}`,
     description: data.meta.description,
     applicationCategory: 'MultimediaApplication',
   });
 
   const faqSchema = generateFAQSchema(data.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: 'https://freeaspectratiocalculator.online' },
-    { name: data.name, item: `https://freeaspectratiocalculator.online/${data.slug}` },
+    { name: 'Home', item: SITE_URL },
+    { name: data.name, item: `${SITE_URL}/${data.slug}` },
   ]);
 
   const otherCalculators = Object.values(RATIOS_DATA).filter((r) => r.slug !== data.slug);

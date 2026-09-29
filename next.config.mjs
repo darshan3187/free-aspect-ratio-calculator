@@ -9,6 +9,21 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'freeaspectratiocalculator.online',
+          },
+        ],
+        destination: 'https://www.freeaspectratiocalculator.online/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -2,9 +2,10 @@ import type { MetadataRoute } from 'next';
 import { RATIOS_DATA } from '@/data/ratios';
 import { COMPARISONS_DATA } from '@/data/comparisons';
 import { ARTICLES_DATA } from '@/data/articles';
+import { SITE_URL } from '@/utils/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://freeaspectratiocalculator.online';
+  const baseUrl = SITE_URL;
   const currentDate = new Date().toISOString();
 
   // Core pages

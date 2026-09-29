@@ -2,13 +2,14 @@ import React from "react";
 import type { Metadata } from "next";
 import CalculatorHeader from "@/components/CalculatorHeader";
 import FooterSection from "@/components/FooterSection";
+import { SITE_URL } from "@/utils/constants";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions — Aspect Ratio Calculator",
   description:
     "Terms of service and commercial license terms for using the Free Aspect Ratio Calculator web application.",
   alternates: {
-    canonical: "https://freeaspectratiocalculator.online/terms-and-conditions",
+    canonical: `${SITE_URL}/terms-and-conditions`,
   },
 };
 
@@ -20,16 +21,17 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://freeaspectratiocalculator.online",
+      item: SITE_URL,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Terms & Conditions",
-      item: "https://freeaspectratiocalculator.online/terms-and-conditions",
+      item: `${SITE_URL}/terms-and-conditions`,
     },
   ],
 };
+
 
 export default function TermsAndConditionsPage() {
   return (

@@ -17,9 +17,10 @@ export default function FooterSection({ onSelectPreset = null }) {
           </div>
 
           <p className="text-[#888888] text-[11px] sm:text-xs leading-relaxed font-sans">
-            The free, ad-free, 100% private Aspect Ratio Calculator designed for digital creators, frontend engineers, UI/UX designers, and video editors. 
+            The free, distraction-free, 100% private Aspect Ratio Calculator designed for digital creators, frontend engineers, UI/UX designers, and video editors. 
             All math and image processing happen client-side inside your browser.
           </p>
+
           <div className="flex items-center gap-2 text-neutral-300 font-mono text-[10px] sm:text-[11px] pt-1">
             <ShieldCheck className="w-4 h-4 flex-shrink-0 text-white" />
             <span>Zero-Server Uploads • 100% Client-Side Privacy Guaranteed</span>
@@ -46,11 +47,11 @@ export default function FooterSection({ onSelectPreset = null }) {
             <li>
               {onSelectPreset ? (
                 <button onClick={() => onSelectPreset(1080, 1350)} className="hover:text-white transition-colors text-left flex items-start gap-1.5 active:scale-98 cursor-pointer">
-                  <span>• 5:4 Photo & 4:5 Instagram Portrait (1080 × 1350)</span>
+                  <span>• 4:5 Instagram Portrait (1080 × 1350)</span>
                 </button>
               ) : (
-                <Link href="/5-4-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
-                  <span>• 5:4 Photo & 4:5 Instagram Portrait (1080 × 1350)</span>
+                <Link href="/4-5-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
+                  <span>• 4:5 Instagram Portrait (1080 × 1350)</span>
                 </Link>
               )}
             </li>
@@ -93,12 +94,17 @@ export default function FooterSection({ onSelectPreset = null }) {
         {/* Col 3: Dedicated MPA Navigation Links */}
         <div className="md:col-span-3 space-y-2">
           <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2 sm:mb-3 font-sans">
-            Pages & Legal
+            Pages & Tools
           </h3>
           <ul className="space-y-2.5 text-xs font-sans">
             <li>
               <Link href="/guides" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1.5 transition-colors">
                 <span>Content Hub & Guides</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/compare" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1.5 transition-colors">
+                <span>Visual Comparison Hub</span>
               </Link>
             </li>
             <li>
@@ -112,6 +118,11 @@ export default function FooterSection({ onSelectPreset = null }) {
               </Link>
             </li>
             <li>
+              <Link href="/4-5-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span>• 4:5 Instagram Portrait Calculator</span>
+              </Link>
+            </li>
+            <li>
               <Link href="/21-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
                 <span>• 21:9 Ultrawide Calculator</span>
               </Link>
@@ -121,6 +132,7 @@ export default function FooterSection({ onSelectPreset = null }) {
                 <span>• 16:9 vs 4:3 Comparison</span>
               </Link>
             </li>
+
             <li>
               <Link href="/compare/1080p-vs-1440p" className="hover:text-white transition-colors flex items-center gap-1.5">
                 <span>• 1080p vs 1440p Comparison</span>

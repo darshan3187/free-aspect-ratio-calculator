@@ -1,3 +1,5 @@
+import { SITE_URL, SITE_NAME } from '@/utils/constants';
+
 export function generateWebApplicationSchema(options: {
   name: string;
   url: string;
@@ -54,15 +56,15 @@ export function generateArticleSchema(article: {
     },
     author: {
       '@type': 'Organization',
-      name: 'Free Aspect Ratio Calculator',
-      url: 'https://freeaspectratiocalculator.online'
+      name: SITE_NAME,
+      url: SITE_URL
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Free Aspect Ratio Calculator',
+      name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://freeaspectratiocalculator.online/logo.png'
+        url: `${SITE_URL}/logo.png`
       }
     },
     datePublished: article.datePublished || '2026-01-01T00:00:00Z',
@@ -82,3 +84,4 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; item: stri
     }))
   };
 }
+

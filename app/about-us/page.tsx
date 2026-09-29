@@ -1,14 +1,17 @@
 import React from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import CalculatorHeader from "@/components/CalculatorHeader";
 import FooterSection from "@/components/FooterSection";
+import { SITE_URL } from "@/utils/constants";
+
 
 export const metadata: Metadata = {
   title: "About Us — Free Aspect Ratio Calculator Studio",
   description:
     "Learn about our mission to build the fastest, 100% private, zero-server aspect ratio calculator utility for designers, video editors, and frontend developers.",
   alternates: {
-    canonical: "https://freeaspectratiocalculator.online/about-us",
+    canonical: `${SITE_URL}/about-us`,
   },
 };
 
@@ -20,13 +23,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://freeaspectratiocalculator.online",
+      item: SITE_URL,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "About Us",
-      item: "https://freeaspectratiocalculator.online/about-us",
+      item: `${SITE_URL}/about-us`,
     },
   ],
 };
@@ -35,10 +38,11 @@ const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Aspect Ratio Calculator",
-  url: "https://freeaspectratiocalculator.online/about-us",
+  url: `${SITE_URL}/about-us`,
   description:
     "Learn about our mission to build the fastest, 100% private, zero-server aspect ratio calculator utility.",
 };
+
 
 export default function AboutUsPage() {
   return (
@@ -71,25 +75,25 @@ export default function AboutUsPage() {
           <div className="space-y-4 text-sm leading-relaxed text-neutral-300 font-sans">
             <h2 className="text-lg font-bold text-white font-sans">Our Mission</h2>
             <p>
-              <strong>Aspect Ratio Calculator</strong> was built to solve a simple yet persistent problem faced by visual creators, video producers, frontend engineers, and graphic designers: calculating proportional dimensions quickly without invasive pop-up ads, laggy servers, or privacy leaks.
+              <strong>Aspect Ratio Calculator</strong> was built to solve a persistent daily challenge faced by digital creators, video editors, frontend developers, and visual designers: calculating proportional dimensions quickly, reliably, and with guaranteed privacy.
             </p>
 
-            <h2 className="text-lg font-bold text-white font-sans">Why We Are Different</h2>
+            <h2 className="text-lg font-bold text-white font-sans">Core Architectural Principles</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="p-4 rounded-xl bg-[#000000] border border-white/[0.08]">
                 <h3 className="text-sm font-bold text-white mb-1 font-sans">
-                  100% Client-Side Memory
+                  100% Client-Side Computing
                 </h3>
                 <p className="text-xs text-[#888888]">
-                  All image processing, crop rendering, and GCD fraction math occur directly inside your web browser. No files leave your device.
+                  All image analysis, canvas rendering, crop alignment, and numerical algorithms execute directly inside your browser&apos;s sandbox. No image data is ever uploaded to our servers.
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-[#000000] border border-white/[0.08]">
                 <h3 className="text-sm font-bold text-white mb-1 font-sans">
-                  Ad-Free & Lightning Fast
+                  Distraction-Free & Fast
                 </h3>
                 <p className="text-xs text-[#888888]">
-                  Zero bloated scripts or banner advertisements. Clean Vercel-inspired dark interface optimized for immediate productivity.
+                  Built on Next.js 15 with zero client-side computational latency. Clean dark interface optimized for workflow focus without obstructive pop-ups or deceptive layout shifts.
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-[#000000] border border-white/[0.08]">
@@ -97,23 +101,34 @@ export default function AboutUsPage() {
                   Developer & AI Ready
                 </h3>
                 <p className="text-xs text-[#888888]">
-                  Generates production CSS, Tailwind CSS, SVG viewBox attributes, and Midjourney/SDXL AI prompt flags instantly.
+                  Export production-ready CSS <code className="font-mono text-white">aspect-ratio</code> rules, Tailwind utility classes, SVG <code className="font-mono text-white">viewBox</code> attributes, and Midjourney/SDXL command flags with one click.
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-[#000000] border border-white/[0.08]">
                 <h3 className="text-sm font-bold text-white mb-1 font-sans">
-                  DPI Print Conversion
+                  Print & DPI Scaling
                 </h3>
                 <p className="text-xs text-[#888888]">
-                  Calculates high-resolution physical print sizes in inches and centimeters at 300 DPI for print designers.
+                  Calculate physical dimensions in inches and centimeters at 300 DPI for professional giclée, offset, and photographic print production.
                 </p>
               </div>
             </div>
 
-            <h2 className="text-lg font-bold text-white font-sans pt-4">Engineering Standards</h2>
+            <h2 className="text-lg font-bold text-white font-sans pt-4">Mathematical Accuracy & Standards</h2>
             <p>
-              Built using Next.js 15 App Router and React 19, our web application leverages modern web standards including HTML5 Canvas, FileReader APIs, and strict Content Security Policies (CSP) to guarantee user safety and zero tracking.
+              Our ratio reduction engine uses Euclidean algorithm GCD (Greatest Common Divisor) factorization to ensure mathematically sound fraction simplification. Screen resolution presets comply with international standards established by SMPTE, ITU-R (Rec. 709 and Rec. 2020), DCI (Digital Cinema Initiatives), and ISO 216 paper proportions.
             </p>
+
+            <h2 className="text-lg font-bold text-white font-sans pt-4">Editorial Integrity & Maintenance</h2>
+            <p>
+              Every educational guide, comparison matrix, and technical formula published in our knowledge hub is authored and maintained with care. We routinely update our presets to reflect evolving social platform specifications (such as Instagram Reels, YouTube Shorts, and modern ultrawide gaming monitors).
+            </p>
+
+            <h2 className="text-lg font-bold text-white font-sans pt-4">Get in Touch</h2>
+            <p>
+              We welcome suggestions, correction reports, and feature requests from the community. You can reach our engineering team directly at <a href="mailto:contact@freeaspectratiocalculator.online" className="text-white underline hover:text-blue-400">contact@freeaspectratiocalculator.online</a> or through our <Link href="/contact-us" className="text-white underline hover:text-blue-400">Contact Us page</Link>.
+            </p>
+
           </div>
         </article>
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ComparisonData } from '@/data/comparisons';
 import { AspectRatioCanvas } from '@/components/visualizer/AspectRatioCanvas';
 import { generateFAQSchema, generateBreadcrumbSchema } from '@/utils/schema';
+import { SITE_URL } from '@/utils/constants';
 
 interface ComparisonTemplateProps {
   data: ComparisonData;
@@ -13,9 +14,9 @@ interface ComparisonTemplateProps {
 export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
   const faqSchema = generateFAQSchema(data.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: 'https://freeaspectratiocalculator.online' },
-    { name: 'Compare', item: 'https://freeaspectratiocalculator.online/compare' },
-    { name: data.title, item: `https://freeaspectratiocalculator.online/compare/${data.slug}` },
+    { name: 'Home', item: SITE_URL },
+    { name: 'Compare', item: `${SITE_URL}/compare` },
+    { name: data.title, item: `${SITE_URL}/compare/${data.slug}` },
   ]);
 
   return (

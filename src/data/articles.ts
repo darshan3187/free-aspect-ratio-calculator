@@ -221,7 +221,7 @@ export const ARTICLES_DATA: ArticleMetadata[] = [
     secondaryKeywords: ['instagram post dimensions', 'instagram reels aspect ratio', '4 5 aspect ratio instagram'],
     wordCountTarget: 2400,
     readTimeMinutes: 10,
-    internalLinks: ['/1-1-aspect-ratio-calculator', '/9-16-aspect-ratio-calculator', '/compare/instagram-post-vs-reel'],
+    internalLinks: ['/4-5-aspect-ratio-calculator', '/1-1-aspect-ratio-calculator', '/9-16-aspect-ratio-calculator', '/compare/instagram-post-vs-reel'],
     faqs: [
       { question: 'What is the highest resolution for an Instagram portrait post?', answer: '1080x1350 pixels (4:5 aspect ratio).' }
     ]

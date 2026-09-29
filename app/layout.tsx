@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import { SITE_URL } from "@/utils/constants";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://freeaspectratiocalculator.online"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
     template: "%s | Aspect Ratio Calculator",
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://freeaspectratiocalculator.online",
+    url: SITE_URL,
     siteName: "Aspect Ratio Calculator",
     title: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
     description:

@@ -3,13 +3,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CalculatorHeader from "@/components/CalculatorHeader";
 import FooterSection from "@/components/FooterSection";
+import { SITE_URL } from "@/utils/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Aspect Ratio Calculator",
   description:
     "Our 100% Client-Side Privacy Policy. We do not store, collect, or transmit any images or personal data to remote servers.",
   alternates: {
-    canonical: "https://freeaspectratiocalculator.online/privacy-policy",
+    canonical: `${SITE_URL}/privacy-policy`,
   },
 };
 
@@ -21,16 +22,17 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://freeaspectratiocalculator.online",
+      item: SITE_URL,
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Privacy Policy",
-      item: "https://freeaspectratiocalculator.online/privacy-policy",
+      item: `${SITE_URL}/privacy-policy`,
     },
   ],
 };
+
 
 export default function PrivacyPolicyPage() {
   return (
@@ -58,39 +60,61 @@ export default function PrivacyPolicyPage() {
 
           <div className="space-y-4 text-sm leading-relaxed text-neutral-300 font-sans">
             <h2 className="text-base font-bold text-white font-sans">
-              1. Client-Side Processing Guarantee
+              1. Client-Side Processing & Data Minimization
             </h2>
             <p>
-              At <strong>Aspect Ratio Calculator</strong>, we believe user privacy is non-negotiable. This tool is built using a strict zero-server architecture. All image inspection, canvas rendering, crop alignment, and numerical calculations are performed <strong>locally within your web browser process memory</strong>.
+              At <strong>Aspect Ratio Calculator</strong>, privacy is engineered into our architecture. All image inspection, aspect ratio math, crop boundary alignment, and scale calculations run <strong>entirely in your local web browser memory</strong>. When you select or drag and drop an image file, it is processed via the standard HTML5 <code className="font-mono text-white bg-[#171717] px-1.5 py-0.5 rounded">FileReader</code> API. No image bytes or file metadata are ever transmitted to or stored on our servers.
             </p>
 
             <h2 className="text-base font-bold text-white font-sans">
-              2. Zero Server Data Uploads
+              2. Cookies and Third-Party Advertising Disclosures
             </h2>
             <p>
-              When you drag and drop an image file into our Image Inspector or Visual Canvas, the file is read using the browser&apos;s native HTML5 <code className="font-mono text-white bg-[#171717] px-1.5 py-0.5 rounded">FileReader</code> API. <strong>No image bytes or file metadata are ever transmitted across any network or saved on any remote database.</strong>
+              To support the ongoing maintenance and free availability of our utilities, we partner with third-party advertising networks, including <strong>Google AdSense</strong>. Please review the following advertising and cookie disclosures:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-neutral-300 pl-2">
+              <li>
+                <strong>Third-Party Vendors & Cookies:</strong> Third-party vendors, including Google, use cookies to serve ads based on a user&apos;s prior visits to this website or other websites across the Internet.
+              </li>
+              <li>
+                <strong>Advertising Cookies:</strong> Google&apos;s use of advertising cookies enables it and its partners to serve ads to users based on their visits to this site and/or other sites on the Internet.
+              </li>
+              <li>
+                <strong>Personalized Advertising Opt-Out:</strong> Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-blue-400 transition-colors">Google Ads Settings</a>.
+              </li>
+              <li>
+                <strong>Third-Party Opt-Out:</strong> Users may also opt out of third-party vendor cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-blue-400 transition-colors">www.aboutads.info</a> or <a href="https://www.youronlinechoices.com/" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-blue-400 transition-colors">Your Online Choices</a> (for EEA/UK users).
+              </li>
+            </ul>
+
+            <h2 className="text-base font-bold text-white font-sans">
+              3. Web Analytics & Measurement
+            </h2>
+            <p>
+              We utilize Google Analytics and privacy-conscious Vercel Web Analytics to measure aggregate web traffic, popular calculation presets, and frontend performance (Core Web Vitals). These analytics tools collect non-personally identifiable diagnostic metrics (such as browser type, general geographical region, and session duration) to help us optimize user experience.
             </p>
 
             <h2 className="text-base font-bold text-white font-sans">
-              3. No Tracking Cookies or Personal Profiling
+              4. Security Headers & Content Security Policy (CSP)
             </h2>
             <p>
-              We do not use invasive cross-site tracking cookies, user profiling algorithms, or third-party ad networks. We do not sell, rent, or monetize your personal information or calculation parameters.
+              Our application implements strict HTTP security headers, including <code className="font-mono text-white bg-[#171717] px-1.5 py-0.5 rounded">X-Content-Type-Options: nosniff</code>, <code className="font-mono text-white bg-[#171717] px-1.5 py-0.5 rounded">Strict-Transport-Security</code>, and Content Security Policies to protect visitors from cross-site scripting (XSS), clickjacking, and unauthorized data injection.
             </p>
 
             <h2 className="text-base font-bold text-white font-sans">
-              4. Security Headers & CSP
+              5. User Rights & Data Protection (GDPR & CCPA)
             </h2>
             <p>
-              Our application implements strict HTTP Content Security Policy (CSP) headers (<code className="font-mono text-white bg-[#171717] px-1.5 py-0.5 rounded">frame-ancestors &apos;self&apos;</code>, <code className="font-mono text-white bg-[#171717] px-1.5 py-0.5 rounded">nosniff</code>) to prevent cross-site scripting (XSS), clickjacking, or data injection attacks.
+              Because our calculator functions client-side without user account registration, we do not maintain personal profiles, contact databases, or financial records. For analytics or advertising inquiries, users in the European Economic Area (EEA), United Kingdom, and California enjoy the right to access, restrict, or opt out of tracking as outlined in the opt-out links above.
             </p>
 
             <h2 className="text-base font-bold text-white font-sans">
-              5. Contact Information
+              6. Contact Information
             </h2>
             <p>
-              If you have any questions regarding our security architecture or privacy standards, please reach out via our dedicated <Link href="/contact-us" className="text-white underline font-medium">Contact Us page</Link>.
+              If you have any questions regarding this Privacy Policy or our operational practices, please contact us at <a href="mailto:contact@freeaspectratiocalculator.online" className="text-white underline font-medium hover:text-blue-400">contact@freeaspectratiocalculator.online</a> or visit our <Link href="/contact-us" className="text-white underline font-medium hover:text-blue-400">Contact Us page</Link>.
             </p>
+
           </div>
         </article>
 

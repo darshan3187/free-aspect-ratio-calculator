@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { RATIOS_DATA } from '@/data/ratios';
 import { RatioToolTemplate } from '@/components/templates/RatioToolTemplate';
+import { SITE_URL } from '@/utils/constants';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -28,13 +29,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: data.meta.description,
     keywords: data.meta.keywords,
     alternates: {
-      canonical: `https://freeaspectratiocalculator.online/${slug}`,
+      canonical: `${SITE_URL}/${slug}`,
     },
     openGraph: {
       title: data.meta.title,
       description: data.meta.description,
       type: 'website',
-      url: `https://freeaspectratiocalculator.online/${slug}`,
+      url: `${SITE_URL}/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -43,6 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
   };
 }
+
 
 export default async function RatioToolPage({ params }: PageProps) {
   const { slug } = await params;

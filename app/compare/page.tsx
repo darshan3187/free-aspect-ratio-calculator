@@ -2,12 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { COMPARISONS_DATA } from '@/data/comparisons';
+import { SITE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
   title: 'Aspect Ratio & Screen Resolution Comparison Guides Hub',
   description: 'Side-by-side visual aspect ratio & resolution comparisons (16:9 vs 4:3, 16:9 vs 21:9, 1080p vs 1440p, 1440p vs 4K, and Instagram post formats).',
   alternates: {
-    canonical: 'https://freeaspectratiocalculator.online/compare',
+    canonical: `${SITE_URL}/compare`,
   },
 };
 
@@ -22,16 +23,17 @@ export default function CompareHubPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://freeaspectratiocalculator.online',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Compare',
-        item: 'https://freeaspectratiocalculator.online/compare',
+        item: `${SITE_URL}/compare`,
       },
     ],
   };
+
 
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 font-sans pb-16">

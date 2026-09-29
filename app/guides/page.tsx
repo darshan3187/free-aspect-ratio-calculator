@@ -2,12 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { ARTICLES_DATA } from '@/data/articles';
+import { SITE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
-  title: 'Aspect Ratio, Screen Resolution & Design Guides Hub (50+ Resources)',
+  title: 'Aspect Ratio, Screen Resolution & Design Guides Hub',
   description: 'Complete knowledge hub for aspect ratios, screen resolutions, social media image sizes, video production, photography framing, UI design, and printing standards.',
   alternates: {
-    canonical: 'https://freeaspectratiocalculator.online/guides',
+    canonical: `${SITE_URL}/guides`,
   },
 };
 
@@ -21,8 +22,31 @@ export default function GuidesHubPage() {
     categoriesMap[article.category].push(article);
   });
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Guides',
+        item: `${SITE_URL}/guides`,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100 font-sans pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Header */}
       <header className="border-b border-neutral-800 bg-neutral-900/50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center space-y-4">
@@ -38,12 +62,12 @@ export default function GuidesHubPage() {
             Aspect Ratio & Resolution Content Hub
           </h1>
           <p className="text-base sm:text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Explore our 50 definitive, technical guides covering display resolutions, social media sizing, cinematic formats, photography composition, UI design, and print standards.
+            Explore our comprehensive technical guides covering display resolutions, social media sizing, cinematic formats, photography composition, UI design, and print standards.
           </p>
           <div className="flex items-center justify-center gap-4 text-xs font-mono text-neutral-400">
-            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">50 Articles</span>
-            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">10 Content Hubs</span>
-            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">100% AdSense Compliant</span>
+            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">50 In-Depth Articles</span>
+            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">10 Content Categories</span>
+            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">Regularly Updated</span>
           </div>
         </div>
       </header>

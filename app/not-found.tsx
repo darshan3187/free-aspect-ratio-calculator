@@ -40,26 +40,33 @@ export default function NotFound() {
           </span>
           <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-xs">
             <Link
-              href="/"
+              href="/16-9-aspect-ratio-calculator"
               className="px-3 py-1 rounded-full bg-[#000000] hover:bg-[#171717] text-neutral-300 hover:text-white border border-white/10 transition-all"
             >
               16:9 Calculator
             </Link>
             <Link
-              href="/about-us"
+              href="/4-5-aspect-ratio-calculator"
               className="px-3 py-1 rounded-full bg-[#000000] hover:bg-[#171717] text-neutral-300 hover:text-white border border-white/10 transition-all"
             >
-              About Us
+              4:5 Instagram Calculator
             </Link>
             <Link
-              href="/contact-us"
+              href="/guides"
               className="px-3 py-1 rounded-full bg-[#000000] hover:bg-[#171717] text-neutral-300 hover:text-white border border-white/10 transition-all"
             >
-              Contact Us
+              Knowledge Guides
+            </Link>
+            <Link
+              href="/compare"
+              className="px-3 py-1 rounded-full bg-[#000000] hover:bg-[#171717] text-neutral-300 hover:text-white border border-white/10 transition-all"
+            >
+              Comparisons
             </Link>
           </div>
         </div>
       </div>
+
 
       <FooterSection />
     </div>

@@ -36,22 +36,22 @@ export default function CalculatorHeader({ showGuide = false, onToggleGuide = nu
               Calculator
             </Link>
             <Link
+              href="/guides"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
+            >
+              Guides
+            </Link>
+            <Link
+              href="/compare"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
+            >
+              Compare
+            </Link>
+            <Link
               href="/about-us"
               className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
             >
               About
-            </Link>
-            <Link
-              href="/privacy-policy"
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
-            >
-              Privacy
-            </Link>
-            <Link
-              href="/terms-and-conditions"
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
-            >
-              Terms
             </Link>
             <Link
               href="/contact-us"
@@ -60,6 +60,7 @@ export default function CalculatorHeader({ showGuide = false, onToggleGuide = nu
               Contact
             </Link>
           </nav>
+
 
           <div className="flex items-center gap-1 sm:gap-1.5">
             <button

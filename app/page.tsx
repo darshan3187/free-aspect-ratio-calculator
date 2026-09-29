@@ -4,25 +4,41 @@ import RatioCraftApp from "@/components/RatioCraftApp";
 import SeoArticleSection from "@/components/SeoArticleSection";
 import FaqSection from "@/components/FaqSection";
 import FooterSection from "@/components/FooterSection";
+import { SITE_URL, SITE_NAME } from "@/utils/constants";
 
 export const metadata: Metadata = {
   title: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
   description:
     "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches. Features real-time visual canvas, social media presets, and 100% browser privacy.",
   alternates: {
-    canonical: "https://freeaspectratiocalculator.online",
+    canonical: `${SITE_URL}/`,
+  },
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: `${SITE_URL}/`,
+  description:
+    "Free online aspect ratio calculator and proportional dimension scaler for designers, video editors, and developers.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE_URL}/guides?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
   },
 };
 
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "Aspect Ratio Calculator",
-  url: "https://freeaspectratiocalculator.online",
+  name: SITE_NAME,
+  url: `${SITE_URL}/`,
   description:
     "Free online aspect ratio calculator to calculate 16:9, 4:3, and custom image & screen proportions in pixels and inches. 100% client-side browser privacy.",
   applicationCategory: "DesignApplication",
   operatingSystem: "All",
+  browserRequirements: "Requires JavaScript. Requires HTML5.",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -31,6 +47,8 @@ const webAppSchema = {
   featureList: [
     "16:9 Aspect Ratio Calculator",
     "4:3 Aspect Ratio Calculator",
+    "4:5 Instagram Portrait Ratio Calculator",
+    "9:16 Vertical Video Calculator",
     "Aspect Ratio Calculator Pixels & Inches",
     "Real-time visual canvas inspector with focal point controls",
     "Social media & display screen presets",
@@ -38,6 +56,7 @@ const webAppSchema = {
     "100% Client-side local processing",
   ],
 };
+
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -103,23 +122,14 @@ const howToSchema = {
   ],
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://freeaspectratiocalculator.online/",
-    },
-  ],
-};
-
 export default function HomePage() {
   return (
     <>
       {/* Structured Data / JSON-LD for Google Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
@@ -131,10 +141,6 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="min-h-screen">

@@ -2,7 +2,9 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ARTICLES_DATA } from '@/data/articles';
+import { DETAILED_GUIDES } from '@/data/guideContent';
 import { generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema } from '@/utils/schema';
+import { SITE_URL } from '@/utils/constants';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,13 +31,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: article.metaDescription,
     keywords: [article.primaryKeyword, ...article.secondaryKeywords],
     alternates: {
-      canonical: `https://freeaspectratiocalculator.online/guides/${slug}`,
+      canonical: `${SITE_URL}/guides/${slug}`,
     },
     openGraph: {
       title: article.metaTitle,
       description: article.metaDescription,
       type: 'article',
-      url: `https://freeaspectratiocalculator.online/guides/${slug}`,
+      url: `${SITE_URL}/guides/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -43,6 +45,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: article.metaDescription,
     },
   };
+}
+
+function formatLinkAnchor(href: string): string {
+  if (href.startsWith('/compare/')) {
+    const slug = href.replace('/compare/', '');
+    return `${slug.replace(/-/g, ' ').toUpperCase()} Comparison`;
+  }
+  if (href.startsWith('/guides/')) {
+    const slug = href.replace('/guides/', '');
+    return slug
+      .split('-')
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ') + ' Guide';
+  }
+  const toolSlug = href.replace('/', '');
+  if (toolSlug.includes('aspect-ratio-calculator')) {
+    const ratio = toolSlug.replace('-aspect-ratio-calculator', '').replace('-', ':');
+    return `${ratio} Aspect Ratio Calculator & Dimensions`;
+  }
+  return href;
 }
 
 export default async function ArticlePage({ params }: PageProps) {
@@ -53,17 +75,19 @@ export default async function ArticlePage({ params }: PageProps) {
     notFound();
   }
 
+  const customContent = DETAILED_GUIDES[slug];
+
   const articleSchema = generateArticleSchema({
     title: article.title,
     description: article.metaDescription,
-    url: `https://freeaspectratiocalculator.online/guides/${article.slug}`,
+    url: `${SITE_URL}/guides/${article.slug}`,
   });
 
   const faqSchema = generateFAQSchema(article.faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: 'https://freeaspectratiocalculator.online' },
-    { name: 'Guides', item: 'https://freeaspectratiocalculator.online/guides' },
-    { name: article.title, item: `https://freeaspectratiocalculator.online/guides/${article.slug}` },
+    { name: 'Home', item: SITE_URL },
+    { name: 'Guides', item: `${SITE_URL}/guides` },
+    { name: article.title, item: `${SITE_URL}/guides/${article.slug}` },
   ]);
 
   return (
@@ -102,7 +126,7 @@ export default async function ArticlePage({ params }: PageProps) {
               {article.category}
             </span>
             <span className="text-xs font-mono text-neutral-400">
-              {article.readTimeMinutes} min read • Target {article.wordCountTarget} Words
+              {article.readTimeMinutes} min read • Verified Technical Reference
             </span>
           </div>
 
@@ -118,46 +142,138 @@ export default async function ArticlePage({ params }: PageProps) {
 
       {/* Main Content Area */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-10">
-        {/* Executive Summary Card */}
+        {/* Key Takeaways Card */}
         <div className="bg-neutral-900/70 border border-neutral-800 rounded-2xl p-6 space-y-3">
           <h2 className="text-sm font-mono text-blue-400 uppercase tracking-wider">
-            Key Concepts Covered
+            Key Technical Takeaways
           </h2>
-          <div className="flex flex-wrap gap-2">
-            <span className="text-xs font-mono bg-neutral-950 px-3 py-1 rounded border border-neutral-800 text-neutral-300">
-              Primary Keyword: {article.primaryKeyword}
-            </span>
-            {article.secondaryKeywords.map((kw) => (
-              <span key={kw} className="text-xs font-mono bg-neutral-950 px-3 py-1 rounded border border-neutral-800 text-neutral-400">
-                {kw}
-              </span>
-            ))}
-          </div>
+          <ul className="space-y-2 text-xs sm:text-sm text-neutral-300">
+            {customContent?.keyTakeaways ? (
+              customContent.keyTakeaways.map((takeaway, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-blue-400 font-bold">•</span>
+                  <span>{takeaway}</span>
+                </li>
+              ))
+            ) : (
+              <>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 font-bold">•</span>
+                  <span>Aspect ratio determines proportional shape (W:H) regardless of pixel density or physical scale.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 font-bold">•</span>
+                  <span>Preserving native aspect ratio prevents image warping, distortion, and unwanted letterbox padding.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 font-bold">•</span>
+                  <span>Always verify matching dimensions across target display platforms (desktop, tablet, mobile) before publishing.</span>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
 
-        {/* Comprehensive Guide Body Outline */}
-        <article className="prose prose-invert max-w-none space-y-6 text-neutral-300 leading-relaxed">
-          <section className="bg-neutral-900/30 border border-neutral-800/60 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-2xl font-bold text-white">Overview & Core Technical Definition</h2>
-            <p>
-              Aspect ratios define the proportional relationship between an image or video&apos;s width and height. Understanding how to manage, convert, and calculate ratios ensures your creative assets remain sharp without distortion, unexpected black letterboxing bars, or unwanted cropping across modern displays.
-            </p>
-            <p>
-              When working with high-resolution media (from 1080p Full HD to 4K UHD and beyond), matching the targeted display canvas to native device specs is essential for optimizing visual retention and user experience.
-            </p>
-          </section>
+        {/* In-Depth Article Content */}
+        <article className="prose prose-invert max-w-none space-y-8 text-neutral-300 leading-relaxed">
+          {customContent ? (
+            <>
+              <section className="bg-neutral-900/30 border border-neutral-800/60 rounded-2xl p-6 sm:p-8 space-y-4">
+                <h2 className="text-2xl font-bold text-white">Overview & Core Technical Definition</h2>
+                {customContent.intro.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </section>
 
-          <section className="bg-neutral-900/30 border border-neutral-800/60 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-2xl font-bold text-white">Mathematical Principles & Step-by-Step Calculation</h2>
-            <p>
-              To manually solve aspect ratios from raw pixel dimensions, divide width and height by their Greatest Common Divisor (GCD). For example, a 1920x1080 resolution shares a GCD of 120, which reduces down to 16:9.
-            </p>
-            <div className="bg-neutral-950 p-4 rounded-xl font-mono text-xs text-neutral-300 border border-neutral-800">
-              Width / GCD : Height / GCD = Aspect Ratio<br />
-              1920 / 120 : 1080 / 120 = 16 : 9
-            </div>
-          </section>
+              {customContent.sections.map((section, idx) => (
+                <section key={idx} className="bg-neutral-900/30 border border-neutral-800/60 rounded-2xl p-6 sm:p-8 space-y-4">
+                  <h2 className="text-2xl font-bold text-white">{section.heading}</h2>
+                  {section.paragraphs.map((p, pi) => (
+                    <p key={pi}>{p}</p>
+                  ))}
+
+                  {section.formula && (
+                    <div className="bg-neutral-950 p-4 rounded-xl font-mono text-xs text-neutral-300 border border-neutral-800 whitespace-pre-line">
+                      {section.formula}
+                    </div>
+                  )}
+
+                  {section.table && (
+                    <div className="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-950">
+                      <table className="w-full text-left border-collapse text-xs">
+                        <thead>
+                          <tr className="border-b border-neutral-800 bg-neutral-900/80 font-mono text-neutral-300">
+                            {section.table.headers.map((h, hi) => (
+                              <th key={hi} className="p-3">{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          {section.table.rows.map((row, ri) => (
+                            <tr key={ri} className="border-b border-neutral-800/50 hover:bg-neutral-900/40">
+                              {row.map((cell, ci) => (
+                                <td key={ci} className="p-3">{cell}</td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+
+                  {section.codeSnippet && (
+                    <pre className="bg-neutral-950 p-4 rounded-xl font-mono text-xs text-blue-300 border border-neutral-800 overflow-x-auto">
+                      <code>{section.codeSnippet}</code>
+                    </pre>
+                  )}
+                </section>
+              ))}
+            </>
+          ) : (
+            <>
+              <section className="bg-neutral-900/30 border border-neutral-800/60 rounded-2xl p-6 sm:p-8 space-y-4">
+                <h2 className="text-2xl font-bold text-white">Technical Overview & Core Principles</h2>
+                <p>
+                  {article.metaDescription} Understanding how to calculate and maintain correct proportions in {article.category.toLowerCase()} ensures your creative assets remain sharp, responsive, and free of letterbox black bars or accidental cropping.
+                </p>
+                <p>
+                  When preparing digital media for modern high-DPI retina displays, video containers, and mobile viewports, matching source resolutions to target display aspect ratios is essential for visual clarity and engagement.
+                </p>
+              </section>
+
+              <section className="bg-neutral-900/30 border border-neutral-800/60 rounded-2xl p-6 sm:p-8 space-y-4">
+                <h2 className="text-2xl font-bold text-white">Mathematical Calculation & Scaling Formula</h2>
+                <p>
+                  To compute scaled dimensions while locking the aspect ratio, apply the standard cross-multiplication formula:
+                </p>
+                <div className="bg-neutral-950 p-4 rounded-xl font-mono text-xs text-neutral-300 border border-neutral-800 space-y-2">
+                  <div><strong>Scaled Height Formula:</strong> New Height = (Original Height × New Width) ÷ Original Width</div>
+                  <div><strong>Scaled Width Formula:</strong> New Width = (Original Width × New Height) ÷ Original Height</div>
+                </div>
+                <p>
+                  To simplify any arbitrary pixel resolution into its lowest proportional integer fraction, compute the Greatest Common Divisor (GCD) using Euclid&apos;s algorithm, then divide both dimensions by the GCD.
+                </p>
+              </section>
+            </>
+          )}
         </article>
+
+        {/* Interactive Tool CTA */}
+        <div className="bg-gradient-to-r from-neutral-900 to-neutral-950 border border-neutral-800 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="space-y-1 text-center sm:text-left">
+            <h3 className="text-lg font-bold text-white">Calculate Custom Dimensions Now</h3>
+            <p className="text-xs text-neutral-400">
+              Input any width and height in pixels or inches to calculate proportional scaling in real time.
+            </p>
+          </div>
+          <Link
+            href="/"
+            className="px-6 py-2.5 rounded-full bg-white text-black font-semibold text-xs hover:bg-neutral-200 transition-all shrink-0 cursor-pointer shadow-md"
+          >
+            Open Calculator →
+          </Link>
+        </div>
 
         {/* FAQs */}
         <section className="bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-6 sm:p-8 space-y-6">
@@ -172,17 +288,18 @@ export default async function ArticlePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Internal Linking Recommendations */}
+        {/* Internal Linking */}
         <section className="bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-6 sm:p-8 space-y-4">
           <h2 className="text-xl font-bold text-white">Related Calculators & Resources</h2>
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {article.internalLinks.map((link) => (
               <Link
                 key={link}
                 href={link}
-                className="text-xs font-mono bg-neutral-950 px-4 py-2 rounded-lg border border-neutral-800 text-blue-400 hover:border-blue-500 transition-colors"
+                className="text-xs font-sans bg-neutral-950 p-3.5 rounded-xl border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-700 transition-all flex items-center justify-between gap-2"
               >
-                {link} →
+                <span>{formatLinkAnchor(link)}</span>
+                <span className="text-blue-400">→</span>
               </Link>
             ))}
           </div>
