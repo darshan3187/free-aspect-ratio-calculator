@@ -4,12 +4,120 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { RatioData, RATIOS_DATA } from '@/data/ratios';
 import { AspectRatioCanvas } from '@/components/visualizer/AspectRatioCanvas';
+import CalculatorHeader from '@/components/CalculatorHeader';
+import FooterSection from '@/components/FooterSection';
 import { generateWebApplicationSchema, generateFAQSchema, generateBreadcrumbSchema } from '@/utils/schema';
 import { SITE_URL } from '@/utils/constants';
 
 interface RatioToolTemplateProps {
   data: RatioData;
 }
+
+// Contextual mapping for high-intent comparison and guide links
+const RELATED_RESOURCES: Record<string, { comparisons: Array<{ slug: string; title: string }>; guides: Array<{ slug: string; title: string }> }> = {
+  '16-9-aspect-ratio-calculator': {
+    comparisons: [
+      { slug: '16-9-vs-4-3', title: '16:9 vs 4:3 Aspect Ratio' },
+      { slug: '16-9-vs-21-9', title: '16:9 vs 21:9 Ultrawide' },
+      { slug: '1080p-vs-1440p', title: '1080p vs 1440p (QHD)' },
+      { slug: '1440p-vs-4k', title: '1440p vs 4K (UHD)' },
+    ],
+    guides: [
+      { slug: 'what-is-aspect-ratio', title: 'What Is Aspect Ratio? Complete Guide' },
+      { slug: 'how-to-calculate-aspect-ratio', title: 'How to Calculate Aspect Ratio Manually' },
+      { slug: 'common-screen-resolutions', title: 'Common Screen Resolutions (1080p, 1440p, 4K)' },
+      { slug: 'best-aspect-ratio-for-youtube', title: 'Best Aspect Ratio for YouTube Videos & Shorts' },
+    ],
+  },
+  '4-3-aspect-ratio-calculator': {
+    comparisons: [
+      { slug: '16-9-vs-4-3', title: '16:9 vs 4:3 Comparison' },
+      { slug: 'portrait-vs-landscape', title: 'Portrait vs Landscape' },
+    ],
+    guides: [
+      { slug: 'what-is-aspect-ratio', title: 'What Is Aspect Ratio?' },
+      { slug: 'aspect-ratio-for-presentation-slides', title: 'Aspect Ratio for Presentation Slides' },
+      { slug: 'how-aspect-ratio-affects-photography', title: 'How Aspect Ratio Affects Photography' },
+      { slug: 'tv-aspect-ratios-crt-to-oled', title: 'TV Aspect Ratios: CRT to OLED' },
+    ],
+  },
+  '21-9-aspect-ratio-calculator': {
+    comparisons: [
+      { slug: '16-9-vs-21-9', title: '16:9 vs 21:9 Ultrawide Comparison' },
+    ],
+    guides: [
+      { slug: 'ultrawide-monitor-resolutions', title: 'Ultrawide Monitor Resolutions (21:9 & 32:9)' },
+      { slug: 'understanding-ultrawide-monitors', title: 'Understanding Ultrawide Monitors' },
+      { slug: 'cinematic-aspect-ratios', title: 'Cinematic Aspect Ratios Explained' },
+      { slug: 'designing-for-ultrawide-web-ux', title: 'Designing for Ultrawide Web UX' },
+    ],
+  },
+  '1-1-aspect-ratio-calculator': {
+    comparisons: [
+      { slug: 'instagram-post-vs-reel', title: 'Instagram Post vs Reel Dimensions' },
+      { slug: 'portrait-vs-landscape', title: 'Portrait vs Landscape' },
+    ],
+    guides: [
+      { slug: 'best-aspect-ratio-for-instagram', title: 'Best Aspect Ratio for Instagram (Posts, Reels)' },
+      { slug: 'social-media-image-dimensions-cheat-sheet', title: 'Social Media Image Dimensions Master Sheet' },
+      { slug: 'ui-card-grid-aspect-ratios', title: 'UI Card Grid Aspect Ratios' },
+    ],
+  },
+  '9-16-aspect-ratio-calculator': {
+    comparisons: [
+      { slug: 'instagram-post-vs-reel', title: 'Instagram Post vs Reel Dimensions' },
+      { slug: 'portrait-vs-landscape', title: 'Portrait vs Landscape Orientation' },
+    ],
+    guides: [
+      { slug: 'best-aspect-ratio-for-tiktok', title: 'TikTok Video Dimensions & Ratio Guide' },
+      { slug: 'best-aspect-ratio-for-instagram', title: 'Best Aspect Ratio for Instagram Reels & Stories' },
+      { slug: 'best-aspect-ratio-for-youtube', title: 'Best Aspect Ratio for YouTube Shorts' },
+      { slug: 'resizing-images-without-stretching', title: 'Resizing Images Without Stretching' },
+    ],
+  },
+  '3-2-aspect-ratio-calculator': {
+    comparisons: [
+      { slug: 'portrait-vs-landscape', title: 'Portrait vs Landscape' },
+      { slug: '16-9-vs-4-3', title: '16:9 vs 4:3 Comparison' },
+    ],
+    guides: [
+      { slug: 'how-aspect-ratio-affects-photography', title: 'How Aspect Ratio Affects Photography Composition' },
+      { slug: 'aspect-ratio-for-printing-photos', title: 'Best Aspect Ratio for Printing Photos (4x6, 8x10)' },
+      { slug: 'megapixels-to-print-size-chart', title: 'Megapixels to Print Size Chart' },
+      { slug: 'street-photography-aspect-ratio', title: 'Street Photography Aspect Ratios' },
+    ],
+  },
+  '5-4-aspect-ratio-calculator': {
+    comparisons: [
+      { slug: 'portrait-vs-landscape', title: 'Portrait vs Landscape' },
+    ],
+    guides: [
+      { slug: 'aspect-ratio-for-printing-photos', title: 'Best Aspect Ratio for Printing Photos' },
+      { slug: 'megapixels-to-print-size-chart', title: 'Megapixels to Print Size Chart at 300 DPI' },
+      { slug: 'best-aspect-ratio-for-instagram', title: 'Best Aspect Ratio for Instagram (4:5 Portrait)' },
+    ],
+  },
+  '4-5-aspect-ratio-calculator': {
+    comparisons: [
+      { slug: 'instagram-post-vs-reel', title: 'Instagram Post vs Reel Dimensions' },
+      { slug: 'portrait-vs-landscape', title: 'Portrait vs Landscape' },
+    ],
+    guides: [
+      { slug: 'best-aspect-ratio-for-instagram', title: 'Best Aspect Ratio for Instagram Portrait Posts' },
+      { slug: 'aspect-ratio-for-printing-photos', title: 'Best Aspect Ratio for 8x10 Printing' },
+      { slug: 'social-media-image-dimensions-cheat-sheet', title: 'Social Media Dimensions Cheat Sheet' },
+    ],
+  },
+  '16-10-aspect-ratio-laptops': {
+    comparisons: [
+      { slug: '16-9-vs-4-3', title: '16:9 vs 4:3 Comparison' },
+    ],
+    guides: [
+      { slug: '16-10-aspect-ratio-laptops', title: '16:10 Laptop Aspect Ratio Guide' },
+      { slug: 'common-screen-resolutions', title: 'Common Screen Resolutions' },
+    ],
+  },
+};
 
 export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
   const [width, setWidth] = useState<number>(data.commonResolutions[1]?.width || 1920);
@@ -41,9 +149,20 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
   ]);
 
   const otherCalculators = Object.values(RATIOS_DATA).filter((r) => r.slug !== data.slug);
+  const related = RELATED_RESOURCES[data.slug] || {
+    comparisons: [
+      { slug: '16-9-vs-4-3', title: '16:9 vs 4:3 Comparison' },
+      { slug: 'portrait-vs-landscape', title: 'Portrait vs Landscape' },
+    ],
+    guides: [
+      { slug: 'what-is-aspect-ratio', title: 'What Is Aspect Ratio?' },
+      { slug: 'how-to-calculate-aspect-ratio', title: 'How to Calculate Aspect Ratio' },
+      { slug: 'common-screen-resolutions', title: 'Common Screen Resolutions' },
+    ],
+  };
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-100 font-sans pb-16">
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
@@ -58,25 +177,28 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* Hero Section */}
-      <header className="border-b border-neutral-800 bg-neutral-900/50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center">
-          <nav className="text-xs font-mono text-neutral-400 mb-4 flex items-center justify-center gap-2">
-            <Link href="/" className="hover:text-blue-400 transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-neutral-200">{data.name}</span>
-          </nav>
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <CalculatorHeader />
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent mb-4">
-            {data.name} Calculator
-          </h1>
-          <p className="text-base sm:text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            {data.tagline}
-          </p>
-        </div>
-      </header>
+        {/* Hero Section */}
+        <header className="border-b border-neutral-800 bg-neutral-900/50 py-10 px-4 sm:px-6 lg:px-8 rounded-2xl mb-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <nav className="text-xs font-mono text-neutral-400 mb-3 flex items-center justify-center gap-2">
+              <Link href="/" className="hover:text-blue-400 transition-colors">
+                Home
+              </Link>
+              <span>/</span>
+              <span className="text-neutral-200">{data.name}</span>
+            </nav>
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent mb-3 font-sans">
+              {data.name} Calculator
+            </h1>
+            <p className="text-base sm:text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+              {data.tagline}
+            </p>
+          </div>
+        </header>
 
       {/* Main Content & Tool Grid */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-12">
@@ -294,8 +416,59 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
           </div>
         </section>
 
-        {/* Section 6: Related Calculators Grid */}
-        <section className="space-y-6">
+        {/* Section 6: Contextual Comparisons & Guides */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-neutral-800">
+          <div className="bg-neutral-900/50 border border-neutral-800 rounded-2xl p-6 space-y-4">
+            <h2 className="text-lg font-bold text-blue-400 font-sans flex items-center justify-between">
+              <span>Related Comparisons</span>
+              <Link href="/compare" className="text-xs font-mono text-neutral-400 hover:text-white underline">
+                View All →
+              </Link>
+            </h2>
+            <p className="text-xs text-neutral-400 leading-relaxed">
+              Compare {data.name} side-by-side with other popular screen and video formats:
+            </p>
+            <div className="space-y-2">
+              {related.comparisons.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/compare/${c.slug}`}
+                  className="p-3 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-blue-500 transition-all flex items-center justify-between text-xs font-medium text-neutral-200 hover:text-white"
+                >
+                  <span>{c.title}</span>
+                  <span className="text-blue-400 font-mono">Compare →</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-neutral-900/50 border border-neutral-800 rounded-2xl p-6 space-y-4">
+            <h2 className="text-lg font-bold text-emerald-400 font-sans flex items-center justify-between">
+              <span>Technical Guides</span>
+              <Link href="/guides" className="text-xs font-mono text-neutral-400 hover:text-white underline">
+                Content Hub →
+              </Link>
+            </h2>
+            <p className="text-xs text-neutral-400 leading-relaxed">
+              In-depth mathematical breakdowns and dimension rules for {data.name}:
+            </p>
+            <div className="space-y-2">
+              {related.guides.map((g) => (
+                <Link
+                  key={g.slug}
+                  href={`/guides/${g.slug}`}
+                  className="p-3 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-emerald-500 transition-all flex items-center justify-between text-xs font-medium text-neutral-200 hover:text-white"
+                >
+                  <span className="truncate pr-2">{g.title}</span>
+                  <span className="text-emerald-400 font-mono shrink-0">Read →</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: Explore Other Calculators Grid */}
+        <section className="space-y-6 pt-4 border-t border-neutral-800">
           <h2 className="text-xl font-bold text-white">Explore Other Aspect Ratio Calculators</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {otherCalculators.map((calc) => (
@@ -317,7 +490,10 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
             ))}
           </div>
         </section>
+        </div>
+
+        <FooterSection />
       </div>
-    </main>
+    </div>
   );
 }

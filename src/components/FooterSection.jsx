@@ -27,141 +27,134 @@ export default function FooterSection({ onSelectPreset = null }) {
           </div>
         </div>
 
-        {/* Col 2: SEO Quick Converters */}
-        <div className="md:col-span-4 space-y-2">
+        {/* Col 2: Core Aspect Ratio Calculators */}
+        <div className="sm:col-span-1 md:col-span-3 space-y-2">
           <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2 sm:mb-3 font-sans">
-            Popular Converters
+            Ratio Calculators
           </h3>
-          <ul className="space-y-2 font-mono text-[10px] sm:text-[11px] text-[#888888]">
+          <ul className="space-y-1.5 font-mono text-[10px] sm:text-[11px] text-[#888888]">
             <li>
-              {onSelectPreset ? (
-                <button onClick={() => onSelectPreset(1920, 1080)} className="hover:text-white transition-colors text-left flex items-start gap-1.5 active:scale-98 cursor-pointer">
-                  <span>• 16:9 Aspect Ratio Calculator (1080p, 4K)</span>
-                </button>
-              ) : (
-                <Link href="/16-9-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
-                  <span>• 16:9 Aspect Ratio Calculator (1080p, 4K)</span>
-                </Link>
-              )}
+              <Link href="/16-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 16:9 Widescreen (1080p, 4K)</span>
+              </Link>
             </li>
             <li>
-              {onSelectPreset ? (
-                <button onClick={() => onSelectPreset(1080, 1350)} className="hover:text-white transition-colors text-left flex items-start gap-1.5 active:scale-98 cursor-pointer">
-                  <span>• 4:5 Instagram Portrait (1080 × 1350)</span>
-                </button>
-              ) : (
-                <Link href="/4-5-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
-                  <span>• 4:5 Instagram Portrait (1080 × 1350)</span>
-                </Link>
-              )}
+              <Link href="/4-3-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 4:3 Standard (iPad, Photo)</span>
+              </Link>
             </li>
             <li>
-              {onSelectPreset ? (
-                <button onClick={() => onSelectPreset(1080, 1920)} className="hover:text-white transition-colors text-left flex items-start gap-1.5 active:scale-98 cursor-pointer">
-                  <span>• 9:16 TikTok & Reels Vertical Video Scaler</span>
-                </button>
-              ) : (
-                <Link href="/9-16-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
-                  <span>• 9:16 TikTok & Reels Vertical Video Scaler</span>
-                </Link>
-              )}
+              <Link href="/21-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 21:9 Ultrawide Monitor</span>
+              </Link>
             </li>
             <li>
-              {onSelectPreset ? (
-                <button onClick={() => onSelectPreset(3440, 1440)} className="hover:text-white transition-colors text-left flex items-start gap-1.5 active:scale-98 cursor-pointer">
-                  <span>• 21:9 Ultrawide Monitor Dimension Utility</span>
-                </button>
-              ) : (
-                <Link href="/21-9-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
-                  <span>• 21:9 Ultrawide Monitor Dimension Utility</span>
-                </Link>
-              )}
+              <Link href="/1-1-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 1:1 Square (Instagram Post)</span>
+              </Link>
             </li>
             <li>
-              {onSelectPreset ? (
-                <button onClick={() => onSelectPreset(1080, 1080)} className="hover:text-white transition-colors text-left flex items-start gap-1.5 active:scale-98 cursor-pointer">
-                  <span>• 1:1 Square Social Media Banner Generator</span>
-                </button>
-              ) : (
-                <Link href="/1-1-aspect-ratio-calculator" className="hover:text-white transition-colors text-left flex items-start gap-1.5 cursor-pointer">
-                  <span>• 1:1 Square Social Media Banner Generator</span>
-                </Link>
-              )}
+              <Link href="/9-16-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 9:16 Vertical (TikTok, Reels)</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/3-2-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 3:2 Photography (35mm, 4x6)</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/5-4-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 5:4 Photo Print (8x10 Frame)</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/4-5-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 4:5 Instagram Portrait</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/16-10-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 16:10 Laptop (MacBook)</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/2-39-1-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 2.39:1 Cinema Scope</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/32-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 32:9 Super Ultrawide</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/golden-ratio-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• Golden Ratio (1.618:1)</span>
+              </Link>
             </li>
           </ul>
         </div>
 
-        {/* Col 3: Dedicated MPA Navigation Links */}
-        <div className="md:col-span-3 space-y-2">
+        {/* Col 3: Side-by-Side Comparisons */}
+        <div className="sm:col-span-1 md:col-span-2 space-y-2">
           <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2 sm:mb-3 font-sans">
-            Pages & Tools
+            Comparisons
           </h3>
-          <ul className="space-y-2.5 text-xs font-sans">
+          <ul className="space-y-1.5 font-mono text-[10px] sm:text-[11px] text-[#888888]">
             <li>
-              <Link href="/guides" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1.5 transition-colors">
-                <span>Content Hub & Guides</span>
+              <Link href="/compare" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1 font-sans mb-1 transition-colors">
+                <span>All Comparisons Hub →</span>
               </Link>
             </li>
             <li>
-              <Link href="/compare" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1.5 transition-colors">
-                <span>Visual Comparison Hub</span>
+              <Link href="/compare/16-9-vs-4-3" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 16:9 vs 4:3</span>
               </Link>
             </li>
             <li>
-              <Link href="/16-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 16:9 Aspect Ratio Calculator</span>
+              <Link href="/compare/16-9-vs-21-9" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 16:9 vs 21:9</span>
               </Link>
             </li>
             <li>
-              <Link href="/4-3-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 4:3 Aspect Ratio Calculator</span>
+              <Link href="/compare/1080p-vs-1440p" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 1080p vs 1440p</span>
               </Link>
             </li>
             <li>
-              <Link href="/4-5-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 4:5 Instagram Portrait Calculator</span>
+              <Link href="/compare/1440p-vs-4k" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• 1440p vs 4K</span>
               </Link>
             </li>
             <li>
-              <Link href="/16-10-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 16:10 MacBook Calculator</span>
+              <Link href="/compare/portrait-vs-landscape" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• Portrait vs Landscape</span>
               </Link>
             </li>
             <li>
-              <Link href="/21-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 21:9 Ultrawide Calculator</span>
+              <Link href="/compare/instagram-post-vs-reel" className="hover:text-white transition-colors flex items-center gap-1">
+                <span>• Post vs Reel</span>
               </Link>
             </li>
-            <li>
-              <Link href="/2-39-1-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 2.39:1 Cinema Scope Calculator</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/32-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 32:9 Super Ultrawide Calculator</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/golden-ratio-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• Golden Ratio (1.618:1) Calculator</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/compare/16-9-vs-4-3" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 16:9 vs 4:3 Comparison</span>
-              </Link>
-            </li>
+          </ul>
+        </div>
 
+        {/* Col 4: Guides & Company */}
+        <div className="sm:col-span-1 md:col-span-2 space-y-2">
+          <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2 sm:mb-3 font-sans">
+            Guides & Legal
+          </h3>
+          <ul className="space-y-2 text-xs font-sans text-[#888888]">
             <li>
-              <Link href="/compare/1080p-vs-1440p" className="hover:text-white transition-colors flex items-center gap-1.5">
-                <span>• 1080p vs 1440p Comparison</span>
+              <Link href="/guides" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1 transition-colors">
+                <span>Knowledge Hub (50+ Guides)</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/about-us"
-                className="text-white hover:text-neutral-300 underline font-medium flex items-center gap-1.5 transition-colors"
+                className="hover:text-white flex items-center gap-1.5 transition-colors"
               >
                 <Info className="w-3.5 h-3.5 text-neutral-400" />
                 <span>About Us</span>
@@ -169,8 +162,17 @@ export default function FooterSection({ onSelectPreset = null }) {
             </li>
             <li>
               <Link
+                href="/contact-us"
+                className="hover:text-white flex items-center gap-1.5 transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-neutral-400" />
+                <span>Contact Us</span>
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/privacy-policy"
-                className="text-white hover:text-neutral-300 underline font-medium flex items-center gap-1.5 transition-colors"
+                className="hover:text-white flex items-center gap-1.5 transition-colors"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-neutral-400" />
                 <span>Privacy Policy</span>
@@ -179,19 +181,10 @@ export default function FooterSection({ onSelectPreset = null }) {
             <li>
               <Link
                 href="/terms-and-conditions"
-                className="text-white hover:text-neutral-300 underline font-medium flex items-center gap-1.5 transition-colors"
+                className="hover:text-white flex items-center gap-1.5 transition-colors"
               >
                 <FileText className="w-3.5 h-3.5 text-neutral-400" />
                 <span>Terms of Service</span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact-us"
-                className="text-white hover:text-neutral-300 underline font-medium flex items-center gap-1.5 transition-colors"
-              >
-                <Mail className="w-3.5 h-3.5 text-neutral-400" />
-                <span>Contact Us</span>
               </Link>
             </li>
           </ul>

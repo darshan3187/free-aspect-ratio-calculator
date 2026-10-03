@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import RatioCraftApp from "@/components/RatioCraftApp";
+import CoreToolsHub from "@/components/CoreToolsHub";
 import SeoArticleSection from "@/components/SeoArticleSection";
 import FaqSection from "@/components/FaqSection";
 import FooterSection from "@/components/FooterSection";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches. Features real-time visual canvas, social media presets, and 100% browser privacy.",
   alternates: {
-    canonical: `${SITE_URL}/`,
+    canonical: SITE_URL,
   },
 };
 
@@ -147,8 +148,9 @@ export default function HomePage() {
         {/* Interactive App Container */}
         <RatioCraftApp />
 
-        {/* Server Rendered Static Articles for Instant SEO */}
+        {/* Server Rendered Static Articles & Core Tools for Instant SEO */}
         <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+          <CoreToolsHub />
           <SeoArticleSection />
           <FaqSection />
           <FooterSection />

@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { ARTICLES_DATA } from '@/data/articles';
+import CalculatorHeader from '@/components/CalculatorHeader';
+import FooterSection from '@/components/FooterSection';
 import { SITE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
@@ -42,35 +44,39 @@ export default function GuidesHubPage() {
   };
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-100 font-sans pb-16">
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {/* Header */}
-      <header className="border-b border-neutral-800 bg-neutral-900/50 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center space-y-4">
-          <nav className="text-xs font-mono text-neutral-400 mb-2 flex items-center justify-center gap-2">
-            <Link href="/" className="hover:text-blue-400 transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-neutral-200">Guides Knowledge Hub</span>
-          </nav>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent">
-            Aspect Ratio & Resolution Content Hub
-          </h1>
-          <p className="text-base sm:text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Explore our comprehensive technical guides covering display resolutions, social media sizing, cinematic formats, photography composition, UI design, and print standards.
-          </p>
-          <div className="flex items-center justify-center gap-4 text-xs font-mono text-neutral-400">
-            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">50 In-Depth Articles</span>
-            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">10 Content Categories</span>
-            <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">Regularly Updated</span>
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <CalculatorHeader />
+
+        {/* Header */}
+        <header className="border-b border-neutral-800 bg-neutral-900/50 py-12 px-4 sm:px-6 lg:px-8 rounded-2xl mb-8">
+          <div className="max-w-4xl mx-auto text-center space-y-4">
+            <nav className="text-xs font-mono text-neutral-400 mb-2 flex items-center justify-center gap-2">
+              <Link href="/" className="hover:text-blue-400 transition-colors">
+                Home
+              </Link>
+              <span>/</span>
+              <span className="text-neutral-200">Guides Knowledge Hub</span>
+            </nav>
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent font-sans">
+              Aspect Ratio & Resolution Content Hub
+            </h1>
+            <p className="text-base sm:text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+              Explore our comprehensive technical guides covering display resolutions, social media sizing, cinematic formats, photography composition, UI design, and print standards.
+            </p>
+            <div className="flex items-center justify-center gap-4 text-xs font-mono text-neutral-400">
+              <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">{ARTICLES_DATA.length} In-Depth Articles</span>
+              <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">{Object.keys(categoriesMap).length} Content Categories</span>
+              <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">Regularly Updated</span>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
       {/* Categories Grid */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-16">
@@ -129,7 +135,10 @@ export default function GuidesHubPage() {
             </div>
           </section>
         ))}
+        </div>
+
+        <FooterSection />
       </div>
-    </main>
+    </div>
   );
 }

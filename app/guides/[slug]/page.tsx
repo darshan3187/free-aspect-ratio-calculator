@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ARTICLES_DATA } from '@/data/articles';
 import { DETAILED_GUIDES } from '@/data/guideContent';
+import CalculatorHeader from '@/components/CalculatorHeader';
+import FooterSection from '@/components/FooterSection';
 import { generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema } from '@/utils/schema';
 import { SITE_URL } from '@/utils/constants';
 
@@ -77,6 +79,10 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const customContent = DETAILED_GUIDES[slug];
 
+  const categorySiblings = ARTICLES_DATA
+    .filter((a) => a.category === article.category && a.slug !== article.slug)
+    .slice(0, 4);
+
   const articleSchema = generateArticleSchema({
     title: article.title,
     description: article.metaDescription,
@@ -91,7 +97,7 @@ export default async function ArticlePage({ params }: PageProps) {
   ]);
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-100 font-sans pb-16">
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
@@ -106,39 +112,42 @@ export default async function ArticlePage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* Header */}
-      <header className="border-b border-neutral-800 bg-neutral-900/50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto space-y-4">
-          <nav className="text-xs font-mono text-neutral-400 flex items-center gap-2">
-            <Link href="/" className="hover:text-blue-400 transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <Link href="/guides" className="hover:text-blue-400 transition-colors">
-              Guides
-            </Link>
-            <span>/</span>
-            <span className="text-neutral-200 truncate">{article.title}</span>
-          </nav>
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <CalculatorHeader />
 
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-mono px-2.5 py-1 rounded bg-blue-950 text-blue-400 border border-blue-800">
-              {article.category}
-            </span>
-            <span className="text-xs font-mono text-neutral-400">
-              {article.readTimeMinutes} min read • Verified Technical Reference
-            </span>
+        {/* Header */}
+        <header className="border-b border-neutral-800 bg-neutral-900/50 py-10 px-4 sm:px-6 lg:px-8 rounded-2xl mb-8">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <nav className="text-xs font-mono text-neutral-400 flex items-center gap-2">
+              <Link href="/" className="hover:text-blue-400 transition-colors">
+                Home
+              </Link>
+              <span>/</span>
+              <Link href="/guides" className="hover:text-blue-400 transition-colors">
+                Guides
+              </Link>
+              <span>/</span>
+              <span className="text-neutral-200 truncate">{article.title}</span>
+            </nav>
+
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-mono px-2.5 py-1 rounded bg-blue-950 text-blue-400 border border-blue-800">
+                {article.category}
+              </span>
+              <span className="text-xs font-mono text-neutral-400">
+                {article.readTimeMinutes} min read • Verified Technical Reference
+              </span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight font-sans">
+              {article.title}
+            </h1>
+
+            <p className="text-base sm:text-lg text-neutral-400 leading-relaxed">
+              {article.metaDescription}
+            </p>
           </div>
-
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            {article.title}
-          </h1>
-
-          <p className="text-base sm:text-lg text-neutral-400 leading-relaxed">
-            {article.metaDescription}
-          </p>
-        </div>
-      </header>
+        </header>
 
       {/* Main Content Area */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-10">
@@ -304,7 +313,39 @@ export default async function ArticlePage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        {/* More in this Category */}
+        {categorySiblings.length > 0 && (
+          <section className="bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-6 sm:p-8 space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-white">More Guides in {article.category}</h2>
+              <Link href="/guides" className="text-xs font-mono text-blue-400 hover:underline">
+                View All Guides →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {categorySiblings.map((sibling) => (
+                <Link
+                  key={sibling.slug}
+                  href={`/guides/${sibling.slug}`}
+                  className="text-xs font-sans bg-neutral-950 p-3.5 rounded-xl border border-neutral-800 text-neutral-300 hover:text-white hover:border-blue-500 transition-all flex flex-col justify-between gap-2 group"
+                >
+                  <span className="font-semibold text-white group-hover:text-blue-400 transition-colors">
+                    {sibling.title}
+                  </span>
+                  <div className="flex items-center justify-between text-[11px] text-neutral-400 font-mono pt-1 border-t border-neutral-900">
+                    <span>{sibling.readTimeMinutes} min read</span>
+                    <span className="text-blue-400">Read Guide →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+        </div>
+
+        <FooterSection />
       </div>
-    </main>
+    </div>
   );
 }
