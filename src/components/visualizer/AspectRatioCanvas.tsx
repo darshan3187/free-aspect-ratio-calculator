@@ -69,7 +69,7 @@ export function AspectRatioCanvas({
             stroke="#0070f3"
             strokeWidth="2"
             rx="4"
-            className="transition-all duration-300 ease-out"
+            className="transition-colors duration-200"
           />
 
           {/* Crosshairs & Center Label */}

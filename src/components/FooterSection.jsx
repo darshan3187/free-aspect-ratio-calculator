@@ -34,63 +34,63 @@ export default function FooterSection({ onSelectPreset = null }) {
           </h3>
           <ul className="space-y-1.5 font-mono text-[10px] sm:text-[11px] text-[#888888]">
             <li>
-              <Link href="/16-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 16:9 Widescreen (1080p, 4K)</span>
+              <Link href="/16-9-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 16:9 Widescreen (1080p, 4K)
               </Link>
             </li>
             <li>
-              <Link href="/4-3-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 4:3 Standard (iPad, Photo)</span>
+              <Link href="/4-3-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 4:3 Standard (iPad, Photo)
               </Link>
             </li>
             <li>
-              <Link href="/21-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 21:9 Ultrawide Monitor</span>
+              <Link href="/21-9-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 21:9 Ultrawide Monitor
               </Link>
             </li>
             <li>
-              <Link href="/1-1-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 1:1 Square (Instagram Post)</span>
+              <Link href="/1-1-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 1:1 Square (Instagram Post)
               </Link>
             </li>
             <li>
-              <Link href="/9-16-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 9:16 Vertical (TikTok, Reels)</span>
+              <Link href="/9-16-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 9:16 Vertical (TikTok, Reels)
               </Link>
             </li>
             <li>
-              <Link href="/3-2-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 3:2 Photography (35mm, 4x6)</span>
+              <Link href="/3-2-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 3:2 Photography (35mm, 4x6)
               </Link>
             </li>
             <li>
-              <Link href="/5-4-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 5:4 Photo Print (8x10 Frame)</span>
+              <Link href="/5-4-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 5:4 Photo Print (8x10 Frame)
               </Link>
             </li>
             <li>
-              <Link href="/4-5-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 4:5 Instagram Portrait</span>
+              <Link href="/4-5-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 4:5 Instagram Portrait
               </Link>
             </li>
             <li>
-              <Link href="/16-10-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 16:10 Laptop (MacBook)</span>
+              <Link href="/16-10-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 16:10 Laptop (MacBook)
               </Link>
             </li>
             <li>
-              <Link href="/2-39-1-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 2.39:1 Cinema Scope</span>
+              <Link href="/2-39-1-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 2.39:1 Cinema Scope
               </Link>
             </li>
             <li>
-              <Link href="/32-9-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 32:9 Super Ultrawide</span>
+              <Link href="/32-9-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 32:9 Super Ultrawide
               </Link>
             </li>
             <li>
-              <Link href="/golden-ratio-aspect-ratio-calculator" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• Golden Ratio (1.618:1)</span>
+              <Link href="/golden-ratio-aspect-ratio-calculator" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • Golden Ratio (1.618:1)
               </Link>
             </li>
           </ul>
@@ -103,38 +103,38 @@ export default function FooterSection({ onSelectPreset = null }) {
           </h3>
           <ul className="space-y-1.5 font-mono text-[10px] sm:text-[11px] text-[#888888]">
             <li>
-              <Link href="/compare" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1 font-sans mb-1 transition-colors">
-                <span>All Comparisons Hub →</span>
+              <Link href="/compare" prefetch={false} className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1 font-sans mb-1 transition-colors">
+                All Comparisons Hub →
               </Link>
             </li>
             <li>
-              <Link href="/compare/16-9-vs-4-3" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 16:9 vs 4:3</span>
+              <Link href="/compare/16-9-vs-4-3" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 16:9 vs 4:3
               </Link>
             </li>
             <li>
-              <Link href="/compare/16-9-vs-21-9" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 16:9 vs 21:9</span>
+              <Link href="/compare/16-9-vs-21-9" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 16:9 vs 21:9
               </Link>
             </li>
             <li>
-              <Link href="/compare/1080p-vs-1440p" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 1080p vs 1440p</span>
+              <Link href="/compare/1080p-vs-1440p" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 1080p vs 1440p
               </Link>
             </li>
             <li>
-              <Link href="/compare/1440p-vs-4k" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• 1440p vs 4K</span>
+              <Link href="/compare/1440p-vs-4k" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • 1440p vs 4K
               </Link>
             </li>
             <li>
-              <Link href="/compare/portrait-vs-landscape" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• Portrait vs Landscape</span>
+              <Link href="/compare/portrait-vs-landscape" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • Portrait vs Landscape
               </Link>
             </li>
             <li>
-              <Link href="/compare/instagram-post-vs-reel" className="hover:text-white transition-colors flex items-center gap-1">
-                <span>• Post vs Reel</span>
+              <Link href="/compare/instagram-post-vs-reel" prefetch={false} className="hover:text-white transition-colors flex items-center gap-1">
+                • Post vs Reel
               </Link>
             </li>
           </ul>
@@ -147,13 +147,14 @@ export default function FooterSection({ onSelectPreset = null }) {
           </h3>
           <ul className="space-y-2 text-xs font-sans text-[#888888]">
             <li>
-              <Link href="/guides" className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1 transition-colors">
+              <Link href="/guides" prefetch={false} className="text-white hover:text-blue-400 font-semibold underline flex items-center gap-1 transition-colors">
                 <span>Knowledge Hub (50+ Guides)</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/about-us"
+                prefetch={false}
                 className="hover:text-white flex items-center gap-1.5 transition-colors"
               >
                 <Info className="w-3.5 h-3.5 text-neutral-400" />
@@ -163,6 +164,7 @@ export default function FooterSection({ onSelectPreset = null }) {
             <li>
               <Link
                 href="/contact-us"
+                prefetch={false}
                 className="hover:text-white flex items-center gap-1.5 transition-colors"
               >
                 <Mail className="w-3.5 h-3.5 text-neutral-400" />
@@ -172,6 +174,7 @@ export default function FooterSection({ onSelectPreset = null }) {
             <li>
               <Link
                 href="/privacy-policy"
+                prefetch={false}
                 className="hover:text-white flex items-center gap-1.5 transition-colors"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-neutral-400" />
@@ -181,6 +184,7 @@ export default function FooterSection({ onSelectPreset = null }) {
             <li>
               <Link
                 href="/terms-and-conditions"
+                prefetch={false}
                 className="hover:text-white flex items-center gap-1.5 transition-colors"
               >
                 <FileText className="w-3.5 h-3.5 text-neutral-400" />

@@ -4,8 +4,8 @@
   "description": "Calculate aspect ratios instantly with real-time visual canvas resizer, social media presets, image drop inspector, and CSS code generator.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0b0e",
-  "theme_color": "#0a0b0e",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "orientation": "any",
   "icons": [
     {

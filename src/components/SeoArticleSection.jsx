@@ -162,13 +162,13 @@ export default function SeoArticleSection() {
       <div className="pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3 text-xs">
         <span className="text-neutral-400 font-sans">Explore dedicated format calculators:</span>
         <div className="flex flex-wrap gap-2">
-          <Link href="/16-9-aspect-ratio-calculator" className="text-blue-400 hover:underline">16:9 Calculator</Link>
+          <Link href="/16-9-aspect-ratio-calculator" prefetch={false} className="text-blue-400 hover:underline">16:9 Calculator</Link>
           <span className="text-neutral-600">•</span>
-          <Link href="/4-5-aspect-ratio-calculator" className="text-blue-400 hover:underline">4:5 Calculator</Link>
+          <Link href="/4-5-aspect-ratio-calculator" prefetch={false} className="text-blue-400 hover:underline">4:5 Calculator</Link>
           <span className="text-neutral-600">•</span>
-          <Link href="/9-16-aspect-ratio-calculator" className="text-blue-400 hover:underline">9:16 Calculator</Link>
+          <Link href="/9-16-aspect-ratio-calculator" prefetch={false} className="text-blue-400 hover:underline">9:16 Calculator</Link>
           <span className="text-neutral-600">•</span>
-          <Link href="/compare" className="text-blue-400 hover:underline">Comparison Hub</Link>
+          <Link href="/compare" prefetch={false} className="text-blue-400 hover:underline">Comparison Hub</Link>
         </div>
       </div>
     </article>

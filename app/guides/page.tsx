@@ -125,6 +125,7 @@ export default function GuidesHubPage() {
                     </span>
                     <Link
                       href={`/guides/${article.slug}`}
+                      prefetch={false}
                       className="text-xs font-mono font-semibold text-blue-400 group-hover:translate-x-1 transition-transform flex items-center gap-1"
                     >
                       Read Guide →

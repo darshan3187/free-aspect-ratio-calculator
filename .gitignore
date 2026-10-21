@@ -44,3 +44,5 @@ Thumbs.db
 .cache/
 .turbo/
 electrical-ellipse/
+public/GTmetrix-report-Dekstop.pdf
+public/GTmetrix-report-Mobile.pdf

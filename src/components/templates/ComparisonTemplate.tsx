@@ -76,11 +76,11 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
         <header className="border-b border-neutral-800 bg-neutral-900/50 py-10 px-4 sm:px-6 lg:px-8 rounded-2xl mb-8">
           <div className="max-w-4xl mx-auto text-center">
             <nav className="text-xs font-mono text-neutral-400 mb-3 flex items-center justify-center gap-2">
-              <Link href="/" className="hover:text-blue-400 transition-colors">
+              <Link href="/" prefetch={false} className="hover:text-blue-400 transition-colors">
                 Home
               </Link>
               <span>/</span>
-              <Link href="/compare" className="text-neutral-400 hover:text-blue-400 transition-colors">
+              <Link href="/compare" prefetch={false} className="text-neutral-400 hover:text-blue-400 transition-colors">
                 Compare
               </Link>
               <span>/</span>
@@ -245,6 +245,7 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
               <Link
                 key={t.href}
                 href={t.href}
+                prefetch={false}
                 className="p-3.5 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-blue-500 transition-all flex items-center justify-between text-xs font-semibold text-white group"
               >
                 <span>{t.name}</span>
@@ -262,6 +263,7 @@ export function ComparisonTemplate({ data }: ComparisonTemplateProps) {
               <Link
                 key={comp.slug}
                 href={`/compare/${comp.slug}`}
+                prefetch={false}
                 className="bg-neutral-900 border border-neutral-800 rounded-xl p-4 hover:border-blue-500 transition-all group"
               >
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-900 block w-fit mb-2">

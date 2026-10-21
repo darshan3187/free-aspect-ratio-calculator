@@ -235,7 +235,7 @@ export default function VisualCanvas({
         <div
           onMouseDown={handleImagePanMouseDown}
           onTouchStart={handleImagePanTouchStart}
-          className={`relative rounded-lg border transition-all overflow-hidden flex flex-col items-center justify-center ${
+          className={`relative rounded-lg border transition-[border-color,box-shadow] duration-150 overflow-hidden flex flex-col items-center justify-center ${
             uploadedImage ? 'cursor-grab active:cursor-grabbing' : ''
           } ${
             isResizing || isPanningImage

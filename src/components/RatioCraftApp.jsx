@@ -1,63 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import CalculatorHeader from './CalculatorHeader';
 import CalculatorHub from './CalculatorHub';
+import QuickStartGuide from './QuickStartGuide';
+import VisualCanvas from './VisualCanvas';
+import ImageInspector from './ImageInspector';
+import PresetsGrid from './PresetsGrid';
+import ScaleTable from './ScaleTable';
+import CodeExporter from './CodeExporter';
 import { calculateTargetDimension } from '@/utils/aspectRatioMath';
-
-// Skeleton loaders to reserve layout space and eliminate Cumulative Layout Shift (CLS)
-const VisualCanvasSkeleton = () => (
-  <div className="studio-card p-4 sm:p-5 mb-6 min-h-[440px] animate-pulse bg-[#0a0a0a] border border-white/[0.08] rounded-xl flex items-center justify-center">
-    <div className="w-10 h-10 rounded-full border-2 border-white/10 border-t-white animate-spin" />
-  </div>
-);
-
-const ImageInspectorSkeleton = () => (
-  <div className="studio-card p-4 sm:p-5 mb-5 min-h-[150px] animate-pulse bg-[#0a0a0a] border border-white/[0.08] rounded-xl" />
-);
-
-const PresetsGridSkeleton = () => (
-  <div className="studio-card p-4 sm:p-6 mb-6 min-h-[260px] animate-pulse bg-[#0a0a0a] border border-white/[0.08] rounded-xl" />
-);
-
-const ScaleTableSkeleton = () => (
-  <div className="studio-card p-4 sm:p-6 mb-6 min-h-[280px] animate-pulse bg-[#0a0a0a] border border-white/[0.08] rounded-xl" />
-);
-
-const CodeExporterSkeleton = () => (
-  <div className="studio-card p-4 sm:p-6 mb-6 min-h-[200px] animate-pulse bg-[#0a0a0a] border border-white/[0.08] rounded-xl" />
-);
-
-const QuickStartGuideSkeleton = () => (
-  <div className="studio-card p-4 mb-6 min-h-[100px] animate-pulse bg-[#0a0a0a] border border-white/[0.08] rounded-xl" />
-);
-
-// Dynamic lazy imports with loading fallbacks for maximum performance and 0 TBT
-const QuickStartGuide = dynamic(() => import('./QuickStartGuide'), {
-  loading: QuickStartGuideSkeleton,
-  ssr: false,
-});
-const VisualCanvas = dynamic(() => import('./VisualCanvas'), {
-  loading: VisualCanvasSkeleton,
-  ssr: false,
-});
-const ImageInspector = dynamic(() => import('./ImageInspector'), {
-  loading: ImageInspectorSkeleton,
-  ssr: false,
-});
-const PresetsGrid = dynamic(() => import('./PresetsGrid'), {
-  loading: PresetsGridSkeleton,
-  ssr: false,
-});
-const ScaleTable = dynamic(() => import('./ScaleTable'), {
-  loading: ScaleTableSkeleton,
-  ssr: false,
-});
-const CodeExporter = dynamic(() => import('./CodeExporter'), {
-  loading: CodeExporterSkeleton,
-  ssr: false,
-});
 
 export default function RatioCraftApp() {
   const [w1, setW1] = useState('1920');

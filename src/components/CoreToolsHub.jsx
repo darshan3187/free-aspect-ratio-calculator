@@ -89,9 +89,10 @@ export default function CoreToolsHub() {
                 </span>
                 <Link
                   href={`/${tool.slug}`}
+                  prefetch={false}
                   className="text-xs font-semibold text-blue-400 group-hover:translate-x-1 transition-transform flex items-center gap-1 font-sans"
                 >
-                  <span>Open Tool</span>
+                  Open Tool
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -114,9 +115,10 @@ export default function CoreToolsHub() {
           </div>
           <Link
             href="/compare"
+            prefetch={false}
             className="text-xs font-mono text-blue-400 hover:underline flex items-center gap-1 shrink-0"
           >
-            <span>View All Comparisons Hub</span>
+            View All Comparisons Hub
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -149,9 +151,10 @@ export default function CoreToolsHub() {
                 </span>
                 <Link
                   href={`/compare/${comp.slug}`}
+                  prefetch={false}
                   className="text-xs font-semibold text-purple-400 group-hover:translate-x-1 transition-transform flex items-center gap-1 font-sans"
                 >
-                  <span>Compare</span>
+                  Compare
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -174,9 +177,10 @@ export default function CoreToolsHub() {
           </div>
           <Link
             href="/guides"
+            prefetch={false}
             className="text-xs font-mono text-blue-400 hover:underline flex items-center gap-1 shrink-0"
           >
-            <span>Explore All Guides Hub</span>
+            Explore All Guides Hub
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -199,9 +203,10 @@ export default function CoreToolsHub() {
               <div className="mt-4 pt-3 border-t border-white/[0.05] flex items-center justify-end">
                 <Link
                   href={`/guides/${guide.slug}`}
+                  prefetch={false}
                   className="text-xs font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform flex items-center gap-1 font-sans"
                 >
-                  <span>Read Guide</span>
+                  Read Guide
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

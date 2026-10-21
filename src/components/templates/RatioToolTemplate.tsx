@@ -184,7 +184,7 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
         <header className="border-b border-neutral-800 bg-neutral-900/50 py-10 px-4 sm:px-6 lg:px-8 rounded-2xl mb-8">
           <div className="max-w-4xl mx-auto text-center">
             <nav className="text-xs font-mono text-neutral-400 mb-3 flex items-center justify-center gap-2">
-              <Link href="/" className="hover:text-blue-400 transition-colors">
+              <Link href="/" prefetch={false} className="hover:text-blue-400 transition-colors">
                 Home
               </Link>
               <span>/</span>
@@ -421,7 +421,7 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
           <div className="bg-neutral-900/50 border border-neutral-800 rounded-2xl p-6 space-y-4">
             <h2 className="text-lg font-bold text-blue-400 font-sans flex items-center justify-between">
               <span>Related Comparisons</span>
-              <Link href="/compare" className="text-xs font-mono text-neutral-400 hover:text-white underline">
+              <Link href="/compare" prefetch={false} className="text-xs font-mono text-neutral-400 hover:text-white underline">
                 View All →
               </Link>
             </h2>
@@ -433,6 +433,7 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
                 <Link
                   key={c.slug}
                   href={`/compare/${c.slug}`}
+                  prefetch={false}
                   className="p-3 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-blue-500 transition-all flex items-center justify-between text-xs font-medium text-neutral-200 hover:text-white"
                 >
                   <span>{c.title}</span>
@@ -445,7 +446,7 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
           <div className="bg-neutral-900/50 border border-neutral-800 rounded-2xl p-6 space-y-4">
             <h2 className="text-lg font-bold text-emerald-400 font-sans flex items-center justify-between">
               <span>Technical Guides</span>
-              <Link href="/guides" className="text-xs font-mono text-neutral-400 hover:text-white underline">
+              <Link href="/guides" prefetch={false} className="text-xs font-mono text-neutral-400 hover:text-white underline">
                 Content Hub →
               </Link>
             </h2>
@@ -457,6 +458,7 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
                 <Link
                   key={g.slug}
                   href={`/guides/${g.slug}`}
+                  prefetch={false}
                   className="p-3 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-emerald-500 transition-all flex items-center justify-between text-xs font-medium text-neutral-200 hover:text-white"
                 >
                   <span className="truncate pr-2">{g.title}</span>
@@ -475,6 +477,7 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
               <Link
                 key={calc.slug}
                 href={`/${calc.slug}`}
+                prefetch={false}
                 className="bg-neutral-900 border border-neutral-800 rounded-xl p-4 hover:border-blue-500 transition-all group"
               >
                 <div className="flex items-center justify-between mb-2">

@@ -28,6 +28,7 @@ export default function NotFound() {
         <div className="pt-2">
           <Link
             href="/"
+            prefetch={false}
             className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-white text-black hover:bg-neutral-200 font-semibold text-xs font-sans transition-all active:scale-95 cursor-pointer shadow-md"
           >
             Return to Calculator Home
@@ -41,24 +42,28 @@ export default function NotFound() {
           <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-xs">
             <Link
               href="/16-9-aspect-ratio-calculator"
+              prefetch={false}
               className="px-3 py-1 rounded-full bg-[#000000] hover:bg-[#171717] text-neutral-300 hover:text-white border border-white/10 transition-all"
             >
               16:9 Calculator
             </Link>
             <Link
               href="/4-5-aspect-ratio-calculator"
+              prefetch={false}
               className="px-3 py-1 rounded-full bg-[#000000] hover:bg-[#171717] text-neutral-300 hover:text-white border border-white/10 transition-all"
             >
               4:5 Instagram Calculator
             </Link>
             <Link
               href="/guides"
+              prefetch={false}
               className="px-3 py-1 rounded-full bg-[#000000] hover:bg-[#171717] text-neutral-300 hover:text-white border border-white/10 transition-all"
             >
               Knowledge Guides
             </Link>
             <Link
               href="/compare"
+              prefetch={false}
               className="px-3 py-1 rounded-full bg-[#000000] hover:bg-[#171717] text-neutral-300 hover:text-white border border-white/10 transition-all"
             >
               Comparisons
