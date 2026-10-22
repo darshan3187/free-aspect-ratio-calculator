@@ -1,32 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import CalculatorHeader from './CalculatorHeader';
 import CalculatorHub from './CalculatorHub';
 import QuickStartGuide from './QuickStartGuide';
 import VisualCanvas from './VisualCanvas';
+import ImageInspector from './ImageInspector';
+import PresetsGrid from './PresetsGrid';
+import ScaleTable from './ScaleTable';
+import CodeExporter from './CodeExporter';
 import { calculateTargetDimension } from '@/utils/aspectRatioMath';
-
-const ImageInspector = dynamic(() => import('./ImageInspector'), {
-  loading: () => <div className="studio-card p-4 sm:p-6 mb-6 h-[178px] bg-white/[0.02] rounded-xl border border-white/[0.08]" />,
-  ssr: false,
-});
-
-const PresetsGrid = dynamic(() => import('./PresetsGrid'), {
-  loading: () => <div className="studio-card p-4 sm:p-6 mb-6 h-[340px] bg-white/[0.02] rounded-xl border border-white/[0.08]" />,
-  ssr: false,
-});
-
-const ScaleTable = dynamic(() => import('./ScaleTable'), {
-  loading: () => <div className="studio-card p-4 sm:p-6 mb-6 h-[260px] bg-white/[0.02] rounded-xl border border-white/[0.08]" />,
-  ssr: false,
-});
-
-const CodeExporter = dynamic(() => import('./CodeExporter'), {
-  loading: () => <div className="studio-card p-4 sm:p-6 mb-6 h-[220px] bg-white/[0.02] rounded-xl border border-white/[0.08]" />,
-  ssr: false,
-});
 
 export default function RatioCraftApp() {
   const [w1, setW1] = useState('1920');
