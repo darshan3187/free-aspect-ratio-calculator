@@ -44,7 +44,7 @@ body {
   position: absolute;
   top: -160px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
   width: 100%;
   max-width: 1000px;
   height: 400px;
@@ -52,6 +52,7 @@ body {
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
+  contain: strict;
 }
 
 .studio-card {

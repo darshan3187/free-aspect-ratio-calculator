@@ -17,9 +17,6 @@ export default function VisualCanvas({
   const [compareTarget, setCompareTarget] = useState({ name: '1:1 Square', ratioW: 1, ratioH: 1 });
   const [isResizing, setIsResizing] = useState(false);
   const [isPanningImage, setIsPanningImage] = useState(false);
-  const [containerWidth, setContainerWidth] = useState(460);
-
-  const containerRef = useRef(null);
   const resizeStartRef = useRef({ x: 0, y: 0, initialW2: 0, initialH2: 0 });
   const panStartRef = useRef({ y: 0, initialFocalY: 50 });
 
@@ -29,30 +26,7 @@ export default function VisualCanvas({
   const numH2 = parseFloat(h2) || 225;
 
   const currentRatio = simplifyRatio(numW1, numH1);
-  const aspectRatioVal = numW1 / numH1;
-
-  useEffect(() => {
-    const measureWidth = () => {
-      if (containerRef.current) {
-        const availableW = containerRef.current.clientWidth - 28;
-        setContainerWidth(Math.max(180, Math.min(460, availableW)));
-      }
-    };
-    measureWidth();
-    window.addEventListener('resize', measureWidth, { passive: true });
-    return () => window.removeEventListener('resize', measureWidth);
-  }, []);
-
-  const maxCanvasW = containerWidth;
-  const maxCanvasH = Math.min(280, Math.round(containerWidth * 0.7));
-
-  let boxWidth = maxCanvasW;
-  let boxHeight = boxWidth / aspectRatioVal;
-
-  if (boxHeight > maxCanvasH) {
-    boxHeight = maxCanvasH;
-    boxWidth = boxHeight * aspectRatioVal;
-  }
+  const aspectRatioVal = Math.max(0.01, numW1 / numH1);
 
   const startResize = (clientX, clientY) => {
     setIsResizing(true);
@@ -228,8 +202,7 @@ export default function VisualCanvas({
 
       {/* Main Viewport Stage */}
       <div
-        ref={containerRef}
-        className="w-full min-h-[260px] sm:min-h-[310px] bg-[#000000] rounded-xl border border-white/[0.08] flex items-center justify-center p-3 sm:p-6 relative overflow-hidden studio-grid-pattern touch-none"
+        className="w-full h-[260px] sm:h-[300px] [--canvas-max-h:195px] sm:[--canvas-max-h:230px] bg-[#000000] rounded-xl border border-white/[0.08] flex items-center justify-center p-3 sm:p-6 pb-8 sm:pb-9 relative overflow-hidden studio-grid-pattern touch-none"
       >
         {/* Scaled Canvas Frame */}
         <div
@@ -243,8 +216,11 @@ export default function VisualCanvas({
               : 'border-white/20 hover:border-white/40'
           }`}
           style={{
-            width: `${Math.round(boxWidth)}px`,
-            height: `${Math.round(boxHeight)}px`,
+            aspectRatio: `${numW1} / ${numH1}`,
+            maxWidth: '100%',
+            maxHeight: 'var(--canvas-max-h, 195px)',
+            width: `calc(var(--canvas-max-h, 195px) * ${aspectRatioVal})`,
+            height: 'auto',
             background: uploadedImage ? 'none' : '#0a0a0a'
           }}
         >
