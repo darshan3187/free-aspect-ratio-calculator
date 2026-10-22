@@ -8,13 +8,13 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
 });
 
 export const metadata: Metadata = {
@@ -109,19 +109,25 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <Script
-          strategy="lazyOnload"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-0ZLZZ544Z5`}
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
+        <Script id="google-analytics-deferred" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'G-0ZLZZ544Z5');
+
+            function loadGA() {
+              if (window.__gaLoaded) return;
+              window.__gaLoaded = true;
+              var s = document.createElement('script');
+              s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0ZLZZ544Z5';
+              s.async = true;
+              document.head.appendChild(s);
+            }
+            ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
+              window.addEventListener(e, loadGA, { once: true, passive: true });
+            });
+            setTimeout(loadGA, 3500);
           `}
         </Script>
       </head>
