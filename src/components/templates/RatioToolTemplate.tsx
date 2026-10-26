@@ -219,24 +219,30 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono text-neutral-400 mb-2">
+                  <label htmlFor={`tool-width-${data.slug}`} className="block text-xs font-mono text-neutral-300 mb-2">
                     Width (Pixels)
                   </label>
                   <input
+                    id={`tool-width-${data.slug}`}
                     type="number"
+                    min="1"
                     value={width}
                     onChange={(e) => handleWidthChange(Number(e.target.value))}
+                    aria-label={`Enter width in pixels for ${data.name}`}
                     className="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-4 py-3 text-lg font-mono text-white focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono text-neutral-400 mb-2">
+                  <label htmlFor={`tool-height-${data.slug}`} className="block text-xs font-mono text-neutral-300 mb-2">
                     Height (Pixels)
                   </label>
                   <input
+                    id={`tool-height-${data.slug}`}
                     type="number"
+                    min="1"
                     value={height}
                     onChange={(e) => handleHeightChange(Number(e.target.value))}
+                    aria-label={`Enter height in pixels for ${data.name}`}
                     className="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-4 py-3 text-lg font-mono text-white focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>

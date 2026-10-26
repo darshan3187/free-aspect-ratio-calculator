@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Aspect Ratio Calculator",
   },
   description:
-    "Free online aspect ratio calculator to calculate 16:9, 4:3, and 16x9 image & screen dimensions in pixels and inches. Features real-time visual canvas, social media presets, and 100% browser privacy.",
+    "Free online aspect ratio calculator to scale 16:9, 4:3, and custom image or screen dimensions in pixels and inches. Instant client-side calculator with preview.",
   keywords: [
     "aspect ratio calculator",
     "16:9 aspect ratio calculator",

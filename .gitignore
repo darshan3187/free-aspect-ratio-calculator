@@ -3,7 +3,7 @@
 out/
 build/
 dist/
-
+REA/
 # Generated Astro files (legacy)
 .astro/
 

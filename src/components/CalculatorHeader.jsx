@@ -27,7 +27,7 @@ export default function CalculatorHeader({ showGuide = false, onToggleGuide = nu
         </div>
 
         {/* Header Navigation & Utility Buttons */}
-        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full md:w-auto justify-between md:justify-end">
+        <div className="flex flex-wrap items-center gap-2 w-full md:w-auto justify-between md:justify-end">
           <nav aria-label="Main Website Navigation" className="flex flex-wrap items-center gap-1 sm:gap-1.5 max-w-full">
             <Link
               href="/"
@@ -39,90 +39,88 @@ export default function CalculatorHeader({ showGuide = false, onToggleGuide = nu
             <Link
               href="/guides"
               prefetch={false}
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-300 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
             >
               Guides
             </Link>
             <Link
               href="/compare"
               prefetch={false}
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-300 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
             >
               Compare
             </Link>
             <Link
               href="/about-us"
               prefetch={false}
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-300 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
             >
               About
             </Link>
             <Link
               href="/contact-us"
               prefetch={false}
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-300 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all"
             >
               Contact
             </Link>
           </nav>
-        </div>
-      </div>
 
-      {/* Crawlable Quick Links to Core Aspect Ratio Calculators */}
-      <nav aria-label="Core Aspect Ratio Calculators" className="mt-3 pt-2.5 border-t border-white/[0.04] flex items-center gap-1.5 overflow-x-auto no-scrollbar text-xs font-mono">
-        <span className="text-[11px] text-neutral-400 uppercase tracking-wider whitespace-nowrap mr-1">Tools:</span>
-        <Link href="/16-9-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          16:9
-        </Link>
-        <Link href="/4-3-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          4:3
-        </Link>
-        <Link href="/21-9-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          21:9 Ultrawide
-        </Link>
-        <Link href="/1-1-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          1:1 Square
-        </Link>
-        <Link href="/9-16-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          9:16 Vertical
-        </Link>
-        <Link href="/3-2-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          3:2 Photo
-        </Link>
-        <Link href="/5-4-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          5:4 Print
-        </Link>
-        <Link href="/4-5-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          4:5 Portrait
-        </Link>
-        <Link href="/16-10-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
-          16:10 Laptop
-        </Link>
-      </nav>
-
-
-          <div className="flex items-center gap-1 sm:gap-1.5">
+          <div className="flex items-center gap-1.5">
             <button
               onClick={() => setShowSecurityModal(true)}
               title="100% Client-Side Private"
-              className="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-400 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all cursor-pointer flex items-center gap-1"
+              aria-label="Client-Side Privacy Guarantee details"
+              className="px-2.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-neutral-300 hover:text-white bg-[#000000] hover:bg-[#171717] border border-white/10 transition-all cursor-pointer flex items-center gap-1"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-neutral-400" />
+              <ShieldCheck className="w-3.5 h-3.5 text-neutral-300" />
               <span className="hidden sm:inline">Private</span>
             </button>
 
             {onToggleGuide && (
               <button
                 onClick={onToggleGuide}
-                aria-label="Toggle user guide"
+                aria-label={showGuide ? "Hide quick start tutorial" : "Show quick start tutorial"}
                 className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-medium text-white bg-[#171717] hover:bg-neutral-800 border border-white/20 transition-all cursor-pointer shadow-sm"
               >
                 {showGuide ? 'Hide Help' : 'Help'}
               </button>
             )}
           </div>
-        {/* </div>
-      </div> */}
+        </div>
+      </div>
+
+      {/* Crawlable Quick Links to Core Aspect Ratio Calculators */}
+      <nav aria-label="Core Aspect Ratio Calculators" className="mt-3 pt-2.5 border-t border-white/[0.04] flex items-center gap-1.5 overflow-x-auto no-scrollbar text-xs font-mono">
+        <span className="text-[11px] text-neutral-300 uppercase tracking-wider whitespace-nowrap mr-1">Tools:</span>
+        <Link href="/16-9-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          16:9
+        </Link>
+        <Link href="/4-3-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          4:3
+        </Link>
+        <Link href="/21-9-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          21:9 Ultrawide
+        </Link>
+        <Link href="/1-1-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          1:1 Square
+        </Link>
+        <Link href="/9-16-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          9:16 Vertical
+        </Link>
+        <Link href="/3-2-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          3:2 Photo
+        </Link>
+        <Link href="/5-4-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          5:4 Print
+        </Link>
+        <Link href="/4-5-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          4:5 Portrait
+        </Link>
+        <Link href="/16-10-aspect-ratio-calculator" prefetch={false} className="px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/10 text-neutral-200 hover:text-white border border-white/5 transition-colors whitespace-nowrap">
+          16:10 Laptop
+        </Link>
+      </nav>
 
       {/* Security & Privacy Audit Modal */}
       {showSecurityModal && (

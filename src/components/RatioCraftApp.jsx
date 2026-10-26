@@ -21,7 +21,7 @@ export default function RatioCraftApp() {
   const [lastChanged, setLastChanged] = useState('w2');
   const [uploadedImage, setUploadedImage] = useState(null);
   const [roundingOccurred, setRoundingOccurred] = useState(false);
-  const [showQuickGuide, setShowQuickGuide] = useState(true);
+  const [showQuickGuide, setShowQuickGuide] = useState(false);
 
   // Subject / Face Framing States
   const [focalX, setFocalX] = useState(50);
@@ -30,9 +30,14 @@ export default function RatioCraftApp() {
 
   const isInitialMount = useRef(true);
 
-  // Parse URL Parameters on Mount for Instant Shared Calculations
+  // Parse URL Parameters & Screen Size on Mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      // Show guide by default only on larger screens (>= 1024px) to protect mobile above-the-fold
+      if (window.innerWidth >= 1024) {
+        setShowQuickGuide(true);
+      }
+
       const params = new URLSearchParams(window.location.search);
       const paramW1 = params.get('w1');
       const paramH1 = params.get('h1');

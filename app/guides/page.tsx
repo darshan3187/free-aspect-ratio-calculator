@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { ARTICLES_DATA } from '@/data/articles';
 import CalculatorHeader from '@/components/CalculatorHeader';
 import FooterSection from '@/components/FooterSection';
+import GuidesSearchClient from '@/components/GuidesSearchClient';
 import { SITE_URL } from '@/utils/constants';
 
 export const metadata: Metadata = {
@@ -15,15 +16,6 @@ export const metadata: Metadata = {
 };
 
 export default function GuidesHubPage() {
-  // Group articles by category
-  const categoriesMap: Record<string, typeof ARTICLES_DATA> = {};
-  ARTICLES_DATA.forEach((article) => {
-    if (!categoriesMap[article.category]) {
-      categoriesMap[article.category] = [];
-    }
-    categoriesMap[article.category].push(article);
-  });
-
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -56,7 +48,7 @@ export default function GuidesHubPage() {
         {/* Header */}
         <header className="border-b border-neutral-800 bg-neutral-900/50 py-12 px-4 sm:px-6 lg:px-8 rounded-2xl mb-8">
           <div className="max-w-4xl mx-auto text-center space-y-4">
-            <nav className="text-xs font-mono text-neutral-400 mb-2 flex items-center justify-center gap-2">
+            <nav className="text-xs font-mono text-neutral-300 mb-2 flex items-center justify-center gap-2">
               <Link href="/" className="hover:text-blue-400 transition-colors">
                 Home
               </Link>
@@ -67,75 +59,21 @@ export default function GuidesHubPage() {
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent font-sans">
               Aspect Ratio & Resolution Content Hub
             </h1>
-            <p className="text-base sm:text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
               Explore our comprehensive technical guides covering display resolutions, social media sizing, cinematic formats, photography composition, UI design, and print standards.
             </p>
-            <div className="flex items-center justify-center gap-4 text-xs font-mono text-neutral-400">
+            <div className="flex items-center justify-center gap-4 text-xs font-mono text-neutral-300">
               <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">{ARTICLES_DATA.length} In-Depth Articles</span>
-              <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">{Object.keys(categoriesMap).length} Content Categories</span>
               <span className="bg-neutral-800 px-3 py-1 rounded-full border border-neutral-700">Regularly Updated</span>
             </div>
           </div>
         </header>
 
-      {/* Categories Grid */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-16">
-        {Object.entries(categoriesMap).map(([categoryName, articles], idx) => (
-          <section key={categoryName} className="space-y-6">
-            <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
-              <h2 className="text-2xl font-extrabold text-white flex items-center gap-3">
-                <span className="text-xs font-mono px-2.5 py-1 rounded bg-blue-950 text-blue-400 border border-blue-800">
-                  HUB {idx + 1}
-                </span>
-                {categoryName}
-              </h2>
-              <span className="text-xs font-mono text-neutral-400">
-                {articles.length} Guides
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {articles.map((article) => (
-                <article
-                  key={article.slug}
-                  className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-5 hover:border-blue-500 transition-all flex flex-col justify-between group"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-800 text-neutral-300">
-                        {article.searchIntent}
-                      </span>
-                      <span className="text-[10px] font-mono text-neutral-400">
-                        {article.readTimeMinutes} min read
-                      </span>
-                    </div>
-
-                    <h3 className="font-bold text-white text-base group-hover:text-blue-400 transition-colors line-clamp-2">
-                      {article.title}
-                    </h3>
-
-                    <p className="text-xs text-neutral-400 line-clamp-3 leading-relaxed">
-                      {article.metaDescription}
-                    </p>
-                  </div>
-
-                  <div className="mt-4 pt-3 border-t border-neutral-800/60 flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-blue-400/90 truncate max-w-[180px]">
-                      Key: {article.primaryKeyword}
-                    </span>
-                    <Link
-                      href={`/guides/${article.slug}`}
-                      prefetch={false}
-                      className="text-xs font-mono font-semibold text-blue-400 group-hover:translate-x-1 transition-transform flex items-center gap-1"
-                    >
-                      Read Guide →
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
+        {/* Client Search & Category Grid */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+          <Suspense fallback={<div className="text-center py-12 font-mono text-neutral-400 text-sm">Loading guides knowledge hub...</div>}>
+            <GuidesSearchClient />
+          </Suspense>
         </div>
 
         <FooterSection />

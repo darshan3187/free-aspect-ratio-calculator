@@ -38,16 +38,32 @@ export default function VisualCanvas({
     };
   };
 
-  const handleResizeMouseDown = (e) => {
+  const handleResizePointerDown = (e) => {
     e.stopPropagation();
     e.preventDefault();
+    if (e.target && e.target.setPointerCapture) {
+      try {
+        e.target.setPointerCapture(e.pointerId);
+      } catch (err) {
+        // Pointer capture fallback
+      }
+    }
     startResize(e.clientX, e.clientY);
   };
 
-  const handleResizeTouchStart = (e) => {
-    e.stopPropagation();
-    if (e.touches && e.touches[0]) {
-      startResize(e.touches[0].clientX, e.touches[0].clientY);
+  const handleResizeKeyDown = (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const step = e.shiftKey ? 50 : 10;
+      const newW = numW2 + step;
+      const newH = Math.max(10, Math.round(newW / aspectRatioVal));
+      onDragResize(newW, newH);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      const step = e.shiftKey ? 50 : 10;
+      const newW = Math.max(10, numW2 - step);
+      const newH = Math.max(10, Math.round(newW / aspectRatioVal));
+      onDragResize(newW, newH);
     }
   };
 
@@ -60,40 +76,34 @@ export default function VisualCanvas({
     };
   };
 
-  const handleImagePanMouseDown = (e) => {
+  const handleImagePanPointerDown = (e) => {
     if (!uploadedImage || isResizing) return;
+    // Only capture pointer when interacting with the image
     e.preventDefault();
+    if (e.currentTarget && e.currentTarget.setPointerCapture) {
+      try {
+        e.currentTarget.setPointerCapture(e.pointerId);
+      } catch (err) {
+        // Fallback
+      }
+    }
     startPan(e.clientY);
   };
 
-  const handleImagePanTouchStart = (e) => {
-    if (!uploadedImage || isResizing) return;
-    if (e.touches && e.touches[0]) {
-      startPan(e.touches[0].clientY);
-    }
-  };
-
   useEffect(() => {
-    const handlePointerMove = (clientX, clientY) => {
+    const handlePointerMove = (e) => {
       if (isResizing) {
-        const deltaX = clientX - resizeStartRef.current.x;
+        const deltaX = e.clientX - resizeStartRef.current.x;
         const scaleFactor = 2;
         const newW2 = Math.max(10, Math.round(resizeStartRef.current.initialW2 + deltaX * scaleFactor));
         const newH2 = Math.max(10, Math.round(newW2 / aspectRatioVal));
         onDragResize(newW2, newH2);
       } else if (isPanningImage) {
-        const deltaY = clientY - panStartRef.current.y;
+        const deltaY = e.clientY - panStartRef.current.y;
         const sensitivity = 0.5;
         let newFocalY = Math.round(panStartRef.current.initialFocalY + deltaY * sensitivity);
         newFocalY = Math.max(0, Math.min(100, newFocalY));
         setFocalY(newFocalY);
-      }
-    };
-
-    const handleMouseMove = (e) => handlePointerMove(e.clientX, e.clientY);
-    const handleTouchMove = (e) => {
-      if (e.touches && e.touches[0]) {
-        handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
       }
     };
 
@@ -103,17 +113,15 @@ export default function VisualCanvas({
     };
 
     if (isResizing || isPanningImage) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handlePointerEnd);
-      window.addEventListener('touchmove', handleTouchMove, { passive: false });
-      window.addEventListener('touchend', handlePointerEnd);
+      window.addEventListener('pointermove', handlePointerMove);
+      window.addEventListener('pointerup', handlePointerEnd);
+      window.addEventListener('pointercancel', handlePointerEnd);
     }
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handlePointerEnd);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handlePointerEnd);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerEnd);
+      window.removeEventListener('pointercancel', handlePointerEnd);
     };
   }, [isResizing, isPanningImage, aspectRatioVal, onDragResize, focalY, setFocalY]);
 
@@ -202,14 +210,13 @@ export default function VisualCanvas({
 
       {/* Main Viewport Stage */}
       <div
-        className="w-full h-[260px] sm:h-[300px] [--canvas-max-h:195px] sm:[--canvas-max-h:230px] bg-[#000000] rounded-xl border border-white/[0.08] flex items-center justify-center p-3 sm:p-6 pb-8 sm:pb-9 relative overflow-hidden studio-grid-pattern touch-none"
+        className="w-full h-[260px] sm:h-[300px] [--canvas-max-h:195px] sm:[--canvas-max-h:230px] bg-[#000000] rounded-xl border border-white/[0.08] flex items-center justify-center p-3 sm:p-6 pb-8 sm:pb-9 relative overflow-hidden studio-grid-pattern touch-pan-y"
       >
         {/* Scaled Canvas Frame */}
         <div
-          onMouseDown={handleImagePanMouseDown}
-          onTouchStart={handleImagePanTouchStart}
+          onPointerDown={handleImagePanPointerDown}
           className={`relative rounded-lg border transition-[border-color,box-shadow] duration-150 overflow-hidden flex flex-col items-center justify-center ${
-            uploadedImage ? 'cursor-grab active:cursor-grabbing' : ''
+            uploadedImage ? 'cursor-grab active:cursor-grabbing touch-none' : ''
           } ${
             isResizing || isPanningImage
               ? 'border-white shadow-2xl scale-[1.01]'
@@ -262,14 +269,21 @@ export default function VisualCanvas({
           </div>
 
           {/* Drag Resizer Corner Handle */}
-          <div
-            onMouseDown={handleResizeMouseDown}
-            onTouchStart={handleResizeTouchStart}
-            title="Click & Drag or Touch to resize"
-            className="absolute bottom-1 right-1 w-6 h-6 bg-white hover:bg-neutral-200 text-black rounded-md flex items-center justify-center cursor-se-resize shadow-md transition-transform active:scale-95 z-10 touch-none"
+          <button
+            type="button"
+            onPointerDown={handleResizePointerDown}
+            onKeyDown={handleResizeKeyDown}
+            role="slider"
+            aria-label="Drag or use arrow keys to resize target dimensions"
+            aria-valuenow={numW2}
+            aria-valuemin={10}
+            aria-valuemax={100000}
+            aria-valuetext={`${numW2} pixels wide by ${numH2} pixels high`}
+            title="Drag or use arrow keys to resize"
+            className="absolute bottom-1 right-1 w-8 h-8 sm:w-7 sm:h-7 bg-white hover:bg-neutral-200 text-black rounded-md flex items-center justify-center cursor-se-resize shadow-md transition-transform active:scale-95 z-10 touch-none focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <Move className="w-3 h-3" />
-          </div>
+            <Move className="w-3.5 h-3.5" />
+          </button>
         </div>
 
         {/* Viewport Specs Footer */}

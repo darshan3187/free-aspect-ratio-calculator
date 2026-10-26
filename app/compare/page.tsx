@@ -49,7 +49,7 @@ export default function CompareHubPage() {
         {/* Header Banner */}
         <header className="border-b border-neutral-800 bg-neutral-900/50 py-12 px-4 sm:px-6 lg:px-8 rounded-2xl mb-8">
           <div className="max-w-4xl mx-auto text-center space-y-3">
-            <nav className="text-xs font-mono text-neutral-400 mb-2 flex items-center justify-center gap-2">
+            <nav className="text-xs font-mono text-neutral-300 mb-2 flex items-center justify-center gap-2">
               <Link href="/" className="hover:text-blue-400 transition-colors">
                 Home
               </Link>
@@ -60,7 +60,7 @@ export default function CompareHubPage() {
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent font-sans">
               Aspect Ratio & Resolution Comparisons
             </h1>
-            <p className="text-base sm:text-lg text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
               Detailed side-by-side visual breakdowns, specification matrices, pros/cons, and industry recommendations to help you select the ideal aspect ratio or screen resolution.
             </p>
           </div>

@@ -7,60 +7,79 @@ const MAX_SAFE_DIMENSION = 100000; // 100k px maximum limit
 
 // Helper to sanitize numeric input strings safely
 export function sanitizeNumericInput(val, defaultVal = 0) {
-  if (val === null || val === undefined) return defaultVal;
-  const cleaned = String(val).replace(/[^0-9.]/g, '');
+  if (val === null || val === undefined || val === '') return defaultVal;
+  // If negative, reject rather than flipping sign
+  const rawStr = String(val).trim();
+  if (rawStr.startsWith('-')) return defaultVal;
+  const cleaned = rawStr.replace(/[^0-9.]/g, '');
   const num = parseFloat(cleaned);
-  if (isNaN(num) || !isFinite(num) || num < 0) return defaultVal;
+  if (isNaN(num) || !isFinite(num) || num <= 0) return defaultVal;
   return Math.min(num, MAX_SAFE_DIMENSION);
 }
 
 // Calculate Greatest Common Divisor (Euclidean algorithm)
 export function gcd(a, b) {
-  a = Math.abs(Math.round(sanitizeNumericInput(a)));
-  b = Math.abs(Math.round(sanitizeNumericInput(b)));
+  a = Math.abs(Math.round(sanitizeNumericInput(a, 0)));
+  b = Math.abs(Math.round(sanitizeNumericInput(b, 0)));
   if (!b) return a;
   return gcd(b, a % b);
 }
 
 // Simplify fraction (e.g. 1920 & 1080 -> { w: 16, h: 9, text: "16:9" })
-export function simplifyRatio(w, h) {
+// Preserves exact integer reduction, detects approximations explicitly without silent mutation
+export function simplifyRatio(w, h, options = {}) {
+  const { allowApproximation = false } = options;
   const numW = sanitizeNumericInput(w, 0);
   const numH = sanitizeNumericInput(h, 0);
 
   if (numW <= 0 || numH <= 0) {
-    return { ratioW: 0, ratioH: 0, text: '0:0', decimal: 0, orientation: 'Unknown' };
+    return {
+      ratioW: 0,
+      ratioH: 0,
+      text: '0:0',
+      decimal: 0,
+      orientation: 'Unknown',
+      isExact: true,
+      approximatedFrom: null
+    };
   }
 
-  // Handle common decimal ratios directly (e.g., 2.39:1, 1.414:1)
   const decimalVal = numW / numH;
   
-  // Try integer GCD simplification first
+  // Exact integer GCD simplification
   const divisor = gcd(numW, numH);
-  let simpW = Math.round(numW / (divisor || 1));
-  let simpH = Math.round(numH / (divisor || 1));
+  const exactSimpW = Math.round(numW / (divisor || 1));
+  const exactSimpH = Math.round(numH / (divisor || 1));
 
-  // If numbers are large prime-like dimensions, approximate to standard close ratios
-  if (simpW > 100 || simpH > 100) {
-    const commonRatios = [
-      { w: 16, h: 9, val: 16 / 9 },
-      { w: 9, h: 16, val: 9 / 16 },
-      { w: 4, h: 5, val: 4 / 5 },
-      { w: 5, h: 4, val: 5 / 4 },
-      { w: 1, h: 1, val: 1 },
-      { w: 4, h: 3, val: 4 / 3 },
-      { w: 3, h: 4, val: 3 / 4 },
-      { w: 3, h: 2, val: 3 / 2 },
-      { w: 2, h: 3, val: 2 / 3 },
-      { w: 21, h: 9, val: 21 / 9 },
-      { w: 3, h: 1, val: 3 },
-      { w: 4, h: 1, val: 4 },
-      { w: 1, h: 1.414, val: 1 / 1.414 }
-    ];
+  let finalW = exactSimpW;
+  let finalH = exactSimpH;
+  let isExact = true;
+  let approximateMatch = null;
 
-    const match = commonRatios.find(r => Math.abs(r.val - decimalVal) < 0.015);
-    if (match) {
-      simpW = match.w;
-      simpH = match.h;
+  // Check known standard ratios for closest match information
+  const commonRatios = [
+    { w: 16, h: 9, val: 16 / 9, text: '16:9' },
+    { w: 9, h: 16, val: 9 / 16, text: '9:16' },
+    { w: 4, h: 5, val: 4 / 5, text: '4:5' },
+    { w: 5, h: 4, val: 5 / 4, text: '5:4' },
+    { w: 1, h: 1, val: 1, text: '1:1' },
+    { w: 4, h: 3, val: 4 / 3, text: '4:3' },
+    { w: 3, h: 4, val: 3 / 4, text: '3:4' },
+    { w: 3, h: 2, val: 3 / 2, text: '3:2' },
+    { w: 2, h: 3, val: 2 / 3, text: '2:3' },
+    { w: 16, h: 10, val: 16 / 10, text: '16:10' },
+    { w: 21, h: 9, val: 21 / 9, text: '21:9' },
+    { w: 32, h: 9, val: 32 / 9, text: '32:9' }
+  ];
+
+  const closeMatch = commonRatios.find(r => Math.abs(r.val - decimalVal) < 0.015);
+  if (closeMatch && (exactSimpW !== closeMatch.w || exactSimpH !== closeMatch.h)) {
+    approximateMatch = closeMatch;
+    // Only snap if explicitly requested; otherwise preserve exact math
+    if (allowApproximation) {
+      finalW = closeMatch.w;
+      finalH = closeMatch.h;
+      isExact = false;
     }
   }
 
@@ -69,11 +88,13 @@ export function simplifyRatio(w, h) {
   else if (Math.abs(decimalVal - 1) <= 0.02) orientation = 'Square';
 
   return {
-    ratioW: simpW,
-    ratioH: simpH,
-    text: `${simpW}:${simpH}`,
+    ratioW: finalW,
+    ratioH: finalH,
+    text: `${finalW}:${finalH}`,
     decimal: Number(decimalVal.toFixed(3)),
-    orientation
+    orientation,
+    isExact,
+    approximateMatch: approximateMatch ? approximateMatch.text : null
   };
 }
 
@@ -177,16 +198,72 @@ export function calculatePrintDimensions(wPx, hPx, dpi = 300) {
   const h = sanitizeNumericInput(hPx, 1080);
   const dpiVal = sanitizeNumericInput(dpi, 300) || 300;
 
-  const inchesW = Number((w / dpiVal).toFixed(2));
-  const inchesH = Number((h / dpiVal).toFixed(2));
-  const cmW = Number((inchesW * 2.54).toFixed(2));
-  const cmH = Number((inchesH * 2.54).toFixed(2));
+  // Calculate raw floating-point measurements to prevent compound rounding loss
+  const rawInchesW = w / dpiVal;
+  const rawInchesH = h / dpiVal;
+  const rawCmW = rawInchesW * 2.54;
+  const rawCmH = rawInchesH * 2.54;
+
+  const inchesW = Number(rawInchesW.toFixed(2));
+  const inchesH = Number(rawInchesH.toFixed(2));
+  const cmW = Number(rawCmW.toFixed(2));
+  const cmH = Number(rawCmH.toFixed(2));
 
   return {
     dpi: dpiVal,
     inches: `${inchesW}″ × ${inchesH}″`,
     cm: `${cmW} cm × ${cmH} cm`,
     inchesW, inchesH, cmW, cmH
+  };
+}
+
+// Convert between Pixels, Inches, and Centimeters at a specified DPI/PPI
+export function convertUnitDimensions({ width, height, fromUnit, toUnit, dpi = 300 }) {
+  const numW = parseFloat(width);
+  const numH = parseFloat(height);
+  const dpiVal = sanitizeNumericInput(dpi, 300) || 300;
+
+  if (isNaN(numW) || isNaN(numH) || numW <= 0 || numH <= 0 || fromUnit === toUnit) {
+    return {
+      width: isNaN(numW) ? '' : numW,
+      height: isNaN(numH) ? '' : numH,
+      unit: toUnit,
+      dpi: dpiVal
+    };
+  }
+
+  // Convert source dimensions to pixels first (canonical unit)
+  let pxW = numW;
+  let pxH = numH;
+
+  if (fromUnit === 'in') {
+    pxW = numW * dpiVal;
+    pxH = numH * dpiVal;
+  } else if (fromUnit === 'cm') {
+    pxW = (numW / 2.54) * dpiVal;
+    pxH = (numH / 2.54) * dpiVal;
+  }
+
+  // Convert canonical pixels to destination unit
+  let targetW = pxW;
+  let targetH = pxH;
+
+  if (toUnit === 'in') {
+    targetW = Number((pxW / dpiVal).toFixed(2));
+    targetH = Number((pxH / dpiVal).toFixed(2));
+  } else if (toUnit === 'cm') {
+    targetW = Number(((pxW / dpiVal) * 2.54).toFixed(2));
+    targetH = Number(((pxH / dpiVal) * 2.54).toFixed(2));
+  } else if (toUnit === 'px') {
+    targetW = Math.round(pxW);
+    targetH = Math.round(pxH);
+  }
+
+  return {
+    width: targetW,
+    height: targetH,
+    unit: toUnit,
+    dpi: dpiVal
   };
 }
 
