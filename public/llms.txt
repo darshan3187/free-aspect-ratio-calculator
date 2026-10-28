@@ -1,0 +1,14 @@
+# Free Aspect Ratio Calculator
+
+> Free, 100% client-side aspect ratio and image dimension scaler for designers, video editors, and developers.
+
+- [Aspect Ratio Calculator](https://www.freeaspectratiocalculator.online/): Universal aspect ratio scaler supporting pixels, inches, custom ratios, and real-time canvas preview.
+- [Aspect Ratio Directory](https://www.freeaspectratiocalculator.online/16-9-aspect-ratio-calculator): Dedicated calculators and resolution matrices for 16:9, 4:3, 21:9, 9:16, 1:1, 4:5, 3:2, 16:10, and 32:9.
+- [Aspect Ratio Comparisons](https://www.freeaspectratiocalculator.online/compare): Side-by-side technical comparisons including 16:9 vs 4:3, 16:9 vs 21:9, 1080p vs 1440p, 1440p vs 4K, and Instagram post vs reel.
+- [Guides Knowledge Hub](https://www.freeaspectratiocalculator.online/guides): In-depth technical articles, GCD mathematical reduction formulas, responsive CSS aspect-ratio guides, and print DPI conversion cheat sheets.
+
+## Optional
+
+- [Privacy Policy](https://www.freeaspectratiocalculator.online/privacy-policy): 100% Client-side execution with zero data storage or external server uploads.
+- [Terms & Conditions](https://www.freeaspectratiocalculator.online/terms-and-conditions): Free commercial and personal license terms.
+- [About Us](https://www.freeaspectratiocalculator.online/about-us): The mission and architecture behind Aspect Ratio Calculator Studio.
