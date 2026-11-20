@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
-    template: "%s | Aspect Ratio Calculator",
+    default: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches",
+    template: "%s",
   },
   description:
     "Free online aspect ratio calculator to scale 16:9, 4:3, and custom image or screen dimensions in pixels and inches. Instant client-side calculator with preview.",

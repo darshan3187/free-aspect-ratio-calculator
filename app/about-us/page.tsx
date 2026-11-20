@@ -4,7 +4,7 @@ import Link from "next/link";
 import CalculatorHeader from "@/components/CalculatorHeader";
 import FooterSection from "@/components/FooterSection";
 import { SITE_URL } from "@/utils/constants";
-
+import { generateOrganizationSchema } from "@/utils/schema";
 
 export const metadata: Metadata = {
   title: "About Us — Free Aspect Ratio Calculator Studio",
@@ -43,6 +43,7 @@ const aboutPageSchema = {
     "Learn about our mission to build the fastest, 100% private, zero-server aspect ratio calculator utility.",
 };
 
+const organizationSchema = generateOrganizationSchema();
 
 export default function AboutUsPage() {
   return (
@@ -54,6 +55,10 @@ export default function AboutUsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
       <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-6">

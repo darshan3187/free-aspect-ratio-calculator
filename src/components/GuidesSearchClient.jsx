@@ -1,15 +1,33 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { Search, X, BookOpen, Layers } from 'lucide-react';
 import { ARTICLES_DATA } from '@/data/articles';
 
+const CATEGORY_DESCRIPTIONS = {
+  'Aspect Ratio Guides': 'Foundational principles of visual geometry, greatest common divisor (GCD) reduction formulas, and the mathematical relationship between proportional shapes and absolute pixel counts.',
+  'Screen Resolution Guides': 'Technical specifications, pixel densities (PPI), display standards, and comparative performance benchmarks from 720p HD up to 8K Ultra High Definition.',
+  'Social Media Image Sizes': 'Up-to-date aspect ratios, safe zones, and recommended pixel dimensions to prevent auto-cropping across YouTube, Instagram, TikTok, Facebook Ads, LinkedIn, X, and Pinterest.',
+  'Video Production': 'Cinematographic aspect ratios, 1.85:1 Flat, 2.39:1 Scope anamorphic desqueezing, Open Gate full-sensor recording, and eliminating black letterbox borders.',
+  'Photography': 'Camera sensor dimensions, full-frame 3:2, Micro Four Thirds 4:3, medium format 6x6/6x7, and matching image proportions to standard picture frame sizes without edge loss.',
+  'Graphic Design': 'Aspect ratio considerations for presentation decks, IAB digital display advertising banners, concert posters, book covers, and vector SVG viewBox behavior.',
+  'UI/UX Design': 'Responsive web layout design, modern CSS aspect-ratio property, eliminating Cumulative Layout Shift (CLS), and multi-breakpoint card grid proportion systems.',
+  'Printing & Publishing': 'ISO 216 paper standards (A4, A3: 1:√2 aspect ratio), commercial print bleed allowances, crop marks, gallery canvas wrap edge math, and billboard viewing distances.',
+  'Image Optimization': 'Resampling algorithms (Bicubic, Lanczos), next/image responsive optimization, modern WebP/AVIF compression formats, and automated e-commerce batch processing.',
+  'Display Technology': 'Modern hardware display ergonomics, 21:9 curved ultrawides, 32:9 super ultrawides, foldable mobile device canvases, and multi-monitor height alignment strategies.'
+};
+
 export default function GuidesSearchClient() {
-  const searchParams = useSearchParams();
-  const initialQuery = searchParams.get('q') || '';
-  const [query, setQuery] = useState(initialQuery);
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q');
+      if (q) setQuery(q);
+    }
+  }, []);
 
   const filteredArticles = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -51,7 +69,7 @@ export default function GuidesSearchClient() {
             name="q"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search 58 guides by keyword (e.g. 16:9, Instagram, 4K, print)..."
+            placeholder="Search 58 technical guides (e.g. 16:9, Instagram, 4K, print)..."
             aria-label="Search technical guides and tutorials"
             className="w-full bg-[#0a0a0a] border border-white/15 focus:border-blue-500 rounded-xl pl-10 pr-10 py-3 text-sm text-white placeholder:text-neutral-400 focus:outline-none transition-all shadow-md font-sans"
           />
@@ -143,20 +161,25 @@ export default function GuidesSearchClient() {
           )}
         </section>
       ) : (
-        /* Default: Categorized Directory */
+        /* Default: Categorized Directory (Pre-rendered into Static HTML for Search Crawlers) */
         <div className="space-y-16">
           {Object.entries(categoriesMap).map(([categoryName, articles], idx) => (
-            <section key={categoryName} className="space-y-6">
-              <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
-                <h2 className="text-2xl font-extrabold text-white flex items-center gap-3">
-                  <span className="text-xs font-mono px-2.5 py-1 rounded bg-blue-950 text-blue-300 border border-blue-800">
-                    HUB {idx + 1}
+            <section key={categoryName} id={categoryName.toLowerCase().replace(/[^a-z0-9]+/g, '-')} className="space-y-5">
+              <div className="border-b border-neutral-800 pb-4">
+                <div className="flex items-center justify-between mb-1.5">
+                  <h2 className="text-2xl font-extrabold text-white flex items-center gap-3">
+                    <span className="text-xs font-mono px-2.5 py-1 rounded bg-blue-950 text-blue-300 border border-blue-800">
+                      SECTION {idx + 1}
+                    </span>
+                    {categoryName}
+                  </h2>
+                  <span className="text-xs font-mono text-neutral-400">
+                    {articles.length} Technical Guides
                   </span>
-                  {categoryName}
-                </h2>
-                <span className="text-xs font-mono text-neutral-300">
-                  {articles.length} Guides
-                </span>
+                </div>
+                <p className="text-xs sm:text-sm text-neutral-400 max-w-4xl leading-relaxed">
+                  {CATEGORY_DESCRIPTIONS[categoryName] || 'In-depth reference manuals and mathematical calculations.'}
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -170,7 +193,7 @@ export default function GuidesSearchClient() {
                         <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-800 text-neutral-200">
                           {article.searchIntent}
                         </span>
-                        <span className="text-[10px] font-mono text-neutral-300">
+                        <span className="text-[10px] font-mono text-neutral-400">
                           {article.readTimeMinutes} min read
                         </span>
                       </div>

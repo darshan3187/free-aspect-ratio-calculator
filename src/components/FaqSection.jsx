@@ -28,7 +28,7 @@ export default function FaqSection() {
           <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-300" />
         </div>
         <div>
-          <h3 className="text-lg sm:text-xl font-bold text-white tracking-display-lg leading-tight font-sans">Aspect Ratio Guide & FAQ.</h3>
+          <h2 className="text-lg sm:text-xl font-bold text-white tracking-display-lg leading-tight font-sans">Aspect Ratio Guide & FAQ.</h2>
           <p className="text-[11px] sm:text-xs text-[#888888] font-sans">Everything you need to know about scaling graphics and video</p>
         </div>
       </div>
@@ -36,10 +36,10 @@ export default function FaqSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {faqs.map((faq, idx) => (
           <div key={idx} className="bg-[#000000] rounded-xl p-4 sm:p-5 border border-white/[0.08]">
-            <h4 className="text-xs sm:text-sm font-semibold text-white mb-2 flex items-start gap-2 font-sans">
+            <h3 className="text-xs sm:text-sm font-semibold text-white mb-2 flex items-start gap-2 font-sans">
               <Sparkles className="w-4 h-4 text-neutral-400 flex-shrink-0 mt-0.5" />
               <span className="leading-snug">{faq.q}</span>
-            </h4>
+            </h3>
             <p className="text-[11px] sm:text-xs text-neutral-300 leading-relaxed font-sans font-normal">
               {faq.a}
             </p>

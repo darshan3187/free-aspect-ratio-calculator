@@ -1,10 +1,55 @@
 import { SITE_URL, SITE_NAME } from '@/utils/constants';
 
+export function generateOrganizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/logo.png`,
+      width: 512,
+      height: 512,
+    },
+  };
+}
+
+export function generateWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: 'Free online aspect ratio calculator and resolution converter.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}/guides?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/logo.png`,
+        width: 512,
+        height: 512,
+      },
+    },
+  };
+}
+
 export function generateWebApplicationSchema(options: {
   name: string;
   url: string;
   description: string;
   applicationCategory: string;
+  featureList?: string[];
 }) {
   return {
     '@context': 'https://schema.org',
@@ -18,8 +63,20 @@ export function generateWebApplicationSchema(options: {
     offers: {
       '@type': 'Offer',
       price: '0',
-      priceCurrency: 'USD'
-    }
+      priceCurrency: 'USD',
+    },
+    provider: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/logo.png`,
+        width: 512,
+        height: 512,
+      },
+    },
+    ...(options.featureList ? { featureList: options.featureList } : {}),
   };
 }
 
@@ -32,9 +89,9 @@ export function generateFAQSchema(faqs: Array<{ question: string; answer: string
       name: faq.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   };
 }
 
@@ -42,6 +99,7 @@ export function generateArticleSchema(article: {
   title: string;
   description: string;
   url: string;
+  image?: string;
   datePublished?: string;
   dateModified?: string;
 }) {
@@ -50,25 +108,33 @@ export function generateArticleSchema(article: {
     '@type': 'Article',
     headline: article.title,
     description: article.description,
+    image: article.image || `${SITE_URL}/og-image.png`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': article.url
+      '@id': article.url,
     },
     author: {
       '@type': 'Organization',
       name: SITE_NAME,
-      url: SITE_URL
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/logo.png`,
+      },
     },
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
+      url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/logo.png`
-      }
+        url: `${SITE_URL}/logo.png`,
+        width: 512,
+        height: 512,
+      },
     },
-    datePublished: article.datePublished || '2026-01-01T00:00:00Z',
-    dateModified: article.dateModified || new Date().toISOString()
+    datePublished: article.datePublished || '2026-09-01T00:00:00.000Z',
+    dateModified: article.dateModified || '2026-10-02T00:00:00.000Z',
   };
 }
 
@@ -80,8 +146,7 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; item: stri
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,
-      item: crumb.item
-    }))
+      item: crumb.item,
+    })),
   };
 }
-

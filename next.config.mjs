@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   compress: true,
+  trailingSlash: false,
   experimental: {
     optimizePackageImports: ['lucide-react', 'clsx', 'tailwind-merge'],
   },

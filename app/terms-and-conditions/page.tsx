@@ -5,9 +5,9 @@ import FooterSection from "@/components/FooterSection";
 import { SITE_URL } from "@/utils/constants";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Aspect Ratio Calculator",
+  title: "Terms and Conditions — Aspect Ratio Calculator",
   description:
-    "Terms of service and commercial license terms for using the Free Aspect Ratio Calculator web application.",
+    "Terms of service and commercial license terms for using the Free Aspect Ratio Calculator web application for personal, business, and production workflows.",
   alternates: {
     canonical: `${SITE_URL}/terms-and-conditions`,
   },

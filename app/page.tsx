@@ -6,9 +6,10 @@ import SeoArticleSection from "@/components/SeoArticleSection";
 import FaqSection from "@/components/FaqSection";
 import FooterSection from "@/components/FooterSection";
 import { SITE_URL, SITE_NAME } from "@/utils/constants";
+import { generateOrganizationSchema, generateWebSiteSchema, generateWebApplicationSchema } from "@/utils/schema";
 
 export const metadata: Metadata = {
-  title: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches Online",
+  title: "Aspect Ratio Calculator — 16:9, 4:3, Pixels & Inches",
   description:
     "Free online aspect ratio calculator to scale 16:9, 4:3, and custom image or screen dimensions in pixels and inches. Instant client-side calculator with preview.",
   alternates: {
@@ -16,35 +17,15 @@ export const metadata: Metadata = {
   },
 };
 
-const webSiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: SITE_NAME,
-  url: `${SITE_URL}/`,
-  description:
-    "Free online aspect ratio calculator and proportional dimension scaler for designers, video editors, and developers.",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${SITE_URL}/guides?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
-};
+const organizationSchema = generateOrganizationSchema();
+const webSiteSchema = generateWebSiteSchema();
 
-const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
+const webAppSchema = generateWebApplicationSchema({
   name: SITE_NAME,
-  url: `${SITE_URL}/`,
+  url: SITE_URL,
   description:
     "Free online aspect ratio calculator to calculate 16:9, 4:3, and custom image & screen proportions in pixels and inches. 100% client-side browser privacy.",
   applicationCategory: "DesignApplication",
-  operatingSystem: "All",
-  browserRequirements: "Requires JavaScript. Requires HTML5.",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
   featureList: [
     "16:9 Aspect Ratio Calculator",
     "4:3 Aspect Ratio Calculator",
@@ -56,7 +37,7 @@ const webAppSchema = {
     "CSS & HTML Code Exporter",
     "100% Client-side local processing",
   ],
-};
+});
 
 
 const faqSchema = {
@@ -127,6 +108,10 @@ export default function HomePage() {
   return (
     <>
       {/* Structured Data / JSON-LD for Google Rich Results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}

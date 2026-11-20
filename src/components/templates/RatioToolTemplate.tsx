@@ -307,6 +307,37 @@ export function RatioToolTemplate({ data }: RatioToolTemplateProps) {
           </div>
         </section>
 
+        {/* Section 1B: Step-by-Step Worked Calculation Example */}
+        {data.workedExample && (
+          <section className="bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-6 sm:p-8 space-y-5">
+            <div className="flex items-center gap-2.5">
+              <span className="w-3 h-3 rounded-full bg-blue-500"></span>
+              <h2 className="text-2xl font-bold text-white">
+                {data.workedExample.title}
+              </h2>
+            </div>
+            <p className="text-sm text-neutral-300 leading-relaxed">
+              {data.workedExample.scenario}
+            </p>
+            <div className="bg-neutral-950 p-5 sm:p-6 rounded-xl border border-neutral-800 space-y-4">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-blue-400">
+                Step-by-Step Solution:
+              </h3>
+              <ol className="space-y-2.5 text-xs sm:text-sm text-neutral-300 list-decimal list-inside font-sans">
+                {data.workedExample.steps.map((step, idx) => (
+                  <li key={idx} className="leading-relaxed">
+                    <span className="text-neutral-200">{step}</span>
+                  </li>
+                ))}
+              </ol>
+              <div className="pt-3 border-t border-neutral-800/80 font-mono text-xs text-emerald-400 bg-neutral-900/80 p-3.5 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span><strong>Mathematical Result:</strong> {data.workedExample.formula}</span>
+                <span className="text-[10px] text-neutral-400 font-sans">Validated mathematically</span>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Section 2: Resolution Specs Table */}
         <section className="bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-6 sm:p-8 space-y-6">
           <h2 className="text-2xl font-bold text-white">

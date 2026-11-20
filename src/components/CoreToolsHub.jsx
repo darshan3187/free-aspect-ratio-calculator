@@ -4,7 +4,7 @@ import { Calculator, ArrowRight, Layers, BookOpen, Monitor } from 'lucide-react'
 import { RATIOS_DATA } from '@/data/ratios';
 import { COMPARISONS_DATA } from '@/data/comparisons';
 
-// Core 7 prioritized calculators + extended key tools
+// Core 12 prioritized calculators
 const CORE_RATIO_SLUGS = [
   '16-9-aspect-ratio-calculator',
   '4-3-aspect-ratio-calculator',
@@ -15,6 +15,9 @@ const CORE_RATIO_SLUGS = [
   '5-4-aspect-ratio-calculator',
   '4-5-aspect-ratio-calculator',
   '16-10-aspect-ratio-calculator',
+  '2-39-1-aspect-ratio-calculator',
+  '32-9-aspect-ratio-calculator',
+  'golden-ratio-aspect-ratio-calculator',
 ];
 
 const FEATURED_COMPARISONS = [

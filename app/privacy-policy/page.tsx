@@ -8,7 +8,7 @@ import { SITE_URL } from "@/utils/constants";
 export const metadata: Metadata = {
   title: "Privacy Policy — Aspect Ratio Calculator",
   description:
-    "Our 100% Client-Side Privacy Policy. We do not store, collect, or transmit any images or personal data to remote servers.",
+    "Our 100% Client-Side Privacy Policy. We do not store, collect, or transmit your images or calculations to remote servers. All processing is local.",
   alternates: {
     canonical: `${SITE_URL}/privacy-policy`,
   },

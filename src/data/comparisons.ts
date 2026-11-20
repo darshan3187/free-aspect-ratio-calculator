@@ -105,7 +105,7 @@ export const COMPARISONS_DATA: Record<string, ComparisonData> = {
       }
     ],
     meta: {
-      title: '16:9 vs 4:3 Aspect Ratio Comparison: Differences & Visual Guide',
+      title: '16:9 vs 4:3 Aspect Ratio: Differences & Visual Guide',
       description: 'Comprehensive 16:9 vs 4:3 aspect ratio comparison. Learn key differences in field of view, resolutions, photography, gaming, and video compatibility.',
       keywords: ['16:9 vs 4:3', '16 9 vs 4 3 aspect ratio', 'widescreen vs standard', 'difference between 16 9 and 4 3']
     }
@@ -172,8 +172,8 @@ export const COMPARISONS_DATA: Record<string, ComparisonData> = {
       }
     ],
     meta: {
-      title: '16:9 vs 21:9 Ultrawide Aspect Ratio: Which Is Better for Gaming & Work?',
-      description: 'Detailed 16:9 vs 21:9 comparison. Compare standard 16:9 widescreen vs 21:9 ultrawide monitors for productivity, gaming FOV, and movie playback.',
+      title: '16:9 vs 21:9 Ultrawide: Which Is Better for Gaming?',
+      description: 'Detailed 16:9 vs 21:9 comparison. Compare standard 16:9 widescreen vs 21:9 ultrawide monitors for gaming field of view, productivity, and film playback.',
       keywords: ['16:9 vs 21:9', '16 9 vs 21 9 monitor', 'ultrawide vs widescreen', '3440x1440 vs 2560x1440']
     }
   },
@@ -237,8 +237,8 @@ export const COMPARISONS_DATA: Record<string, ComparisonData> = {
       }
     ],
     meta: {
-      title: '1080p vs 1440p Resolution: Is 1440p Worth It for Gaming & Work?',
-      description: 'Compare 1080p Full HD vs 1440p QHD resolutions. Analyze pixel density, graphics performance, monitor sizing, and gaming performance differences.',
+      title: '1080p vs 1440p: Is 1440p Worth It for Gaming & Work?',
+      description: 'Compare 1080p Full HD vs 1440p QHD resolutions. Analyze pixel density, graphics card demands, monitor sizing, and gaming performance differences.',
       keywords: ['1080p vs 1440p', '1080p vs 2k', '1920x1080 vs 2560x1440', 'is 1440p worth it']
     }
   },
@@ -301,8 +301,8 @@ export const COMPARISONS_DATA: Record<string, ComparisonData> = {
       }
     ],
     meta: {
-      title: '1440p vs 4K Resolution Comparison: Which Is Best for Gaming & Media?',
-      description: 'Compare 1440p QHD vs 4K UHD resolutions. Benchmark pixel counts, performance hit on GPUs, text clarity, and monitor screen size selection.',
+      title: '1440p vs 4K Resolution: Which Is Best for Gaming?',
+      description: 'Compare 1440p QHD vs 4K UHD resolutions. Benchmark pixel counts, GPU performance demands, text clarity, and ideal monitor screen size selection.',
       keywords: ['1440p vs 4k', '2560x1440 vs 3840x2160', 'is 4k better than 1440p', '4k gaming performance']
     }
   },
@@ -359,7 +359,7 @@ export const COMPARISONS_DATA: Record<string, ComparisonData> = {
       }
     ],
     meta: {
-      title: 'Portrait vs Landscape Aspect Ratio: Dimensions & Best Use Cases',
+      title: 'Portrait vs Landscape: Aspect Ratios & Best Use Cases',
       description: 'Learn the differences between Portrait and Landscape aspect ratios. Understand how orientation impacts video production, mobile apps, and photography.',
       keywords: ['portrait vs landscape aspect ratio', 'vertical vs horizontal video', 'portrait image dimensions', 'landscape resolution']
     }
@@ -416,8 +416,8 @@ export const COMPARISONS_DATA: Record<string, ComparisonData> = {
       }
     ],
     meta: {
-      title: 'Instagram Post vs Reel Dimensions & Aspect Ratios (2026 Guide)',
-      description: 'Master Instagram dimensions: compare 4:5 / 1:1 Feed Posts vs 9:16 Reels. Learn exact pixel sizes to prevent auto-cropping on Instagram.',
+      title: 'Instagram Post vs Reel: Dimensions & Aspect Ratios',
+      description: 'Master Instagram dimensions: compare 4:5 and 1:1 feed posts vs 9:16 vertical reels. Learn exact pixel sizes to prevent auto-cropping on Instagram.',
       keywords: ['instagram post vs reel dimensions', 'instagram post aspect ratio', 'instagram reel size 9 16', '1080x1350 vs 1080x1920']
     }
   }

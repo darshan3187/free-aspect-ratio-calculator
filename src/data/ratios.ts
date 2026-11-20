@@ -17,6 +17,13 @@ export interface RatioFAQ {
   answer: string;
 }
 
+export interface RatioWorkedExample {
+  title: string;
+  scenario: string;
+  steps: string[];
+  formula: string;
+}
+
 export interface RatioData {
   slug: string;
   name: string;
@@ -27,6 +34,7 @@ export interface RatioData {
   overview: string;
   formulaDescription: string;
   gcdValue: number;
+  workedExample: RatioWorkedExample;
   commonResolutions: CommonResolution[];
   useCases: RatioUseCase[];
   pros: string[];
@@ -50,6 +58,19 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     overview: 'The 16:9 aspect ratio (pronounced "sixteen-by-nine") is the universal widescreen display standard for high-definition television, computer monitors, YouTube video streaming, and digital gaming consoles. It balances expansive horizontal viewing field with comfortable vertical framing.',
     formulaDescription: 'To calculate 16:9 aspect ratio dimensions, multiply height by 1.7778 to find width, or multiply width by 0.5625 to find height. The Greatest Common Divisor (GCD) for 1920x1080 is 120 (1920/120 = 16, 1080/120 = 9).',
     gcdValue: 120,
+    workedExample: {
+      title: 'Step-by-Step 16:9 Calculation Example',
+      scenario: 'Calculating the required height for a YouTube thumbnail or banner container with a custom width of 1280 pixels:',
+      steps: [
+        'Identify target aspect ratio: 16 units of width for every 9 units of height.',
+        'Select the solving formula: Target Height = (Target Width × 9) ÷ 16, or Target Width × 0.5625.',
+        'Substitute the target width: Height = (1280 × 9) ÷ 16.',
+        'Multiply numerator: 1280 × 9 = 11,520.',
+        'Divide by 16: 11,520 ÷ 16 = 720 pixels.',
+        'Verification: 1280 ÷ 80 = 16, 720 ÷ 80 = 9 (GCD is 80), confirming exact 16:9 proportion.'
+      ],
+      formula: 'Height = (1280 × 9) ÷ 16 = 720px (Standard 720p HD)'
+    },
     commonResolutions: [
       { name: '720p HD', width: 1280, height: 720, category: 'Standard HD' },
       { name: '1080p Full HD', width: 1920, height: 1080, category: 'Full HD' },
@@ -89,8 +110,8 @@ export const RATIOS_DATA: Record<string, RatioData> = {
       }
     ],
     meta: {
-      title: '16:9 Aspect Ratio Calculator & Dimensions Converter (1080p, 4K)',
-      description: 'Free interactive 16:9 aspect ratio calculator. Easily calculate width, height, and pixel dimensions for 1080p, 1440p, 4K, YouTube videos, and monitors.',
+      title: '16:9 Aspect Ratio Calculator — 1080p & 4K Dimensions',
+      description: 'Free 16:9 aspect ratio calculator. Calculate width, height, and pixel dimensions for 1080p, 1440p, 4K UHD, YouTube videos, and widescreen computer monitors.',
       keywords: ['16:9 aspect ratio calculator', '16 9 ratio', '1920x1080 aspect ratio', '4k 16:9 resolution', 'youtube aspect ratio calculator']
     }
   },
@@ -104,6 +125,19 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     overview: 'The 4:3 aspect ratio (also known as 1.33:1) was the dominant display standard for 20th-century CRT televisions, early cinema, and legacy desktop monitors. Today it remains heavily used in Micro Four Thirds digital photography, Apple iPad tablets, and presentation decks.',
     formulaDescription: 'To calculate 4:3 dimensions, multiply height by 1.3333 to solve width, or multiply width by 0.75 to solve height. E.g., for 1024x768, GCD is 256 (1024/256 = 4, 768/256 = 3).',
     gcdValue: 256,
+    workedExample: {
+      title: 'Step-by-Step 4:3 Calculation Example',
+      scenario: 'Calculating the required height for an iPad tablet canvas with a width of 1024 pixels:',
+      steps: [
+        'Identify target ratio: 4 units of width to 3 units of height.',
+        'Formula: Height = (Width × 3) ÷ 4, or Width × 0.75.',
+        'Substitute width: Height = (1024 × 3) ÷ 4.',
+        'Multiply numerator: 1024 × 3 = 3072.',
+        'Divide by 4: 3072 ÷ 4 = 768 pixels.',
+        'Result: A width of 1024px requires an exact height of 768px for a standard 4:3 XGA display.'
+      ],
+      formula: 'Height = (1024 × 3) ÷ 4 = 768px (Standard XGA)'
+    },
     commonResolutions: [
       { name: 'VGA / Standard SD', width: 640, height: 480, category: 'Standard HD' },
       { name: 'XGA Display', width: 1024, height: 768, category: 'Standard HD' },
@@ -136,8 +170,8 @@ export const RATIOS_DATA: Record<string, RatioData> = {
       }
     ],
     meta: {
-      title: '4:3 Aspect Ratio Calculator & Resolution Specs (iPad, Photo)',
-      description: 'Free 4:3 aspect ratio calculator. Calculate pixel dimensions, convert 4:3 resolutions for iPads, photography, Micro 4/3 sensors, and retro gaming.',
+      title: '4:3 Aspect Ratio Calculator — iPad & Photo Dimensions',
+      description: 'Free 4:3 aspect ratio calculator. Calculate pixel dimensions, convert 4:3 resolutions for iPads, photography, Micro 4/3 sensors, and retro CRT console gaming.',
       keywords: ['4:3 aspect ratio calculator', '4 3 ratio', '1024x768 aspect ratio', 'ipad aspect ratio', 'micro four thirds ratio']
     }
   },
@@ -151,6 +185,19 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     overview: 'The 21:9 aspect ratio (technically 64:27 or 2.37:1) is the ultrawide display standard designed for panoramic desktop productivity and cinematic film viewing. It eliminates top/bottom letterboxing on widescreen anamorphic movies.',
     formulaDescription: 'To calculate 21:9 aspect ratio dimensions, multiply height by 2.333 to find width, or multiply width by 0.4286 to solve height. E.g. 3440 / 1440 ≈ 2.388 (43:18 actual).',
     gcdValue: 160,
+    workedExample: {
+      title: 'Step-by-Step 21:9 Calculation Example',
+      scenario: 'Calculating the ultrawide width for a 1440p vertical panel height (UW-QHD):',
+      steps: [
+        'Identify target ultrawide ratio: 43:18 (commercial 21:9 UW-QHD specification).',
+        'Formula: Width = (Height × 43) ÷ 18, or approximately Height × 2.3888.',
+        'Substitute target height: Width = (1440 × 43) ÷ 18.',
+        'Multiply numerator: 1440 × 43 = 61,920.',
+        'Divide by 18: 61,920 ÷ 18 = 3440 pixels.',
+        'Result: A 1440p vertical display height scales to standard 3440×1440 UW-QHD ultrawide resolution.'
+      ],
+      formula: 'Width = (1440 × 43) ÷ 18 = 3440px (UW-QHD Ultrawide)'
+    },
     commonResolutions: [
       { name: 'WFHD Ultrawide', width: 2560, height: 1080, category: 'Full HD' },
       { name: 'WQHD Ultrawide', width: 3440, height: 1440, category: 'QHD / 2K' },
@@ -181,8 +228,8 @@ export const RATIOS_DATA: Record<string, RatioData> = {
       }
     ],
     meta: {
-      title: '21:9 Ultrawide Aspect Ratio Calculator (3440x1440, 5120x2160)',
-      description: 'Free 21:9 aspect ratio calculator. Calculate pixel dimensions for ultrawide monitors, 3440x1440 displays, 21:9 gaming, and cinematic video editing.',
+      title: '21:9 Aspect Ratio Calculator — Ultrawide Dimensions',
+      description: 'Free 21:9 aspect ratio calculator. Calculate pixel dimensions for ultrawide monitors, 3440x1440 displays, 21:9 gaming FOV, and cinematic video editing setups.',
       keywords: ['21:9 aspect ratio calculator', '21 9 ratio', '3440x1440 aspect ratio', 'ultrawide monitor resolution', '21:9 vs 16:9 calculator']
     }
   },
@@ -196,6 +243,18 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     overview: 'The 1:1 square aspect ratio means width and height are perfectly equal. Popularized by medium-format 6x6 film cameras and Instagram, 1:1 is the premier format for social feed photos, e-commerce product grids, and profile avatars.',
     formulaDescription: 'Calculating 1:1 aspect ratio is instant: Width = Height. Any resolution where X = Y (e.g. 1080x1080) maintains a 1:1 ratio.',
     gcdValue: 1080,
+    workedExample: {
+      title: 'Step-by-Step 1:1 Calculation Example',
+      scenario: 'Setting up an Instagram square product carousel post:',
+      steps: [
+        'Identify target ratio: 1:1 (Width equals Height).',
+        'Formula: Height = Width × 1, Width = Height × 1.',
+        'Choose standard social resolution: 1080 pixels width.',
+        'Calculate matching height: 1080 × 1 = 1080 pixels.',
+        'Result: Exactly 1080×1080px (1.17 Megapixels), guaranteeing zero feed cropping.'
+      ],
+      formula: 'Height = Width = 1080px (Instagram Square Post)'
+    },
     commonResolutions: [
       { name: 'Instagram Square Post', width: 1080, height: 1080, category: 'Social' },
       { name: 'HD Square Asset', width: 2048, height: 2048, category: 'Full HD' },
@@ -223,8 +282,8 @@ export const RATIOS_DATA: Record<string, RatioData> = {
       }
     ],
     meta: {
-      title: '1:1 Square Aspect Ratio Calculator (1080x1080 Instagram)',
-      description: 'Free 1:1 square aspect ratio calculator. Calculate pixel dimensions for Instagram square posts, e-commerce product thumbnails, and square avatars.',
+      title: '1:1 Aspect Ratio Calculator — Square Post Dimensions',
+      description: 'Free 1:1 square aspect ratio calculator. Calculate pixel dimensions for Instagram square posts (1080x1080), e-commerce product thumbnails, and square avatars.',
       keywords: ['1:1 aspect ratio calculator', '1 1 ratio', '1080x1080 aspect ratio', 'square image size', 'instagram square calculator']
     }
   },
@@ -238,6 +297,19 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     overview: 'The 9:16 vertical aspect ratio is the exact inverse of widescreen 16:9. Designed specifically for smartphone screens held vertically, 9:16 dominates short-form video algorithms on TikTok, Reels, Shorts, and Stories.',
     formulaDescription: 'To calculate 9:16 dimensions, multiply width by 1.7778 to find height, or multiply height by 0.5625 to solve width. E.g. (1080 * 1.7778) = 1920.',
     gcdValue: 120,
+    workedExample: {
+      title: 'Step-by-Step 9:16 Calculation Example',
+      scenario: 'Calculating vertical resolution for an Instagram Reel, TikTok video, or YouTube Short:',
+      steps: [
+        'Identify target aspect ratio: 9 units width by 16 units height.',
+        'Formula: Height = (Width × 16) ÷ 9, or Width × 1.7778.',
+        'Choose standard mobile width: 1080 pixels.',
+        'Multiply numerator: 1080 × 16 = 17,280.',
+        'Divide by 9: 17,280 ÷ 9 = 1920 pixels.',
+        'Result: Exactly 1080×1920 pixels, matching 100% of modern smartphone vertical viewports.'
+      ],
+      formula: 'Height = (1080 × 16) ÷ 9 = 1920px (1080p Vertical Full HD)'
+    },
     commonResolutions: [
       { name: '720p Vertical', width: 720, height: 1280, category: 'Social' },
       { name: '1080p Vertical HD (Reels/TikTok)', width: 1080, height: 1920, category: 'Social' },
@@ -249,22 +321,28 @@ export const RATIOS_DATA: Record<string, RatioData> = {
       { industry: 'Advertising', title: 'Mobile Interstitial & Story Ads', description: 'Standard format for full-screen Snapchat, Meta, and TikTok video ads.', recommended: true }
     ],
     pros: [
-      'Fills 100% of mobile phone screens without requiring user to rotate device',
-      'Proven highest engagement format for mobile social algorithms'
+      'Fills 100% of handheld mobile screen area without phone rotation',
+      'Produces significantly higher user engagement on social video apps',
+      'Matches natural one-handed smartphone orientation'
     ],
     cons: [
-      'Pillarboxes heavily with large black bars when viewed on desktop monitors or TVs'
+      'Unusable for television broadcasts or desktop computer monitors without heavy pillarboxing',
+      'Requires strategic center framing to prevent text being hidden behind app UI buttons'
     ],
     faqs: [
       {
-        question: 'What is 9:16 aspect ratio in pixels?',
-        answer: 'The standard resolution for 9:16 vertical video is 1080x1920 pixels.'
+        question: 'What is 9:16 in pixels?',
+        answer: 'The standard 9:16 resolution is 1080x1920 pixels (Full HD Vertical).'
+      },
+      {
+        question: 'Is 9:16 the same as 16:9?',
+        answer: '9:16 has the same proportional relationship as 16:9, but is oriented vertically (portrait) instead of horizontally (landscape).'
       }
     ],
     meta: {
-      title: '9:16 Vertical Aspect Ratio Calculator (TikTok, Reels, Shorts)',
-      description: 'Free 9:16 vertical aspect ratio calculator. Calculate 1080x1920 pixel dimensions for TikTok videos, Instagram Reels, YouTube Shorts, and Snapchat.',
-      keywords: ['9:16 aspect ratio calculator', '9 16 ratio', '1080x1920 aspect ratio', 'tiktok video dimensions', 'instagram reels calculator']
+      title: '9:16 Aspect Ratio Calculator — Reels & TikTok Video',
+      description: 'Free 9:16 vertical aspect ratio calculator. Calculate 1080x1920 pixel dimensions for TikTok videos, Instagram Reels, YouTube Shorts, and full-screen mobile ads.',
+      keywords: ['9:16 aspect ratio calculator', '9 16 ratio', '1080x1920 aspect ratio', 'tiktok video dimensions', 'reels aspect ratio']
     }
   },
   '3-2-aspect-ratio-calculator': {
@@ -273,38 +351,52 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     ratioWidth: 3,
     ratioHeight: 2,
     decimalValue: 1.5,
-    tagline: 'The native sensor standard for 35mm film, Full Frame DSLRs, mirrorless cameras, and Microsoft Surface laptops.',
-    overview: 'The 3:2 aspect ratio (1.5:1) was introduced by Oskar Barnack for 35mm film negatives and remains the physical native aspect ratio of Full Frame and APS-C DSLR & mirrorless digital camera sensors.',
-    formulaDescription: 'To calculate 3:2 dimensions, multiply height by 1.5 to solve width, or divide width by 1.5 to solve height. E.g., for 6000x4000, GCD is 2000 (6000/2000 = 3, 4000/2000 = 2).',
+    tagline: 'The timeless standard for 35mm film photography, DSLR sensors, and 4x6 photo prints.',
+    overview: 'The 3:2 aspect ratio is the historic gold standard of 35mm still photography established by Oskar Barnack for Leica in the 1910s. It remains the native sensor ratio for almost all DSLR and mirrorless digital cameras today.',
+    formulaDescription: 'To calculate 3:2 dimensions, multiply height by 1.5 to find width, or multiply width by 0.6667 to find height. E.g. (6000 * 0.6667) = 4000 (24MP photo).',
     gcdValue: 2000,
+    workedExample: {
+      title: 'Step-by-Step 3:2 Calculation Example',
+      scenario: 'Calculating the exact pixel dimensions for a 4x6 inch photographic print at 300 DPI:',
+      steps: [
+        'Determine physical dimensions: 6 inches wide by 4 inches high (3:2 ratio).',
+        'Apply resolution formula: Pixels = Inches × DPI.',
+        'Calculate width: 6 inches × 300 DPI = 1800 pixels.',
+        'Calculate height: 4 inches × 300 DPI = 1200 pixels.',
+        'Verify ratio: 1800 ÷ 600 = 3, 1200 ÷ 600 = 2 (GCD is 600).',
+        'Result: Exactly 1800×1200 pixels (2.16 MP) provides razor-sharp 300 DPI print quality.'
+      ],
+      formula: 'Width = 6 × 300 = 1800px, Height = 4 × 300 = 1200px (4×6 Print at 300 DPI)'
+    },
     commonResolutions: [
-      { name: '4x6 Print Standard', width: 1800, height: 1200, category: 'Print' },
-      { name: 'Full HD 3:2', width: 2160, height: 1440, category: 'Full HD' },
-      { name: '24MP Camera Native', width: 6000, height: 4000, category: 'QHD / 2K' },
-      { name: '45MP High-Res Photo', width: 8192, height: 5464, category: '8K UHD' }
+      { name: '4x6 Print @ 300 DPI', width: 1800, height: 1200, category: 'Print' },
+      { name: '6x9 Print @ 300 DPI', width: 2700, height: 1800, category: 'Print' },
+      { name: '24MP Full Frame Camera', width: 6000, height: 4000, category: 'QHD / 2K' },
+      { name: 'Microsoft Surface Display', width: 3000, height: 2000, category: 'Full HD' }
     ],
     useCases: [
-      { industry: 'Photography', title: '35mm & Full-Frame DSLRs', description: 'Native uncropped sensor exposure area for Canon, Sony, Nikon, and Leica cameras.', recommended: true },
-      { industry: 'Printing', title: '4x6 & 12x18 Photo Prints', description: 'Prints 4x6 photo cards perfectly with zero edge cropping.', recommended: true },
-      { industry: 'Laptops', title: 'Microsoft Surface Displays', description: 'Provides optimal vertical screen real estate for desktop productivity.', recommended: true }
+      { industry: 'Photography', title: 'DSLR & Mirrorless Digital Cameras', description: 'Native raw sensor capture ratio for Canon, Sony, Nikon, and Fujifilm cameras.', recommended: true },
+      { industry: 'Print Media', title: 'Standard 4x6 Photo Prints', description: 'The most popular print lab size in the world with zero edge cropping.', recommended: true }
     ],
     pros: [
-      'Ideal balance between wide landscape views and vertical portrait space',
-      'Native sensor format for 35mm photography - zero cropping required for 4x6 prints'
+      'Native ratio for full-frame and APS-C camera sensors (zero sensor cropping)',
+      'Prints standard 4x6 and 8x12 photos without losing edge details',
+      'More vertical room than 16:9 for balanced portrait and landscape framing'
     ],
     cons: [
-      'Requires top/bottom cropping to fit 16:9 video screens or 8x10 print frames'
+      'Requires cropping when printing to common 8x10 or 5x7 frame sizes',
+      'Requires letterboxing when displayed on 16:9 TVs or computer screens'
     ],
     faqs: [
       {
-        question: 'What print sizes match a 3:2 aspect ratio?',
-        answer: 'Standard 3:2 print sizes include 4x6, 8x12, 12x18, 16x24, and 24x36 inches.'
+        question: 'Why do cameras shoot in 3:2 aspect ratio?',
+        answer: '3:2 originates from classic 35mm film (36mm x 24mm exposure area), which digital camera manufacturers adopted to maintain lens compatibility.'
       }
     ],
     meta: {
-      title: '3:2 Aspect Ratio Calculator (35mm Photo, 4x6 Prints)',
-      description: 'Free 3:2 aspect ratio calculator. Calculate pixel dimensions for Full Frame camera photos, 4x6 prints, Microsoft Surface screens, and 35mm framing.',
-      keywords: ['3:2 aspect ratio calculator', '3 2 ratio', '4x6 aspect ratio', 'full frame camera ratio', '35mm photo dimensions']
+      title: '3:2 Aspect Ratio Calculator — 35mm & 4x6 Photo Sizes',
+      description: 'Free 3:2 aspect ratio calculator. Calculate pixel dimensions for Full Frame camera photos, 4x6 photo prints, Microsoft Surface screens, and 35mm film framing.',
+      keywords: ['3:2 aspect ratio calculator', '3 2 ratio', '4x6 aspect ratio', '35mm aspect ratio', 'dslr aspect ratio']
     }
   },
   '5-4-aspect-ratio-calculator': {
@@ -313,36 +405,51 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     ratioWidth: 5,
     ratioHeight: 4,
     decimalValue: 1.25,
-    tagline: 'The classic photographic print ratio for 8x10 portrait frames and Instagram vertical posts.',
-    overview: 'The 5:4 aspect ratio (1.25:1) is famous for classic large-format 8x10 inch art portrait prints, historical 1280x1024 computer monitors, and Instagram mobile portrait post limits (4:5 vertical inverse).',
-    formulaDescription: 'To calculate 5:4 aspect ratio, multiply height by 1.25 to solve width, or multiply width by 0.8 to solve height. E.g. (1280 / 5) * 4 = 1024.',
+    tagline: 'The classic large-format photography standard for 8x10 prints and SXGA computer monitors.',
+    overview: 'The 5:4 aspect ratio (1.25:1) is the classic proportion of traditional 8x10 and 16x20 inch photographic wall prints and early SXGA 1280x1024 LCD desktop monitors. It provides a compact, nearly square composition.',
+    formulaDescription: 'To calculate 5:4 dimensions, multiply height by 1.25 to find width, or multiply width by 0.8 to solve height. E.g. (1280 * 0.8) = 1024.',
     gcdValue: 256,
+    workedExample: {
+      title: 'Step-by-Step 5:4 Calculation Example',
+      scenario: 'Calculating pixel dimensions for an 8x10 inch fine art wall print at 300 DPI:',
+      steps: [
+        'Determine dimensions: 10 inches width by 8 inches height (5:4 aspect ratio).',
+        'Apply DPI formula: Pixels = Inches × 300.',
+        'Calculate width: 10 inches × 300 DPI = 3000 pixels.',
+        'Calculate height: 8 inches × 300 DPI = 2400 pixels.',
+        'Verify ratio: 3000 ÷ 600 = 5, 2400 ÷ 600 = 4 (GCD is 600).',
+        'Result: Exactly 3000×2400 pixels (7.2 Megapixels) yields an uncompressed 8×10 print.'
+      ],
+      formula: 'Width = 10 × 300 = 3000px, Height = 8 × 300 = 2400px (8×10 Print at 300 DPI)'
+    },
     commonResolutions: [
-      { name: 'SXGA Display Standard', width: 1280, height: 1024, category: 'Standard HD' },
-      { name: '8x10 Photo Print (300 DPI)', width: 3000, height: 2400, category: 'Print' },
-      { name: 'Instagram 4:5 Portrait Inverse', width: 1080, height: 1350, category: 'Social' }
+      { name: 'SXGA LCD Monitor', width: 1280, height: 1024, category: 'Standard HD' },
+      { name: '8x10 Print @ 300 DPI', width: 3000, height: 2400, category: 'Print' },
+      { name: '16x20 Print @ 300 DPI', width: 6000, height: 4800, category: 'Print' }
     ],
     useCases: [
-      { industry: 'Photo Printing', title: '8x10 & 16x20 Gallery Frames', description: 'Standard framing size for wall portrait prints and fine art gallery displays.', recommended: true },
-      { industry: 'Social Media', title: 'Instagram 4:5 Portrait Posts', description: 'Occupies maximum vertical height allowed in Instagram feeds.', recommended: true }
+      { industry: 'Wall Art', title: '8x10 & 16x20 Framed Photo Prints', description: 'Standard gallery frame size sold by retailers worldwide.', recommended: true },
+      { industry: 'Legacy IT', title: 'SXGA 19-inch LCD Monitors', description: 'Common business monitor standard in medical and factory terminals.', recommended: false }
     ],
     pros: [
-      'Perfect match for standard 8x10 and 16x20 photo frames',
-      'Provides high portrait density without unnecessary top/bottom empty space'
+      'Standard dimension for 8x10, 11x14, and 16x20 photo frames',
+      'Provides generous vertical space for portrait orientation wall art',
+      'Nearly square symmetry gives powerful visual weight to subjects'
     ],
     cons: [
-      'Requires substantial horizontal cropping when converting 16:9 images'
+      'Incompatible with modern widescreen 16:9 displays without heavy pillarboxing',
+      'Requires cropping 3:2 camera sensor photos along the horizontal edges'
     ],
     faqs: [
       {
-        question: 'Is 5:4 aspect ratio the same as 8x10?',
-        answer: 'Yes! 8x10 inches reduces down to a 5:4 aspect ratio (8 / 2 = 4, 10 / 2 = 5).'
+        question: 'Is 5:4 the same as 4:5?',
+        answer: 'Yes, 5:4 is horizontal (landscape) and 4:5 is vertical (portrait). Both share the exact same 1.25 proportional ratio.'
       }
     ],
     meta: {
-      title: '5:4 Aspect Ratio Calculator (8x10 Prints, 4:5 Instagram)',
-      description: 'Free 5:4 aspect ratio calculator. Calculate pixel dimensions for 8x10 photo prints, 1280x1024 monitors, and Instagram 4:5 portrait post sizing.',
-      keywords: ['5:4 aspect ratio calculator', '5 4 ratio', '8x10 aspect ratio', '4:5 instagram ratio', '1280x1024 aspect ratio']
+      title: '5:4 Aspect Ratio Calculator — 8x10 Print Dimensions',
+      description: 'Free 5:4 aspect ratio calculator. Calculate pixel dimensions for 8x10 photo prints, 1280x1024 SXGA monitors, and large-format gallery photo framing standards.',
+      keywords: ['5:4 aspect ratio calculator', '5 4 ratio', '8x10 aspect ratio', '1280x1024 aspect ratio', 'sxga resolution']
     }
   },
   '4-5-aspect-ratio-calculator': {
@@ -351,51 +458,51 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     ratioWidth: 4,
     ratioHeight: 5,
     decimalValue: 0.8,
-    tagline: 'The gold standard portrait ratio for Instagram vertical feed posts and 8x10 photo prints.',
-    overview: 'The 4:5 aspect ratio (0.8:1) is the standard vertical portrait format for social media feeds, most notably Instagram portrait posts (1080×1350 px), and traditional 8×10 and 16×20 inch photo frames. Because it occupies the maximum vertical screen space allowed in mobile feeds without being cropped, 4:5 yields the highest visual engagement among static feed image formats.',
-    formulaDescription: 'To calculate 4:5 aspect ratio dimensions, multiply width by 1.25 to calculate height, or multiply height by 0.8 to calculate width. E.g. 1080 × 1.25 = 1350 px. The Greatest Common Divisor (GCD) for 1080×1350 is 270 (1080/270 = 4, 1350/270 = 5).',
+    tagline: 'The ideal vertical portrait format for Instagram feed posts and 8x10 portrait photo prints.',
+    overview: 'The 4:5 aspect ratio (0.8:1) is the maximum vertical dimension allowed for standard in-feed Instagram posts (1080x1350px). It occupies significantly more mobile screen real estate than a square 1:1 post.',
+    formulaDescription: 'To calculate 4:5 dimensions, multiply width by 1.25 to solve height, or multiply height by 0.8 to solve width. E.g. (1080 * 1.25) = 1350.',
     gcdValue: 270,
+    workedExample: {
+      title: 'Step-by-Step 4:5 Calculation Example',
+      scenario: 'Calculating the maximum vertical canvas height for an Instagram feed post at 1080px width:',
+      steps: [
+        'Identify target aspect ratio: 4 units width to 5 units height.',
+        'Formula: Height = (Width × 5) ÷ 4, or Width × 1.25.',
+        'Substitute maximum feed width: Height = (1080 × 5) ÷ 4.',
+        'Multiply numerator: 1080 × 5 = 5400.',
+        'Divide by 4: 5400 ÷ 4 = 1350 pixels.',
+        'Result: Exactly 1080×1350 pixels, filling the maximum vertical height allowed in Instagram feeds.'
+      ],
+      formula: 'Height = (1080 × 5) ÷ 4 = 1350px (Instagram Portrait Maximum)'
+    },
     commonResolutions: [
-      { name: 'Instagram Portrait Standard', width: 1080, height: 1350, category: 'Social' },
-      { name: 'High-Res Portrait Feed (2K)', width: 1440, height: 1800, category: 'Social' },
-      { name: 'Ultra HD Portrait (4K)', width: 2160, height: 2700, category: '4K UHD' },
-      { name: '8x10 in Photo Print (300 DPI)', width: 2400, height: 3000, category: 'Print' },
-      { name: '16x20 in Gallery Print (300 DPI)', width: 4800, height: 6000, category: 'Print' }
+      { name: 'Instagram Vertical Post', width: 1080, height: 1350, category: 'Social' },
+      { name: 'High-Res 4:5 Portrait', width: 2160, height: 2700, category: 'Full HD' },
+      { name: '8x10 Portrait Print @ 300 DPI', width: 2400, height: 3000, category: 'Print' }
     ],
     useCases: [
-      { industry: 'Social Media', title: 'Instagram Vertical Feed Posts', description: 'Occupies maximum vertical feed real-estate (1080×1350 px), giving viewers optimal visual immersion.', recommended: true },
-      { industry: 'Photography', title: '8×10 & 16×20 Portrait Frames', description: 'Industry-standard frame proportion for studio portraiture and wedding albums.', recommended: true },
-      { industry: 'Digital Advertising', title: 'Facebook & Instagram In-Feed Ads', description: 'Optimal portrait ad dimension for higher click-through rates and thumb-stop ratio.', recommended: true },
-      { industry: 'Print Art', title: 'Fine Art Wall Posters', description: 'Standard proportional sizing for vertical wall art and art gallery canvas wraps.', recommended: true }
+      { industry: 'Social Media', title: 'Instagram Portrait Feed Posts', description: 'Dominates mobile feed screens, resulting in higher engagement and dwell time.', recommended: true },
+      { industry: 'Portraiture', title: 'Studio Portrait Photography', description: 'Ideal vertical composition for headshots and fashion photography.', recommended: true }
     ],
     pros: [
-      'Occupies maximum visible vertical real estate in mobile feeds (up to 1350px tall)',
-      'Produces higher engagement and click-through rates compared to 1:1 square posts',
-      'Direct 1:1 match for standard 8x10 and 16x20 inch physical frames',
-      'Eliminates automatic cropping when publishing mobile smartphone photography'
+      'Takes up 25% more vertical feed space on Instagram than 1:1 square posts',
+      'Flattering vertical proportion for human portraiture and outfit modeling',
+      'Native proportion for standard 8x10 portrait picture frames'
     ],
     cons: [
-      'Requires cropping wide landscape images (16:9 or 3:2) on the left and right edges',
-      'Leaves pillarbox black bars when displayed on horizontal 16:9 widescreen monitors'
+      'Slightly trimmed on desktop Instagram browser viewports',
+      'Not supported as a video aspect ratio on widescreen displays'
     ],
     faqs: [
       {
-        question: 'What is the 4:5 aspect ratio in pixels for Instagram?',
-        answer: 'The standard recommended resolution for 4:5 Instagram portrait posts is 1080 × 1350 pixels. High-resolution versions include 1440 × 1800 px and 2160 × 2700 px.'
-      },
-      {
-        question: 'How do you calculate 4:5 aspect ratio?',
-        answer: 'To calculate 4:5 dimensions: New Height = Target Width × 1.25. For example, 1080 × 1.25 = 1350 px. To find width from height: New Width = Target Height × 0.8.'
-      },
-      {
-        question: 'Is 4:5 the same as 8x10 inches?',
-        answer: 'Yes! An 8×10 inch portrait print has a width of 8 and height of 10. Dividing both by 2 gives exactly 4:5.'
+        question: 'What is the 4:5 ratio for Instagram in pixels?',
+        answer: 'The recommended pixel size for a 4:5 Instagram post is 1080x1350 pixels.'
       }
     ],
     meta: {
-      title: '4:5 Aspect Ratio Calculator — Instagram Portrait (1080x1350) & 8x10 Prints',
-      description: 'Free 4:5 aspect ratio calculator. Calculate pixel and inch dimensions for Instagram vertical posts (1080x1350), 8x10 photo prints, and mobile portrait photography.',
-      keywords: ['4:5 aspect ratio calculator', '4 5 ratio', 'instagram portrait calculator', '1080x1350 aspect ratio', '8x10 photo aspect ratio', '4:5 ratio in pixels']
+      title: '4:5 Aspect Ratio Calculator — Instagram Vertical Sizes',
+      description: 'Free 4:5 aspect ratio calculator. Calculate pixel dimensions for Instagram vertical posts (1080x1350), 8x10 photo prints, and portrait feed photography.',
+      keywords: ['4:5 aspect ratio calculator', '4 5 ratio', '1080x1350 aspect ratio', 'instagram portrait size', 'instagram 4:5 calculator']
     }
   },
   '16-10-aspect-ratio-calculator': {
@@ -404,143 +511,158 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     ratioWidth: 16,
     ratioHeight: 10,
     decimalValue: 1.6,
-    tagline: 'The premier productivity display standard for Apple MacBooks, modern laptops, and WUXGA/WQXGA monitors.',
-    overview: 'The 16:10 aspect ratio (also expressed as 8:5 or 1.6:1) is the computer display standard favored for productivity, programming, and content creation. By providing 11.1% more vertical space than conventional 16:9 widescreen, it displays additional lines of code, documents, and timeline controls without continuous scrolling.',
-    formulaDescription: 'To calculate 16:10 aspect ratio dimensions, multiply height by 1.6 to determine width, or multiply width by 0.625 (or divide by 1.6) to solve height. E.g. for 1920x1200, the Greatest Common Divisor (GCD) is 240 (1920/240 = 8, 1200/240 = 5, or 16:10).',
-    gcdValue: 240,
+    tagline: 'The modern laptop productivity standard used by Apple MacBooks and Dell XPS screens.',
+    overview: 'The 16:10 aspect ratio (also expressed as 8:5) provides ~11% more vertical screen canvas than standard 16:9 widescreen displays. It has become the gold standard for premium laptops like Apple MacBook Pro, Dell XPS, and Lenovo ThinkPad.',
+    formulaDescription: 'To calculate 16:10 aspect ratio dimensions, multiply height by 1.6 to find width, or multiply width by 0.625 to solve height. E.g. (1920 * 0.625) = 1200.',
+    gcdValue: 120,
+    workedExample: {
+      title: 'Step-by-Step 16:10 Calculation Example',
+      scenario: 'Calculating the vertical resolution for a WUXGA professional laptop panel with a 1920px width:',
+      steps: [
+        'Identify target ratio: 16:10 (simplified to 8:5, multiplier 1.6).',
+        'Formula: Height = (Width × 10) ÷ 16, or Width × 0.625.',
+        'Substitute width: Height = (1920 × 10) ÷ 16.',
+        'Multiply numerator: 1920 × 10 = 19,200.',
+        'Divide by 16: 19,200 ÷ 16 = 1200 pixels.',
+        'Comparison: 1920×1200 provides 120 extra vertical pixels over standard 1080p, perfect for toolbars and code.'
+      ],
+      formula: 'Height = (1920 × 10) ÷ 16 = 1200px (WUXGA Laptop Standard)'
+    },
     commonResolutions: [
-      { name: 'WXGA Standard', width: 1280, height: 800, category: 'Standard HD' },
-      { name: 'WSXGA+ Office', width: 1680, height: 1050, category: 'Standard HD' },
+      { name: 'WXGA Display', width: 1280, height: 800, category: 'Standard HD' },
       { name: 'WUXGA Full HD+', width: 1920, height: 1200, category: 'Full HD' },
-      { name: 'Retina 13" (WQXGA)', width: 2560, height: 1600, category: 'QHD / 2K' },
-      { name: 'Liquid Retina 14"', width: 3024, height: 1964, category: 'QHD / 2K' },
-      { name: 'WQUXGA 4K+', width: 3840, height: 2400, category: '4K UHD' }
+      { name: 'WQXGA (2.5K)', width: 2560, height: 1600, category: 'QHD / 2K' },
+      { name: 'MacBook Pro 16" Retina', width: 3456, height: 2234, category: '4K UHD' }
     ],
     useCases: [
-      { industry: 'Laptops', title: 'Apple MacBook Pro & Air', description: 'Native display standard across Apple portable computers and modern premium ultrabooks.', recommended: true },
-      { industry: 'Productivity', title: 'Coding & Document Editing', description: 'Renders 6 to 9 additional lines of visible code or document text compared to 1080p.', recommended: true },
-      { industry: 'Creative Work', title: 'Video Editing & Digital Art', description: 'Leaves comfortable interface room for playback controls beneath a 16:9 video preview.', recommended: true }
+      { industry: 'Laptops', title: 'MacBook & Professional Ultrabooks', description: 'Superior vertical canvas for coding, spreadsheets, and web design.', recommended: true },
+      { industry: 'Productivity', title: 'Business Desktop Monitors', description: 'Allows viewing two full letter pages side-by-side with less vertical scrolling.', recommended: true }
     ],
     pros: [
-      'Provides 11.1% more vertical screen space than standard 16:9 displays',
-      'Native format for MacBook Pro, MacBook Air, Dell XPS, and ThinkPad lineups',
-      'Minimizes empty bezel chin on modern portable laptop chassis',
-      'Excellent balance for dual side-by-side document comparison'
+      '11% more vertical workspace than 16:9 for coding and document editing',
+      'Native aspect ratio for Apple MacBook Air and MacBook Pro displays',
+      'Comfortable proportions for creative timelines in video and audio editors'
     ],
     cons: [
-      'Produces thin horizontal black letterbox bars when watching 16:9 streaming video',
-      'Less common than 16:9 in budget television manufacturing'
+      'Produces thin black letterbox bars on top and bottom when playing standard 16:9 video',
+      'Less widely available in budget desktop monitors compared to mass-market 16:9'
     ],
     faqs: [
       {
-        question: 'What is the 16:10 aspect ratio in pixels?',
-        answer: 'Common 16:10 resolutions include 1920x1200 (WUXGA), 2560x1600 (WQXGA), and 3840x2400 (WQUXGA).'
-      },
-      {
-        question: 'How do you calculate 16:10 dimensions?',
-        answer: 'To find Width from Height: Width = Height × 1.6. To find Height from Width: Height = Width ÷ 1.6.'
-      },
-      {
-        question: 'Why do modern laptops use 16:10 instead of 16:9?',
-        answer: '16:10 provides extra vertical height for viewing documents, spreadsheets, and code without sacrificing horizontal space.'
+        question: 'What is 1920x1200 in aspect ratio terms?',
+        answer: '1920x1200 is an exact 16:10 aspect ratio (also known as WUXGA resolution).'
       }
     ],
     meta: {
-      title: '16:10 Aspect Ratio Calculator — MacBook & WUXGA Dimensions (1920x1200, 2560x1600)',
+      title: '16:10 Aspect Ratio Calculator — MacBook Display Sizes',
       description: 'Free 16:10 aspect ratio calculator. Calculate pixel dimensions for MacBook Retina displays, WUXGA monitors (1920x1200), and Dell XPS 16:10 laptop screens.',
-      keywords: ['16:10 aspect ratio calculator', '16 10 ratio', '1920x1200 aspect ratio', 'macbook aspect ratio', '2560x1600 resolution calculator']
+      keywords: ['16:10 aspect ratio calculator', '16 10 ratio', '1920x1200 aspect ratio', 'macbook aspect ratio', 'wuxga resolution']
     }
   },
   '2-39-1-aspect-ratio-calculator': {
     slug: '2-39-1-aspect-ratio-calculator',
-    name: '2.39:1 Cinema Scope',
+    name: '2.39:1 Cinema Scope Aspect Ratio',
     ratioWidth: 239,
     ratioHeight: 100,
     decimalValue: 2.39,
-    tagline: 'The theatrical widescreen standard for Hollywood blockbuster films, anamorphic lenses, and cinematic video.',
-    overview: 'The 2.39:1 aspect ratio (often designated as 2.40:1, Scope, or historically 2.35:1) is the global theatrical standard for widescreen cinema. Filmed using anamorphic camera lenses or cropped spherical sensors, 2.39:1 creates an expansive panoramic composition that enhances cinematic grandeur.',
-    formulaDescription: 'To calculate 2.39:1 cinema dimensions, multiply height by 2.39 to determine width, or divide width by 2.39 to find active picture height. E.g., on a 3840x2160 UHD canvas, active 2.39:1 picture height is 3840 / 2.39 ≈ 1606 px (leaving 277px top and bottom letterbox bars).',
+    tagline: 'The cinematic widescreen standard for theatrical movies and anamorphic filmmaking.',
+    overview: 'The 2.39:1 aspect ratio (often marketed as 2.40:1 or CinemaScope) is the modern theatrical release standard for widescreen motion pictures. It creates the iconic panoramic movie theater aesthetic.',
+    formulaDescription: 'To calculate 2.39:1 cinema dimensions, divide width by 2.39 to find height, or multiply height by 2.39 to solve width. E.g. (1920 / 2.39) ≈ 804 pixels.',
     gcdValue: 1,
+    workedExample: {
+      title: 'Step-by-Step 2.39:1 Calculation Example',
+      scenario: 'Calculating the active movie image height and letterbox black bars for a 1080p container (1920×1080):',
+      steps: [
+        'Identify target scope ratio: 2.39:1.',
+        'Formula: Active Height = Width ÷ 2.39.',
+        'Substitute 1080p container width: Active Height = 1920 ÷ 2.39.',
+        'Calculate active video height: 1920 ÷ 2.39 ≈ 804 pixels.',
+        'Calculate black letterbox matte bars: (1080 - 804) ÷ 2 = 138 pixels top and bottom.',
+        'Result: Active movie area is 1920×804px centered within the 1920×1080px video frame.'
+      ],
+      formula: 'Active Height = 1920 ÷ 2.39 = 804px (138px Letterbox Bars)'
+    },
     commonResolutions: [
-      { name: '1080p Cinema Scope', width: 1920, height: 804, category: 'Full HD' },
-      { name: 'DCI 2K Scope Theatrical', width: 2048, height: 858, category: 'Full HD' },
-      { name: '4K UHD Cinema Scope', width: 3840, height: 1606, category: '4K UHD' },
-      { name: 'DCI 4K Scope Theatrical', width: 4096, height: 1716, category: '4K UHD' },
-      { name: '8K UHD Cinema Scope', width: 7680, height: 3212, category: '8K UHD' }
+      { name: '1080p Scope Crop', width: 1920, height: 804, category: 'Full HD' },
+      { name: '4K UHD Scope Crop', width: 3840, height: 1606, category: '4K UHD' },
+      { name: 'DCI 4K Scope Native', width: 4096, height: 1716, category: 'Cinema' }
     ],
     useCases: [
-      { industry: 'Cinema', title: 'Theatrical Feature Films', description: 'The worldwide projection standard for high-budget Hollywood and independent cinema.', recommended: true },
-      { industry: 'Video Editing', title: 'Letterbox Matte & Export Dimensions', description: 'Used by colorists and video editors in Premiere and DaVinci to export clean widescreen video.', recommended: true },
-      { industry: 'Hardware', title: '21:9 Ultrawide Monitor Playback', description: 'Matches 21:9 monitors almost perfectly with negligible black bars.', recommended: true }
+      { industry: 'Filmmaking', title: 'Theatrical Feature Films', description: 'Hollywood widescreen standard for blockbuster movies and prestige drama.', recommended: true },
+      { industry: 'Color Grading', title: 'Letterbox Video Mastering', description: 'Exporting cinematic letterboxed video master files for streaming distribution.', recommended: true }
     ],
     pros: [
-      'Delivers an authentic Hollywood cinematic aesthetic',
-      'Provides maximum horizontal peripheral field of view for landscapes and action scenes',
-      'Fills 21:9 ultrawide monitor screens naturally without black bars'
+      'The definitive "cinematic" aesthetic familiar to global movie audiences',
+      'Expansive panoramic field of view ideal for sweeping landscapes and action scenes',
+      'Fills 21:9 ultrawide desktop monitors and anamorphic projection screens completely'
     ],
     cons: [
-      'Creates black letterbox bars on standard 16:9 televisions and laptops',
-      'Requires vertical cropping when converting to mobile vertical formats'
+      'Requires thick top and bottom black letterbox bars on standard 16:9 televisions',
+      'Extremely restrictive vertical framing for tall vertical subjects'
     ],
     faqs: [
       {
-        question: 'What is 2.39:1 aspect ratio in pixels for 1080p?',
-        answer: 'For a 1080p (1920px wide) video canvas, 2.39:1 has an active height of 804 pixels (1920 × 804 px).'
-      },
-      {
-        question: 'What is the difference between 2.35:1 and 2.39:1?',
-        answer: '2.35:1 was the early SMPTE standard (1957–1970). In 1970, SMPTE revised the standard to 2.39:1 (often rounded to 2.40:1) to reduce visible frame splices during projection.'
+        question: 'What is 2.39:1 resolution in 4K?',
+        answer: 'In consumer 4K UHD (3840x2160), 2.39:1 active picture area is 3840x1606 pixels. In cinema DCI 4K, it is 4096x1716 pixels.'
       }
     ],
     meta: {
-      title: '2.39:1 Cinema Aspect Ratio Calculator — Anamorphic Scope (1920x804, 3840x1606)',
-      description: 'Free 2.39:1 / 2.40:1 cinema aspect ratio calculator. Calculate active film dimensions, letterbox matte sizes, and anamorphic video resolutions for 1080p, 4K UHD, and DCI.',
-      keywords: ['2.39:1 aspect ratio calculator', '2 39 1 ratio', 'cinematic aspect ratio calculator', 'anamorphic scope dimensions', '1920x804 resolution']
+      title: '2.39:1 Aspect Ratio Calculator — Anamorphic Cinema',
+      description: 'Free 2.39:1 cinema aspect ratio calculator. Calculate active film dimensions, letterbox matte sizes, and anamorphic video resolutions for 1080p and 4K UHD.',
+      keywords: ['2.39:1 aspect ratio calculator', 'cinemascope aspect ratio', 'anamorphic ratio', '2.40:1 aspect ratio', 'movie aspect ratio calculator']
     }
   },
   '32-9-aspect-ratio-calculator': {
     slug: '32-9-aspect-ratio-calculator',
-    name: '32:9 Super Ultrawide',
+    name: '32:9 Super Ultrawide Aspect Ratio',
     ratioWidth: 32,
     ratioHeight: 9,
     decimalValue: 3.5555555555555554,
-    tagline: 'The double-widescreen standard for dual-QHD curved gaming monitors, racing simulators, and panoramic workstations.',
-    overview: 'The 32:9 super ultrawide aspect ratio equals exactly two standard 16:9 displays positioned seamlessly side-by-side with zero center bezel. Famous in premium curved displays like the Samsung Odyssey Neo G9, 32:9 provides unmatched peripheral immersion for simulation gaming and multi-window productivity.',
-    formulaDescription: 'To calculate 32:9 dimensions, multiply height by 3.5556 to determine width, or multiply width by 0.28125 to solve height. E.g. for a 1440px height display, width is 1440 × 3.5556 = 5120 px. The Greatest Common Divisor (GCD) for 5120x1440 is 160 (5120/160 = 32, 1440/160 = 9).',
+    tagline: 'The panoramic super ultrawide standard for 49" curved gaming and multi-window productivity.',
+    overview: 'The 32:9 aspect ratio (super ultrawide) represents the exact horizontal width of two 16:9 monitors placed side-by-side without a center bezel. Popularized by Samsung Odyssey 49" and 57" curved displays.',
+    formulaDescription: 'To calculate 32:9 dimensions, multiply height by 3.5556 to find width, or multiply width by 0.28125 to find height. E.g. (1440 * 3.5556) = 5120.',
     gcdValue: 160,
+    workedExample: {
+      title: 'Step-by-Step 32:9 Calculation Example',
+      scenario: 'Calculating the super ultrawide resolution for a Dual-QHD monitor with 1440p height:',
+      steps: [
+        'Identify target ratio: 32:9 (equivalent to two 16:9 displays side-by-side).',
+        'Formula: Width = (Height × 32) ÷ 9, or Height × 3.5556.',
+        'Substitute panel height: Width = (1440 × 32) ÷ 9.',
+        'Multiply numerator: 1440 × 32 = 46,080.',
+        'Divide by 9: 46,080 ÷ 9 = 5120 pixels.',
+        'Result: Exactly 5120×1440 pixels (Dual-QHD DQHD), matching popular 49-inch curved monitors.'
+      ],
+      formula: 'Width = (1440 × 32) ÷ 9 = 5120px (Dual-QHD 49" Super Ultrawide)'
+    },
     commonResolutions: [
-      { name: 'Dual 1080p (DFHD)', width: 3840, height: 1080, category: 'Full HD' },
-      { name: 'Dual 1440p (DQHD 49")', width: 5120, height: 1440, category: 'QHD / 2K' },
-      { name: 'Dual 4K (DUHD 57")', width: 7680, height: 2160, category: '8K UHD' }
+      { name: 'Dual-FHD (49" 1080p)', width: 3840, height: 1080, category: 'Full HD' },
+      { name: 'Dual-QHD (49" 1440p)', width: 5120, height: 1440, category: 'QHD / 2K' },
+      { name: 'Dual-4K (57" UHD)', width: 7680, height: 2160, category: '4K UHD' }
     ],
     useCases: [
-      { industry: 'Gaming', title: 'Racing & Flight Simulators', description: 'Expands peripheral cockpit vision in Microsoft Flight Simulator, iRacing, Assetto Corsa, and F1.', recommended: true },
-      { industry: 'Productivity', title: 'Financial Trading & Monitoring', description: 'Replaces dual-monitor setups with a seamless curved dashboard display.', recommended: true },
-      { industry: 'Creative Work', title: 'Long Horizontal Timelines', description: 'Provides expansive horizontal timeline visibility for complex audio DAWs and video editors.', recommended: true }
+      { industry: 'Sim Racing', title: 'Flight & Racing Simulators', description: 'Replicates real vehicle cockpit side windows with seamless curved panoramic view.', recommended: true },
+      { industry: 'Finance', title: 'Financial Trading Desks', description: 'Displays 6 to 8 live market candlestick charts concurrently on a single curved monitor.', recommended: true }
     ],
     pros: [
-      'Equivalent to two 16:9 monitors without any distracting center plastic bezel',
-      'Extraordinary peripheral immersion for simulation and open-world PC gaming',
-      'Permits 3 to 4 full application windows positioned side-by-side simultaneously'
+      'Replaces dual 16:9 monitor setups with zero center bezels',
+      'Unmatched panoramic peripheral immersion for gaming and flight simulators',
+      'Supports Picture-by-Picture (PBP) to display two independent computer inputs simultaneously'
     ],
     cons: [
-      'Causes large black pillarbox bars when playing standard 16:9 video content',
-      'Requires substantial GPU horsepower to render games at 5120x1440 or 7680x2160'
+      'Requires substantial desktop physical space and high-end graphics card (GPU)',
+      'Most standard video streaming sites display massive black bars on the sides'
     ],
     faqs: [
       {
-        question: 'What is 5120x1440 in aspect ratio terms?',
-        answer: '5120x1440 is a 32:9 Super Ultrawide aspect ratio, representing two 2560x1440 (1440p) screens combined.'
-      },
-      {
-        question: 'How do you calculate 32:9 aspect ratio dimensions?',
-        answer: 'Width = Height × (32 ÷ 9) ≈ Height × 3.5556. Height = Width × (9 ÷ 32) = Width × 0.28125.'
+        question: 'What resolution is a 32:9 monitor?',
+        answer: 'The most popular 32:9 resolution is 5120x1440 pixels (Dual QHD), followed by 3840x1080 (Dual Full HD) and 7680x2160 (Dual 4K).'
       }
     ],
     meta: {
-      title: '32:9 Super Ultrawide Aspect Ratio Calculator — 5120x1440 & DQHD Dimensions',
-      description: 'Free 32:9 super ultrawide calculator. Calculate pixel dimensions for 49-inch and 57-inch curved gaming monitors, dual-QHD (5120x1440), and dual-4K setups.',
-      keywords: ['32:9 aspect ratio calculator', '32 9 ratio', '5120x1440 aspect ratio', 'super ultrawide calculator', 'odyssey g9 resolution']
+      title: '32:9 Aspect Ratio Calculator — Super Ultrawide Specs',
+      description: 'Free 32:9 super ultrawide calculator. Calculate pixel dimensions for 49-inch curved monitors, dual-QHD (5120x1440), and dual-4K desktop multi-window setups.',
+      keywords: ['32:9 aspect ratio calculator', 'super ultrawide aspect ratio', '5120x1440 aspect ratio', '49 inch monitor resolution', 'dual qhd calculator']
     }
   },
   'golden-ratio-aspect-ratio-calculator': {
@@ -548,47 +670,52 @@ export const RATIOS_DATA: Record<string, RatioData> = {
     name: 'Golden Ratio (1.618:1)',
     ratioWidth: 1618,
     ratioHeight: 1000,
-    decimalValue: 1.61803398875,
-    tagline: 'The divine proportion (Phi φ) for harmonious visual compositions, UI card layouts, and architectural framing.',
-    overview: 'The Golden Ratio (approximately 1.618034:1, denoted by the Greek letter Phi φ) is a mathematical proportion celebrated since antiquity for creating organic, visually balanced compositions. Modern digital designers utilize the Golden Ratio for responsive card layouts, typography scale hierarchies, and grid columns.',
-    formulaDescription: 'To calculate Golden Ratio dimensions, multiply the smaller dimension by 1.618034 to calculate the larger dimension, or divide by 1.618034 to solve the smaller side. E.g. 500 px height × 1.618034 ≈ 809 px width.',
+    decimalValue: 1.618033988749895,
+    tagline: 'The divine aesthetic proportion (Phi φ) used in classical art, architecture, and UI layout design.',
+    overview: 'The Golden Ratio (represented by the Greek letter Phi φ ≈ 1.618034) is a mathematical proportion found abundantly in nature, classical architecture, and modern UI design. It creates organic visual harmony that the human eye naturally finds balanced.',
+    formulaDescription: 'To calculate Golden Ratio dimensions, multiply height by 1.618034 to find width, or divide width by 1.618034 to solve height. E.g. (618 * 1.618034) ≈ 1000.',
     gcdValue: 1,
+    workedExample: {
+      title: 'Step-by-Step Golden Ratio Calculation Example',
+      scenario: 'Calculating the aesthetically balanced height for a UI card container with a 800px width:',
+      steps: [
+        'Identify the Golden Ratio constant: φ ≈ 1.618034.',
+        'Formula: Height = Width ÷ φ (or Width × 0.618034).',
+        'Substitute container width: Height = 800 ÷ 1.618034.',
+        'Perform division: 800 ÷ 1.618034 ≈ 494.4 pixels.',
+        'Round to whole pixels: 494 pixels.',
+        'Result: A card sized 800×494px embodies the divine proportion, creating optimal visual harmony for UI layouts.'
+      ],
+      formula: 'Height = 800 ÷ 1.618034 = 494px (Golden Rectangle UI Card)'
+    },
     commonResolutions: [
-      { name: 'Golden Card Compact', width: 485, height: 300, category: 'Standard HD' },
-      { name: 'Golden Card Medium', width: 809, height: 500, category: 'Standard HD' },
-      { name: 'Golden Canvas HD', width: 1618, height: 1000, category: 'Full HD' },
-      { name: 'Golden Canvas 2K', width: 2427, height: 1500, category: 'QHD / 2K' },
-      { name: 'Golden Canvas 4K', width: 3236, height: 2000, category: '4K UHD' }
+      { name: 'UI Card Small', width: 485, height: 300, category: 'Social' },
+      { name: 'UI Card Standard', width: 809, height: 500, category: 'Social' },
+      { name: 'Golden Hero Banner', width: 1618, height: 1000, category: 'Full HD' }
     ],
     useCases: [
-      { industry: 'UI/UX Design', title: 'Layout Column Proportions', description: 'Splits content into an organic 61.8% main area and 38.2% sidebar layout.', recommended: true },
-      { industry: 'Graphic Design', title: 'Logo Construction & Grids', description: 'Used by designers to balance concentric circles, geometry, and negative space.', recommended: true },
-      { industry: 'Photography', title: 'Dynamic Symmetry Framing', description: 'Alternative to the rule of thirds that leads viewer gaze along a logarithmic spiral.', recommended: true }
+      { industry: 'UI/UX Design', title: 'Content Card & Hero Layouts', description: 'Creates visually soothing geometric balance in web layouts and typography scales.', recommended: true },
+      { industry: 'Art & Photography', title: 'Compositional Framing', description: 'Applies the golden spiral grid to position focal points with maximum visual impact.', recommended: true }
     ],
     pros: [
-      'Creates naturally pleasing and harmonious visual proportions',
-      'Timeless geometric aesthetic rooted in classical art and mathematics',
-      'Versatile blueprint for modular design scales and typography sizes'
+      'Mathematically proven to produce intuitive aesthetic balance',
+      'Widely used in corporate logo design, editorial layouts, and fine art framing',
+      'Provides a disciplined design system for spacing, typography, and card dimensions'
     ],
     cons: [
-      'Does not match standard consumer hardware display panels (closest is 16:10 at 1.6:1)'
+      'Does not correspond directly to standard mass-market computer displays or TVs',
+      'Slightly non-standard pixel dimensions may require rounding to whole integers'
     ],
     faqs: [
       {
-        question: 'What is the Golden Ratio formula for image dimensions?',
-        answer: 'Longer Side = Shorter Side × 1.618034. Shorter Side = Longer Side ÷ 1.618034.'
-      },
-      {
-        question: 'Which standard aspect ratio is closest to the Golden Ratio?',
-        answer: '16:10 (1.60:1) is the closest standard computer monitor aspect ratio to the Golden Ratio (1.618:1).'
+        question: 'What is the Golden Ratio in numbers?',
+        answer: 'The Golden Ratio is an irrational mathematical constant approximately equal to 1.6180339887... (abbreviated as 1.618:1).'
       }
     ],
     meta: {
-      title: 'Golden Ratio Aspect Ratio Calculator (1.618:1 Phi φ) — UI & Design Dimensions',
-      description: 'Free Golden Ratio aspect ratio calculator. Calculate dimensions using the divine proportion (1.618034:1) for UI card layouts, graphic design, and photography composition.',
-      keywords: ['golden ratio aspect ratio calculator', 'golden ratio calculator', 'phi aspect ratio', '1.618 image dimensions', 'golden rectangle calculator']
+      title: 'Golden Ratio Aspect Ratio Calculator — 1.618:1 Phi',
+      description: 'Free Golden Ratio aspect ratio calculator. Calculate dimensions using the divine proportion (1.618034:1) for UI card layouts, graphic design, and photography.',
+      keywords: ['golden ratio calculator', '1.618 aspect ratio', 'phi aspect ratio calculator', 'golden rectangle calculator', 'divine proportion dimensions']
     }
   }
 };
-
-

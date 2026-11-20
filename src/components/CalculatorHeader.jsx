@@ -5,26 +5,27 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShieldCheck, X, CheckCircle2, Shield } from 'lucide-react';
 
-export default function CalculatorHeader({ showGuide = false, onToggleGuide = null }) {
+export default function CalculatorHeader({ showGuide = false, onToggleGuide = null, isHome = false }) {
   const [showSecurityModal, setShowSecurityModal] = useState(false);
+  const HeadingTag = isHome ? 'h1' : 'span';
 
   return (
     <header className="pt-3 sm:pt-6 pb-4 sm:pb-6 border-b border-white/[0.08] mb-5 sm:mb-6">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
         {/* Brand & Title */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-white/10 flex-shrink-0 bg-[#000000] shadow-md">
-            <Image src="/logo.webp" alt="Aspect Ratio Logo" width={36} height={36} className="w-full h-full object-cover" unoptimized loading="eager" />
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-white/10 flex-shrink-0 bg-[#000000] shadow-md group-hover:border-blue-500/50 transition-colors">
+            <Image src="/logo.webp" alt="Aspect Ratio Calculator Logo" width={36} height={36} className="w-full h-full object-cover" unoptimized loading="eager" />
           </div>
           <div>
-            <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-white font-sans leading-tight">
+            <HeadingTag className="text-lg sm:text-2xl font-bold tracking-tight text-white font-sans leading-tight block group-hover:text-blue-400 transition-colors">
               Aspect Ratio Calculator
-            </h1>
+            </HeadingTag>
             <p className="text-[11px] sm:text-xs text-neutral-400 font-sans mt-0.5">
               Instant proportion calculator & resolution resizer
             </p>
           </div>
-        </div>
+        </Link>
 
         {/* Header Navigation & Utility Buttons */}
         <div className="flex flex-wrap items-center gap-2 w-full md:w-auto justify-between md:justify-end">

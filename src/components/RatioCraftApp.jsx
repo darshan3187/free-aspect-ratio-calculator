@@ -124,6 +124,7 @@ export default function RatioCraftApp() {
     <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6">
       {/* Header Bar */}
       <CalculatorHeader
+        isHome={true}
         showGuide={showQuickGuide}
         onToggleGuide={() => setShowQuickGuide(!showQuickGuide)}
       />
